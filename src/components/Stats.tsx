@@ -45,21 +45,21 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="text-4xl md:text-5xl font-bold gold-text">
-      {suffix.startsWith("Cr") ? "₹" : ""}{count.toLocaleString()}{suffix}
+    <div ref={ref} className="text-5xl md:text-6xl font-extrabold tracking-tight gold-text font-display mb-1">
+      {suffix.includes("Cr") ? "₹" : ""}{count.toLocaleString()}{suffix}
     </div>
   );
 }
 
 export function Stats() {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-secondary/15 to-secondary/35 border-y border-border/30">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-0"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -68,13 +68,13 @@ export function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="text-center"
+              className="text-center relative px-4 flex flex-col items-center justify-center border-border/20 odd:border-r even:border-r-0 md:border-r md:last:border-r-0"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                <stat.icon className="h-8 w-8 text-primary" />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 mb-4 transition-transform hover:scale-105 duration-350">
+                <stat.icon className="h-6.5 w-6.5 text-primary" />
               </div>
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <div className="text-muted-foreground mt-2">{stat.label}</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mt-2">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

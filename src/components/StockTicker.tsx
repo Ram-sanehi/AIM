@@ -261,36 +261,43 @@ export function StockTicker() {
   }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-t border-slate-700 overflow-hidden py-3 shadow-2xl z-40">
+    <div className="fixed bottom-0 left-0 right-0 bg-[#030712]/80 backdrop-blur-md border-t border-border/20 overflow-hidden py-2 shadow-2xl z-40">
+      {/* Edge gradient fade masks */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#030712] to-transparent pointer-events-none z-10" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#030712] to-transparent pointer-events-none z-10" />
+
       {loading && (
-        <div className="px-6 text-slate-400 text-sm">Loading market data...</div>
+        <div className="px-6 text-slate-600 text-xs">Loading market data...</div>
       )}
       {!loading && (
         <motion.div
-          className="flex gap-12 whitespace-nowrap"
+          className="flex items-center gap-12 whitespace-nowrap cursor-pointer hover:[animation-play-state:paused]"
           style={{
             width: "fit-content",
-            animation: "scroll-left 40s linear infinite",
+            animation: "scroll-left 120s linear infinite",
           }}
         >
           {/* Duplicate stocks for seamless loop */}
           {[...stocks, ...stocks].map((stock, index) => (
-            <div key={`${stock.symbol}-${index}`} className="flex items-center gap-3 px-6 min-w-max">
-              <span className="font-bold text-white text-sm min-w-fit">{stock.symbol}</span>
-              <span className="text-slate-300 text-sm min-w-fit">₹{stock.price.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-              <span
-                className={`flex items-center gap-1 text-xs font-semibold min-w-fit ${
-                  stock.change >= 0 ? "text-emerald-400" : "text-red-400"
-                }`}
-              >
-                {stock.change >= 0 ? (
-                  <TrendingUp className="h-3 w-3" />
-                ) : (
-                  <TrendingDown className="h-3 w-3" />
-                )}
-                {stock.change >= 0 ? "+" : ""}
-                {stock.change} ({stock.changePercent.toFixed(2)}%)
-              </span>
+            <div key={`${stock.symbol}-${index}`} className="flex items-center gap-12 min-w-max">
+              <div className="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity duration-300">
+                <span className="font-semibold text-slate-400 text-xs tracking-wider min-w-fit">{stock.symbol}</span>
+                <span className="text-slate-500 text-xs min-w-fit font-mono">₹{stock.price.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                <span
+                  className={`flex items-center gap-1 text-[11px] font-medium min-w-fit ${
+                    stock.change >= 0 ? "text-emerald-500/70" : "text-red-500/70"
+                  }`}
+                >
+                  {stock.change >= 0 ? (
+                    <TrendingUp className="h-3 w-3" />
+                  ) : (
+                    <TrendingDown className="h-3 w-3" />
+                  )}
+                  {stock.change >= 0 ? "+" : ""}
+                  {stock.change} ({stock.changePercent.toFixed(2)}%)
+                </span>
+              </div>
+              <span className="text-slate-800/40 blur-[0.7px] select-none text-xs">|</span>
             </div>
           ))}
         </motion.div>

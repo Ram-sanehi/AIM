@@ -1,34 +1,60 @@
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { StockTicker } from "@/components/StockTicker";
+import { Shield, Lock, Eye, Mail, Phone, MapPin } from "lucide-react";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <Navbar />
-      <StockTicker />
 
       {/* Hero Section */}
-      <section className="py-24 hero-gradient relative overflow-hidden">
+      <section className="py-28 md:py-36 hero-gradient relative overflow-hidden border-b border-border/10">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-3xl mx-auto text-center space-y-6"
           >
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
+            <span className="text-primary text-xs uppercase tracking-widest font-semibold bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">
+              Legal Disclosure
+            </span>
+            <h1 className="text-4xl md:text-5xl font-display font-bold mt-4">
               Privacy <span className="gold-text">Policy</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
-              We are committed to protecting your privacy and ensuring transparency in how we handle your data.
+            <div className="h-[2px] w-12 bg-primary/40 mx-auto" />
+            <p className="text-base md:text-lg text-muted-foreground/90 max-w-2xl mx-auto font-light leading-relaxed">
+              At Alpha Investment Management Services, we are committed to protecting your privacy and ensuring transparency in how we collect, safeguard, and utilize your personal information.
             </p>
           </motion.div>
         </div>
       </section>
+
+      {/* Compliance Strip */}
+      <div className="border-b border-border/10 bg-slate-950/20 py-6">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-[11px] font-semibold text-muted-foreground/80 tracking-wider uppercase">
+            <div className="flex items-center gap-2">
+              <Shield className="h-4 w-4 text-primary" />
+              <span>SEBI Registered Advisor</span>
+            </div>
+            <div className="hidden md:block w-1 h-1 rounded-full bg-primary/40" />
+            <div className="flex items-center gap-2">
+              <Lock className="h-4 w-4 text-primary" />
+              <span>Fiduciary Data Privacy</span>
+            </div>
+            <div className="hidden md:block w-1 h-1 rounded-full bg-primary/40" />
+            <div className="flex items-center gap-2">
+              <Eye className="h-4 w-4 text-primary" />
+              <span>Secure Data Standards</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Content Section */}
       <section className="py-24">
@@ -37,72 +63,160 @@ const PrivacyPolicy = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-8 prose prose-invert max-w-none"
+            className="space-y-8"
           >
-            <div>
-              <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Alpha Investment Management Services ("we," "our," or "us") operates the website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+            {/* 1. Introduction */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">01.</span>
+                <h2 className="text-xl font-bold font-display text-foreground">Introduction</h2>
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+                Alpha Investment Management Services ("we," "our," or "us") operates the website. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
               </p>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-4">2. Information We Collect</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
-              <ul className="text-muted-foreground leading-relaxed space-y-2 ml-6">
-                <li>• <strong>Personal Data:</strong> Name, email address, phone number, mailing address</li>
-                <li>• <strong>Financial Information:</strong> Investment preferences, portfolio details (when provided)</li>
-                <li>• <strong>Device Information:</strong> IP address, browser type, operating system</li>
-                <li>• <strong>Usage Information:</strong> Pages visited, time spent, links clicked</li>
+            {/* 2. Information We Collect */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">02.</span>
+                <h2 className="text-xl font-bold font-display text-foreground">Information We Collect</h2>
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+                We may collect information about you in a variety of ways. The information we may collect on the Site includes:
+              </p>
+              <ul className="space-y-3 pl-2 pt-2">
+                {[
+                  { title: "Personal Data:", detail: "Name, email address, phone number, mailing address, and professional qualifications." },
+                  { title: "Financial Information:", detail: "Investment preferences, asset ownership, and portfolio details (when provided voluntarily)." },
+                  { title: "Device Information:", detail: "IP address, browser type, operating system, and access times." },
+                  { title: "Usage Information:", detail: "Pages visited, time spent on the Site, and links clicked." }
+                ].map((item) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="text-sm text-muted-foreground/90 font-light leading-relaxed">
+                      <strong className="text-foreground font-semibold">{item.title}</strong> {item.detail}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-4">3. Use of Your Information</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
-              <ul className="text-muted-foreground leading-relaxed space-y-2 ml-6">
-                <li>• Process your transactions and send related information</li>
-                <li>• Email you regarding your account or order</li>
-                <li>• Fulfill and manage purchases, orders, payments, and other transactions related to the Site</li>
-                <li>• Generate a personal profile about you</li>
-                <li>• Increase the efficiency and operation of the Site</li>
-                <li>• Monitor and analyze usage and trends to improve your experience with the Site</li>
+            {/* 3. Use of Your Information */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">03.</span>
+                <h2 className="text-xl font-bold font-display text-foreground">Use of Your Information</h2>
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+                Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:
+              </p>
+              <ul className="space-y-3 pl-2 pt-2">
+                {[
+                  "Process request forms, schedule advisory consultations, and send related materials.",
+                  "Email or call you regarding regulatory compliance updates or your account standings.",
+                  "Fulfill and manage service portfolios and transactions related to the Site.",
+                  "Create a secure personal profile to customize future interactions.",
+                  "Improve the operational efficiency, speed, and safety of the Site.",
+                  "Monitor and analyze usage trends to optimize website functionality and readability."
+                ].map((text, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="text-sm text-muted-foreground/90 font-light leading-relaxed">{text}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-4">4. Disclosure of Your Information</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We may share your information with third parties in the following circumstances:
+            {/* 4. Disclosure of Your Information */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">04.</span>
+                <h2 className="text-xl font-bold font-display text-foreground">Disclosure of Your Information</h2>
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+                We do not sell, trade, or rent your personal data. We may share your information with third parties in the following circumstances:
               </p>
-              <ul className="text-muted-foreground leading-relaxed space-y-2 ml-6 mt-4">
-                <li>• By Law or to protect rights: If we believe the release of information is necessary</li>
-                <li>• Service Providers: To vendors, consultants, and service providers</li>
-                <li>• Business Transfers: In connection with a merger, bankruptcy, or asset sale</li>
+              <ul className="space-y-3 pl-2 pt-2">
+                {[
+                  { title: "By Law or to Protect Rights:", detail: "If we believe the release of information is necessary to comply with legal actions or regulatory mandates." },
+                  { title: "Third-Party Service Providers:", detail: "To trusted vendors, compliance consultants, and service providers who assist us in operating our site." },
+                  { title: "Business Transfers:", detail: "In connection with a merger, regulatory reorganization, or asset transfer, where assets are governed under fiduciary care." }
+                ].map((item) => (
+                  <li key={item.title} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                    <span className="text-sm text-muted-foreground/90 font-light leading-relaxed">
+                      <strong className="text-foreground font-semibold">{item.title}</strong> {item.detail}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-4">5. Security of Your Information</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We use administrative, technical, and physical security measures to protect your personal information. However, no method of transmission over the Internet or method of electronic storage is completely secure.
+            {/* 5. Security of Your Information */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">05.</span>
+                <h2 className="text-xl font-bold font-display text-foreground">Security of Your Information</h2>
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+                We use administrative, technical, and physical security measures to protect your personal information. This includes secure database networks, SSL encryption, and restricted employee access protocols. However, please remember that no method of transmission over the Internet or method of electronic storage can be guaranteed 100% secure.
               </p>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold mb-4">6. Contact Us</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                If you have questions or comments about this Privacy Policy, please contact us at:<br />
-                <strong>Email:</strong> alphainvestmentmnt@gmail.com<br />
-                <strong>Phone:</strong> +91 9607509586<br />
-                <strong>Address:</strong> 1st Floor (Above Subhedar Biryani), Mahalungeker Complex, Mahalunge Kaman, Chakan-Talegaon Highway, Chakan, Pune 410501
+            {/* 6. Contact Us */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 space-y-6 hover:border-primary/20 transition-all duration-300 shadow-sm">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">06.</span>
+                <h2 className="text-xl font-bold font-display text-foreground">Contact Us</h2>
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground/90 leading-relaxed font-light">
+                If you have questions, comments, or compliance inquiries about this Privacy Policy, please contact our administrative officer at:
               </p>
+              
+              <div className="grid md:grid-cols-3 gap-6 pt-2">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 border border-primary/25 flex items-center justify-center shrink-0">
+                    <Mail className="h-4.5 w-4.5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/75 mb-0.5">Email Inquiry</h4>
+                    <a href="mailto:alphainvestmentmnt@gmail.com" className="text-xs md:text-sm text-foreground hover:text-primary transition-colors font-medium">
+                      alphainvestmentmnt@gmail.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 border border-primary/25 flex items-center justify-center shrink-0">
+                    <Phone className="h-4.5 w-4.5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/75 mb-0.5">Direct Line</h4>
+                    <a href="tel:+919607509586" className="text-xs md:text-sm text-foreground hover:text-primary transition-colors font-medium">
+                      +91 9607509586
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/5 border border-primary/25 flex items-center justify-center shrink-0">
+                    <MapPin className="h-4.5 w-4.5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/75 mb-0.5">Office Address</h4>
+                    <p className="text-xs md:text-sm text-muted-foreground/90 leading-tight font-light">
+                      1st Floor, Mahalunge Complex, Chakan-Talegaon Highway, Pune 410501
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-border">
-              <p className="text-sm text-muted-foreground">
-                Last Updated: January 28, 2026
-              </p>
+            {/* Last Updated */}
+            <div className="mt-12 pt-8 border-t border-border/10 flex justify-between items-center text-xs text-muted-foreground/50 uppercase tracking-widest">
+              <span>Alpha Investment Management</span>
+              <span>Last Updated: January 28, 2026</span>
             </div>
           </motion.div>
         </div>

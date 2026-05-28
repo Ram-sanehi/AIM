@@ -12,22 +12,26 @@ const EmpanelmentPage = () => {
       <StockTicker />
 
       {/* Hero Section */}
-      <section className="py-24 hero-gradient relative overflow-hidden">
+      <section className="py-28 md:py-36 hero-gradient relative overflow-hidden border-b border-border/10">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl mx-auto text-center"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center space-y-6"
           >
-            <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Trusted by <span className="gold-text">Industry Leaders</span>
+            <span className="text-primary text-xs uppercase tracking-widest font-semibold bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20">
+              Institutional Alliances
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mt-4">
+              Strategic Alliances Across <br className="hidden md:inline" />
+              <span className="gold-text">India’s Financial Ecosystem</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
-              We are registered with all major regulatory bodies and partnered with 
-              leading financial institutions to offer you the best solutions.
+            <p className="text-base md:text-lg text-muted-foreground/90 max-w-2xl mx-auto font-light leading-relaxed">
+              Alpha Investment Management partners with India's premier banking institutions, asset managers, and insurance providers. Supported by robust relationships and registered under national regulatory frameworks, we offer a comprehensive gateway to strategic capital growth.
             </p>
           </motion.div>
         </div>

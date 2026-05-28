@@ -114,42 +114,50 @@ export function ContactForm() {
     <motion.form
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-card rounded-2xl p-8 space-y-6 hover-glow hover:border-primary/50"
+      className="glass-card rounded-2xl p-6 md:p-8 space-y-6 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 shadow-lg shadow-primary/[0.01] hover:border-primary/20 transition-all duration-300"
       onSubmit={handleSubmit}
     >
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="name">Full Name *</Label>
+          <Label htmlFor="name" className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 pl-1">
+            Full Name *
+          </Label>
           <Input
             id="name"
             name="name"
-            placeholder="Rajesh Kumar"
+            placeholder="Enter your full name"
             value={formData.name}
             onChange={handleChange}
-            className={errors.name ? "border-destructive" : ""}
+            className={`w-full bg-[#030712]/50 border-border/30 focus-visible:ring-primary/20 focus-visible:border-primary/45 rounded-xl h-11 text-sm placeholder:text-muted-foreground/45 transition-all duration-300 ${
+              errors.name ? "border-destructive focus-visible:ring-destructive/20 focus-visible:border-destructive" : ""
+            }`}
             disabled={isSubmitting}
           />
           {errors.name && (
-            <p className="text-sm text-destructive flex items-center gap-1">
+            <p className="text-xs text-destructive flex items-center gap-1.5 pl-1 pt-0.5">
               <AlertCircle className="h-3 w-3" /> {errors.name}
             </p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email">Email Address *</Label>
+          <Label htmlFor="email" className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 pl-1">
+            Email Address *
+          </Label>
           <Input
             id="email"
             name="email"
             type="email"
-            placeholder="rajesh.kumar@email.com"
+            placeholder="Enter your email address"
             value={formData.email}
             onChange={handleChange}
-            className={errors.email ? "border-destructive" : ""}
+            className={`w-full bg-[#030712]/50 border-border/30 focus-visible:ring-primary/20 focus-visible:border-primary/45 rounded-xl h-11 text-sm placeholder:text-muted-foreground/45 transition-all duration-300 ${
+              errors.email ? "border-destructive focus-visible:ring-destructive/20 focus-visible:border-destructive" : ""
+            }`}
             disabled={isSubmitting}
           />
           {errors.email && (
-            <p className="text-sm text-destructive flex items-center gap-1">
+            <p className="text-xs text-destructive flex items-center gap-1.5 pl-1 pt-0.5">
               <AlertCircle className="h-3 w-3" /> {errors.email}
             </p>
           )}
@@ -158,37 +166,45 @@ export function ContactForm() {
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="phone">Phone Number *</Label>
+          <Label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 pl-1">
+            Phone Number *
+          </Label>
           <Input
             id="phone"
             name="phone"
             type="tel"
-            placeholder="+91 98765 43210"
+            placeholder="Enter your mobile number"
             value={formData.phone}
             onChange={handleChange}
-            className={errors.phone ? "border-destructive" : ""}
+            className={`w-full bg-[#030712]/50 border-border/30 focus-visible:ring-primary/20 focus-visible:border-primary/45 rounded-xl h-11 text-sm placeholder:text-muted-foreground/45 transition-all duration-300 ${
+              errors.phone ? "border-destructive focus-visible:ring-destructive/20 focus-visible:border-destructive" : ""
+            }`}
             disabled={isSubmitting}
           />
           {errors.phone && (
-            <p className="text-sm text-destructive flex items-center gap-1">
+            <p className="text-xs text-destructive flex items-center gap-1.5 pl-1 pt-0.5">
               <AlertCircle className="h-3 w-3" /> {errors.phone}
             </p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="subject">Subject *</Label>
+          <Label htmlFor="subject" className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 pl-1">
+            Subject *
+          </Label>
           <Input
             id="subject"
             name="subject"
-            placeholder="How can we help?"
+            placeholder="How can we help you?"
             value={formData.subject}
             onChange={handleChange}
-            className={errors.subject ? "border-destructive" : ""}
+            className={`w-full bg-[#030712]/50 border-border/30 focus-visible:ring-primary/20 focus-visible:border-primary/45 rounded-xl h-11 text-sm placeholder:text-muted-foreground/45 transition-all duration-300 ${
+              errors.subject ? "border-destructive focus-visible:ring-destructive/20 focus-visible:border-destructive" : ""
+            }`}
             disabled={isSubmitting}
           />
           {errors.subject && (
-            <p className="text-sm text-destructive flex items-center gap-1">
+            <p className="text-xs text-destructive flex items-center gap-1.5 pl-1 pt-0.5">
               <AlertCircle className="h-3 w-3" /> {errors.subject}
             </p>
           )}
@@ -196,19 +212,23 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">Message *</Label>
+        <Label htmlFor="message" className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 pl-1">
+          Message *
+        </Label>
         <Textarea
           id="message"
           name="message"
-          placeholder="Tell us more about your requirements..."
+          placeholder="Tell us about your financial goals or requirements..."
           rows={5}
           value={formData.message}
           onChange={handleChange}
-          className={errors.message ? "border-destructive" : ""}
+          className={`w-full bg-[#030712]/50 border-border/30 focus-visible:ring-primary/20 focus-visible:border-primary/45 rounded-xl text-sm placeholder:text-muted-foreground/45 transition-all duration-300 ${
+            errors.message ? "border-destructive focus-visible:ring-destructive/20 focus-visible:border-destructive" : ""
+          }`}
           disabled={isSubmitting}
         />
         {errors.message && (
-          <p className="text-sm text-destructive flex items-center gap-1">
+          <p className="text-xs text-destructive flex items-center gap-1.5 pl-1 pt-0.5">
             <AlertCircle className="h-3 w-3" /> {errors.message}
           </p>
         )}
@@ -217,7 +237,7 @@ export function ContactForm() {
       <Button
         type="submit"
         size="lg"
-        className="w-full gold-gradient text-primary-foreground hover:opacity-90"
+        className="w-full gold-gradient text-primary-foreground hover:opacity-95 font-semibold h-12 rounded-xl shadow-lg shadow-primary/5 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
         disabled={isSubmitting || isSuccess}
       >
         {isSubmitting ? (
@@ -232,7 +252,7 @@ export function ContactForm() {
           </>
         ) : (
           <>
-            <Send className="mr-2 h-5 w-5" />
+            <Send className="mr-2 h-4 w-4" />
             Send Message
           </>
         )}

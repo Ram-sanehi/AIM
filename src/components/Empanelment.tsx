@@ -1,5 +1,16 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Shield, DollarSign, Building2, TrendingUp, ChevronDown } from "lucide-react";
+import { 
+  Check, 
+  Shield, 
+  DollarSign, 
+  Building2, 
+  TrendingUp, 
+  ChevronDown, 
+  Award, 
+  Users, 
+  Clock, 
+  FileText 
+} from "lucide-react";
 import { useState } from "react";
 
 const regulators = [
@@ -14,7 +25,7 @@ const partnerCategories = [
   {
     title: "Mutual Fund Partners",
     icon: TrendingUp,
-    description: "Partnerships with top mutual fund houses",
+    description: "Alliances with India's premier asset management houses",
     partners: [
       "HDFC Mutual Fund",
       "SBI Mutual Fund",
@@ -33,7 +44,7 @@ const partnerCategories = [
   {
     title: "Banking & Finance Partners",
     icon: Building2,
-    description: "Leading banking and financial institutions",
+    description: "Leading national banking and financial institutions",
     partners: [
       "IDFC First Bank",
       "Kotak Mahindra Bank",
@@ -48,7 +59,7 @@ const partnerCategories = [
   {
     title: "Loan & Housing Finance Partners",
     icon: DollarSign,
-    description: "Trusted loan and housing finance providers",
+    description: "Trusted mortgage and capital lending providers",
     partners: [
       "IDFC First Bank",
       "Kotak Mahindra Bank",
@@ -61,14 +72,46 @@ const partnerCategories = [
 ];
 
 const trustIndicators = [
-  "10+ Years of Market Experience",
-  "3000+ Satisfied Clients",
-  "₹300+ Crores Assets Under Management",
-  "100% Transparent Fee Structure",
-  "Personalized Investment Strategies",
-  "24/7 Portfolio Monitoring",
-  "Regular Performance Reports",
-  "Dedicated Relationship Manager",
+  {
+    icon: Shield,
+    title: "10+ Years Experience",
+    description: "Deep expertise navigating diverse Indian market cycles with absolute compliance."
+  },
+  {
+    icon: Users,
+    title: "3,000+ Active Clients",
+    description: "Honored to partner with retail and HNI investors to guide their capital objectives."
+  },
+  {
+    icon: Award,
+    title: "₹300+ Cr AUM Managed",
+    description: "Substantial capital assets guided under institutional-grade risk models."
+  },
+  {
+    icon: DollarSign,
+    title: "100% Fee Transparency",
+    description: "Strict fiduciary model with zero commissions, kickbacks, or hidden incentives."
+  },
+  {
+    icon: TrendingUp,
+    title: "Bespoke Portfolios",
+    description: "Strategies engineered around your timeline, goals, and risk profiles."
+  },
+  {
+    icon: Clock,
+    title: "Continuous Vigilance",
+    description: "Active monitoring of capital assets against shifting micro and macro indicators."
+  },
+  {
+    icon: FileText,
+    title: "Clear Audit Reports",
+    description: "Frequent, comprehensive performance statements keeping you fully informed."
+  },
+  {
+    icon: Check,
+    title: "Dedicated Advisor",
+    description: "A single-point certified financial planner assigned for personal accountability."
+  }
 ];
 
 export function Empanelment() {
@@ -77,141 +120,192 @@ export function Empanelment() {
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
+        
+        {/* Section: Licensed & Regulated */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-            Licensed & <span className="gold-text">Regulated</span>
+          <span className="text-primary font-semibold text-xs tracking-wider uppercase">Fiduciary Standing</span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold">
+            Licensed &amp; <span className="gold-text">Regulated Frameworks</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            We are registered with all major regulatory bodies ensuring complete transparency 
-            and compliance in all our operations.
+          <div className="h-[2px] w-16 bg-primary/40 mx-auto" />
+          <p className="text-muted-foreground/90 text-sm md:text-base leading-relaxed font-light">
+            We strictly operate under the oversight of India's apex financial regulators. Our credentials verify our fiduciary alignment and commitment to complete compliance and investor protection.
           </p>
         </motion.div>
 
         {/* Regulatory Badges */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-24">
           {regulators.map((reg, index) => (
             <motion.div
               key={reg.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="glass-card rounded-xl p-6 text-center hover-glow hover:border-primary/50"
+              transition={{ delay: index * 0.08, duration: 0.5 }}
+              className="glass-card rounded-2xl p-6 text-center border border-border/30 hover:border-primary/40 hover:-translate-y-[2px] transition-all duration-300 relative group shadow-sm flex flex-col justify-between h-full"
             >
-              <div className="w-16 h-16 rounded-full gold-gradient mx-auto mb-4 flex items-center justify-center">
-                <span className="font-bold text-primary-foreground text-lg">{reg.name}</span>
+              <div>
+                {/* Double-ringed badge */}
+                <div className="w-16 h-16 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_12px_rgba(218,165,32,0.04)]">
+                  <span className="font-bold text-primary text-base font-display tracking-wider uppercase">{reg.name}</span>
+                </div>
+                <h4 className="text-xs font-bold text-foreground mb-1.5 tracking-wide uppercase leading-tight">{reg.fullName}</h4>
               </div>
-              <p className="text-xs text-muted-foreground">{reg.description}</p>
+              <p className="text-[10px] text-muted-foreground/80 font-light mt-2 border-t border-border/10 pt-2">{reg.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Partner Categories */}
+        {/* Section: Partner Categories Accordions */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-24"
         >
-          <h3 className="text-2xl font-display font-bold text-center mb-12">
-            Our <span className="gold-text">Partners</span>
-          </h3>
-          <div className="space-y-6">
-            {partnerCategories.map((category, index) => (
+          <div className="text-center mb-16 space-y-4">
+            <span className="text-primary font-semibold text-xs tracking-wider uppercase">Strategic Ecosystem</span>
+            <h3 className="text-2xl md:text-3xl font-display font-bold">
+              Our Institutional <span className="gold-text">Partnerships</span>
+            </h3>
+            <div className="h-[2px] w-16 bg-primary/40 mx-auto" />
+          </div>
+
+          <div className="max-w-5xl mx-auto space-y-6">
+            {partnerCategories.map((category, index) => {
+              const isExpanded = expandedCategory === index;
+              return (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05, duration: 0.5 }}
+                  className={`glass-card rounded-2xl overflow-hidden border transition-all duration-300 ${
+                    isExpanded 
+                      ? "border-primary/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 shadow-lg shadow-primary/[0.02]" 
+                      : "border-border/30 hover:border-primary/20 hover:-translate-y-[2px] bg-slate-950/20 shadow-sm"
+                  }`}
+                >
+                  {/* Category Header */}
+                  <button
+                    onClick={() => setExpandedCategory(isExpanded ? null : index)}
+                    className="w-full p-6 md:p-8 flex items-center gap-5 md:gap-6 text-left transition-colors relative group"
+                  >
+                    {isExpanded && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] to-transparent pointer-events-none" />
+                    )}
+
+                    <div className="w-14 h-14 rounded-2xl border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(218,165,32,0.03)]">
+                      <category.icon className="h-6 w-6 text-primary" />
+                    </div>
+
+                    <div className="flex-1 space-y-1">
+                      <h3 className="text-lg md:text-xl font-bold font-display text-foreground group-hover:text-primary transition-colors duration-300">
+                        {category.title}
+                      </h3>
+                      <p className="text-muted-foreground/85 text-xs md:text-sm font-light leading-relaxed">
+                        {category.description}
+                      </p>
+                    </div>
+
+                    <div className="w-9 h-9 rounded-full border border-border/50 flex items-center justify-center shrink-0 group-hover:border-primary/45 transition-colors">
+                      <ChevronDown 
+                        className={`h-4 w-4 text-muted-foreground group-hover:text-primary transition-transform duration-300 ${
+                          isExpanded ? "rotate-180 text-primary" : ""
+                        }`} 
+                      />
+                    </div>
+                  </button>
+
+                  {/* Expanded Content (Premium Chip Grid) */}
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="overflow-hidden border-t border-border/10 bg-[#02050c]/25"
+                      >
+                        <div className="p-6 md:p-8">
+                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                            {category.partners.map((partner, i) => (
+                              <motion.div
+                                key={partner}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: i * 0.02 }}
+                                className="w-full h-14 flex items-center justify-center px-4 rounded-xl bg-[#030712]/50 border border-border/40 hover:border-primary/30 hover:bg-primary/[0.02] hover:text-primary transition-all duration-300 text-center font-light tracking-wide text-xs text-muted-foreground/85 cursor-default shadow-sm"
+                              >
+                                {partner}
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Section: Why Trust Us (Dynamic Credibility Cards) */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="glass-card rounded-2xl p-8 md:p-12 border border-border/30 hover:border-primary/20 transition-all duration-500 shadow-xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-44 h-44 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="flex items-center gap-4 mb-12 border-b border-border/10 pb-5">
+            <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center bg-primary/5">
+              <Shield className="h-6 w-6 text-primary" />
+            </div>
+            <div>
+              <span className="text-primary font-semibold text-xs tracking-wider uppercase">Strategic Integrity</span>
+              <h3 className="text-2xl md:text-3xl font-display font-bold">Why Trust Alpha Investment Management?</h3>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trustIndicators.map((indicator, index) => (
               <motion.div
-                key={category.title}
+                key={indicator.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass-card rounded-2xl overflow-hidden hover-glow hover:border-primary/50"
+                transition={{ delay: index * 0.04, duration: 0.5 }}
+                className="relative group overflow-hidden bg-slate-900/10 border border-border/30 rounded-2xl p-6 hover:bg-slate-900/30 transition-all duration-300 hover:border-primary/30 flex flex-col justify-between shadow-sm"
               >
-                {/* Category Header */}
-                <button
-                  onClick={() => setExpandedCategory(expandedCategory === index ? null : index)}
-                  className="w-full p-8 flex items-center gap-6 text-left hover:bg-secondary/30 transition-colors"
-                >
-                  <div className="w-16 h-16 rounded-xl gold-gradient flex items-center justify-center shrink-0">
-                    <category.icon className="h-8 w-8 text-primary-foreground" />
+                {/* Bottom slide-across indicator */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500" />
+                
+                <div>
+                  <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center mb-5 bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                    <indicator.icon className="h-4.5 w-4.5 text-primary" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-                    <p className="text-muted-foreground text-sm">{category.description}</p>
-                  </div>
-                  <ChevronDown 
-                    className={`h-6 w-6 text-primary transition-transform shrink-0 ${
-                      expandedCategory === index ? "rotate-180" : ""
-                    }`} 
-                  />
-                </button>
-
-                {/* Expanded Partners List */}
-                <AnimatePresence>
-                  {expandedCategory === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="border-t border-border/50"
-                    >
-                      <div className="p-8">
-                        <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
-                          {category.partners.map((partner) => (
-                            <motion.div
-                              key={partner}
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="glass-card rounded-lg p-3 text-center text-xs font-medium text-muted-foreground hover:text-primary hover:border-primary/50 transition-all hover-glow"
-                            >
-                              {partner}
-                            </motion.div>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="glass-card rounded-2xl p-8 md:p-12 hover-glow hover:border-primary/50"
-        >
-          <div className="flex items-center gap-3 mb-8">
-            <Shield className="h-8 w-8 text-primary" />
-            <h3 className="text-2xl font-display font-bold">Why Trust Us?</h3>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {trustIndicators.map((indicator, index) => (
-              <motion.div
-                key={indicator}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-3"
-              >
-                <div className="w-6 h-6 rounded-full gold-gradient flex items-center justify-center shrink-0">
-                  <Check className="h-4 w-4 text-primary-foreground" />
+                  <h4 className="text-xs md:text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                    {indicator.title}
+                  </h4>
+                  <p className="text-[11px] leading-relaxed text-muted-foreground/85 font-light">
+                    {indicator.description}
+                  </p>
                 </div>
-                <span className="text-sm">{indicator}</span>
               </motion.div>
             ))}
           </div>
         </motion.div>
+
       </div>
     </section>
   );

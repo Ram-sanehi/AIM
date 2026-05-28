@@ -54,7 +54,7 @@ export function Navbar() {
       <motion.header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-lg"
+            ? "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-md"
             : "bg-transparent"
         }`}
         initial={{ y: -100 }}
@@ -62,15 +62,16 @@ export function Navbar() {
         transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "h-16" : "h-20"
+          }`}>
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-14 h-14 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border-2 border-primary/20">
+              <div className="w-11 h-11 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border-2 border-primary/20">
                 <img src="/logo-circular1.png" alt="Alpha Investment Management" className="w-full h-full object-cover" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-lg font-display font-bold gold-text">Alpha Investment Management</h1>
-                {/* <p className="text-xs text-muted-foreground">Management Services</p> */}
+                <h1 className="text-[15px] font-display font-bold gold-text tracking-wide leading-tight">Alpha Investment Management</h1>
               </div>
             </Link>
 
@@ -80,7 +81,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                  className={`relative text-xs font-semibold uppercase tracking-wider transition-colors py-1.5 hover:text-primary ${
                     location.pathname === link.href
                       ? "text-primary"
                       : "text-foreground/80"
@@ -90,7 +91,8 @@ export function Navbar() {
                   {location.pathname === link.href && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
                   )}
                 </Link>
@@ -99,7 +101,7 @@ export function Navbar() {
 
             {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
-              <Button asChild className="gold-gradient text-primary-foreground hover:opacity-90 transition-opacity">
+              <Button asChild size="sm" className="gold-gradient text-primary-foreground hover:opacity-95 font-semibold text-xs uppercase tracking-wider px-5 shadow-md shadow-primary/10 hover:shadow-primary/20 transition-all duration-350 hover:scale-103">
                 <Link to="/contact">Get Started</Link>
               </Button>
             </div>
