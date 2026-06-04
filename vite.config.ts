@@ -21,7 +21,6 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: "ES2020",
     minify: "terser",
-    cssMinify: true,  // Use default CSS minifier
     terserOptions: {
       compress: {
         drop_console: mode === "production",
