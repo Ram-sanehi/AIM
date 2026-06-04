@@ -181,8 +181,9 @@ export function Footer() {
                   <MapPin className="h-3.5 w-3.5 text-primary" />
                 </div>
                 <span className="text-muted-foreground/80 text-xs md:text-sm leading-relaxed font-light">
-                  1st Floor (Above Subhedar Biryani),<br />
-                  Mahalungeker Complex, Mahalunge Kaman,<br />
+                  Shop no 2, First Floor,<br />
+                  Mahalungeker Complex, (opposite R K Wine shop),<br />
+                  Mahalunge Ingale Kaman,<br />
                   Chakan-Talegaon Highway, Chakan,<br />
                   Pune 410501
                 </span>
