@@ -37,7 +37,6 @@ export default defineConfig(({ mode }) => ({
       },
     },
     chunkSizeWarningLimit: 1000,
-    cssMinify: "lightningcss",
     sourcemap: false,
   },
   optimizeDeps: {
