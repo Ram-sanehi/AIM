@@ -74,7 +74,7 @@ export function Navbar() {
                 <img src="/logo-circular1.png" alt="Alpha Investment Management" width="44" height="44" className="w-full h-full object-cover" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-[13px] font-display font-bold gold-text tracking-widest leading-none uppercase">Alpha Investment</h1>
+                <h1 className="text-[12px] md:text-[13px] font-display font-bold gold-text tracking-widest leading-none uppercase">Alpha Investment Management</h1>
               </div>
             </Link>
 

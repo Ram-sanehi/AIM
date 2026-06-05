@@ -126,7 +126,7 @@ export function Hero() {
       <div className="absolute top-[40%] left-[25%] -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,_rgba(245,158,11,0.06)_0%,_rgba(218,165,32,0.02)_40%,_transparent_70%)] blur-[100px] pointer-events-none z-0 mix-blend-screen" />
 
       {/* Animated gradient mesh background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-950 via-slate-950 to-slate-950 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(3,11,34,0.85)_0%,_#030B22_100%)] z-0 pointer-events-none" />
 
       {/* Dynamic flowing golden waves/threads matching reference image curves */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 1200 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -378,7 +378,7 @@ export function Hero() {
               <span className="text-white/10 hidden sm:inline">|</span>
               <span className="flex items-center gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
-                15+ Partners
+                15+ Partner Institutions
               </span>
             </div>
 
