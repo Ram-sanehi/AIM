@@ -100,13 +100,15 @@ export function Footer() {
               {[
                 { icon: Linkedin, href: "#", name: "LinkedIn" },
                 { icon: Twitter, href: "#", name: "Twitter/X" },
-                { icon: Facebook, href: "#", name: "Facebook" },
-                { icon: Instagram, href: "#", name: "Instagram" },
+                { icon: Facebook, href: "https://www.facebook.com/shalini.malhotra.50767984/", name: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/alphainvestmentmanagement?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", name: "Instagram" },
                 { icon: MediumIcon, href: "#", name: "Medium" }
               ].map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
+                  target={social.href !== "#" ? "_blank" : undefined}
+                  rel={social.href !== "#" ? "noopener noreferrer" : undefined}
                   aria-label={social.name}
                   className="w-8 h-8 rounded-lg bg-slate-900/40 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary border border-border/30 hover:border-primary/45 transition-all duration-300 hover:scale-105 active:scale-95"
                 >
