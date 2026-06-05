@@ -20,8 +20,9 @@ const contactInfo = [
     icon: MapPin,
     title: "Visit Our Office",
     details: [
-      "1st Floor (Above Subhedar Biryani)",
-      "Mahalungeker Complex, Mahalunge Kaman",
+      "Shop no 2, First Floor",
+      "Mahalungeker Complex, (opposite R K Wine shop)",
+      "Mahalunge Ingale Kaman",
       "Chakan-Talegaon Highway, Chakan",
       "Pune 410501"
     ],
@@ -258,9 +259,9 @@ const Contact = () => {
               <div className="text-center sm:text-left space-y-1">
                 <p className="text-foreground text-sm font-semibold">Alpha Investment Management Services</p>
                 <p className="text-muted-foreground/80 text-xs font-light">
-                  1st Floor, Mahalungeker Complex, Mahalunge Kaman, Chakan-Talegaon Highway, Chakan, Pune 410501
+                  Shop no 2, First Floor, Mahalungeker Complex, (opposite R K Wine shop), Mahalunge Ingale Kaman, Chakan-Talegaon Highway, Chakan, Pune 410501
                 </p>
-                <p className="text-[10px] text-primary/75 uppercase tracking-wide">Landmark: Above Subhedar Biryani</p>
+                <p className="text-[10px] text-primary/75 uppercase tracking-wide">Landmark: Opposite R K Wine Shop</p>
               </div>
               <a
                 href="https://maps.google.com/?q=Chakan+Talegaon+Highway,+Chakan,+Pune"
