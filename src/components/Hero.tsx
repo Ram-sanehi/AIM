@@ -407,59 +407,71 @@ export function Hero() {
             {/* Premium Gold Accent Ring Behind Card */}
             <div className="absolute w-[95%] h-[95%] border border-[#D4AF37]/10 rounded-3xl -rotate-2 scale-98 pointer-events-none z-0" />
             
-            {/* Main Luxury Private Wealth Card */}
+            {/* Main Luxury Private Wealth Philosophy Card */}
             <motion.div
               initial={{ opacity: 0, y: 40, rotate: 0 }}
               animate={{ opacity: 1, y: 0, rotate: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              whileHover={{ rotate: 0, scale: 1.01 }}
-              className="w-full max-w-[400px] bg-gradient-to-b from-slate-950/60 to-slate-950/40 backdrop-blur-2xl border border-[#D4AF37]/25 rounded-3xl p-8 shadow-[0_30px_70px_rgba(3,11,34,0.8)] shadow-[#D4AF37]/5 relative z-10 overflow-hidden"
+              whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 20px 40px rgba(212, 175, 55, 0.05)" }}
+              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/80 to-[#030B22]/50 backdrop-blur-2xl border border-[#D4AF37]/25 rounded-3xl p-8 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
             >
               {/* Elegant Diagonal Reflective Glare Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
               
               {/* Top Card Header */}
-              <div className="flex justify-between items-start border-b border-[#D4AF37]/20 pb-6 mb-6">
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase block">Exclusive Service</span>
-                  <h3 className="text-xl font-display font-bold text-foreground mt-1 tracking-wide">Alpha Private Wealth</h3>
-                </div>
-                <div className="w-8 h-8 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/5 flex items-center justify-center">
-                  <Shield className="h-4.5 w-4.5 text-[#D4AF37]" />
-                </div>
+              <div className="border-b border-[#D4AF37]/25 pb-5 mb-6">
+                <span className="text-[9px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block">Investment Philosophy</span>
+                <h3 className="text-xl font-display font-semibold text-foreground mt-1.5 tracking-wider">Alpha Private Wealth</h3>
               </div>
 
-              {/* Core Statistics Content */}
-              <div className="space-y-6">
-                <div>
-                  <span className="text-[9px] font-bold text-muted-foreground/60 tracking-widest uppercase block">Assets Managed</span>
-                  <div className="flex items-baseline gap-2 mt-1.5">
-                    <span className="text-3xl font-bold font-display text-foreground tracking-tight">₹300 Cr+</span>
-                    <span className="text-[10px] text-emerald-400 font-bold tracking-wider">+24.6% YoY</span>
+              {/* Five Philosophy Principles */}
+              <div className="space-y-5">
+                {[
+                  {
+                    num: "01",
+                    title: "Capital Preservation",
+                    desc: "Protecting wealth through disciplined risk management."
+                  },
+                  {
+                    num: "02",
+                    title: "Risk-First Allocation",
+                    desc: "Every strategy begins with understanding and controlling risk."
+                  },
+                  {
+                    num: "03",
+                    title: "Long-Term Compounding",
+                    desc: "Building sustainable wealth through patience and consistency."
+                  },
+                  {
+                    num: "04",
+                    title: "Tax-Efficient Planning",
+                    desc: "Optimizing structures to preserve more of what you earn."
+                  },
+                  {
+                    num: "05",
+                    title: "Generational Wealth",
+                    desc: "Helping families grow, protect, and transfer wealth across generations."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="group">
+                    <div className="flex gap-4">
+                      <span className="text-[10px] font-mono text-[#D4AF37]/60 mt-0.5 tracking-wider font-semibold">{item.num}</span>
+                      <div className="space-y-1 text-left">
+                        <h4 className="text-xs font-semibold text-foreground/90 tracking-wide font-display group-hover:text-[#D4AF37] transition-colors duration-300">{item.title}</h4>
+                        <p className="text-[10.5px] text-muted-foreground/70 leading-normal font-light">{item.desc}</p>
+                      </div>
+                    </div>
+                    {idx < 4 && (
+                      <div className="border-t border-[#D4AF37]/10 my-4" />
+                    )}
                   </div>
-                </div>
-
-                <div>
-                  <span className="text-[9px] font-bold text-muted-foreground/60 tracking-widest uppercase block">Clients Served</span>
-                  <div className="flex items-baseline gap-2 mt-1.5">
-                    <span className="text-2xl font-bold font-display text-foreground tracking-tight">3000+</span>
-                    <span className="text-[10px] text-muted-foreground/60 tracking-wide">High Net Worth Families</span>
-                  </div>
-                </div>
-
-                <div>
-                  <span className="text-[9px] font-bold text-muted-foreground/60 tracking-widest uppercase block">Years of Excellence</span>
-                  <div className="flex items-baseline gap-2 mt-1.5">
-                    <span className="text-2xl font-bold font-display text-foreground tracking-tight">10+ Years</span>
-                    <span className="text-[10px] text-muted-foreground/60 tracking-wide">Fiduciary Integrity</span>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Card Footer / Institutional Signature */}
-              <div className="mt-8 pt-5 border-t border-[#D4AF37]/10 flex justify-between items-center text-[8px] text-muted-foreground/50 font-mono tracking-widest uppercase">
-                <span>Ref: APW-2026</span>
-                <span className="text-[#D4AF37]/80 font-semibold">Fiduciary Grade</span>
+              <div className="mt-6 pt-4 border-t border-[#D4AF37]/15 flex justify-between items-center text-[8px] text-muted-foreground/40 font-mono tracking-widest uppercase">
+                <span>MEMORANDUM // APW</span>
+                <span className="text-[#D4AF37]/75 font-semibold">Strictly Confidential</span>
               </div>
             </motion.div>
 
