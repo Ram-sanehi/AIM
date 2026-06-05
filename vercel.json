@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/live-indian-stocks", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
