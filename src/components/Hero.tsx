@@ -113,7 +113,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] pt-28 pb-10 flex flex-col justify-between overflow-hidden bg-[#030B22]">
+    <section className="relative min-h-[90vh] pt-24 pb-8 flex flex-col justify-between overflow-hidden bg-[#030B22]">
       
       {/* Background Canvas Particles */}
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0 opacity-80" />
