@@ -113,7 +113,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] pt-24 pb-8 flex flex-col justify-between overflow-hidden bg-[#030B22]">
+    <section className="relative min-h-[90vh] pt-16 pb-4 flex flex-col justify-between overflow-hidden bg-[#030B22]">
       
       {/* Background Canvas Particles */}
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0 opacity-80" />
@@ -332,7 +332,7 @@ export function Hero() {
       </svg>
 
       {/* Main Grid Content */}
-      <div className="container mx-auto px-4 relative z-10 flex-grow flex items-center py-12">
+      <div className="container mx-auto px-4 relative z-10 flex-grow flex items-center py-4">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
           
           {/* LEFT SIDE */}
