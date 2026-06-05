@@ -14,6 +14,8 @@ import {
   Heart,
   Lightbulb,
   Linkedin,
+  Facebook,
+  Instagram,
   ArrowRight
 } from "lucide-react";
 
@@ -249,6 +251,11 @@ const About = () => {
                   "AMFI & IRDA Approved Distributor",
                   "10+ Years of Experience in Investment Management",
                 ],
+                social: {
+                  linkedin: "https://linkedin.com",
+                  facebook: "https://www.facebook.com/shalini.malhotra.50767984/",
+                  instagram: "https://www.instagram.com/alphainvestmentmanagement?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                }
               },
               {
                 name: "Sonali Malhotra",
@@ -260,6 +267,11 @@ const About = () => {
                   "NISM Certified Wealth Analyst",
                   "7+ Years of Experience in Insurance & Risk Advisory",
                 ],
+                social: {
+                  linkedin: "https://linkedin.com",
+                  facebook: "https://www.facebook.com/shalini.malhotra.50767984/",
+                  instagram: "https://www.instagram.com/alphainvestmentmanagement?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                }
               },
               {
                 name: "Rahul Jain",
@@ -271,6 +283,11 @@ const About = () => {
                   "Expertise in Client Relationship & Wealth Advisory",
                   "5+ Years in Tailored Financial Planning",
                 ],
+                social: {
+                  linkedin: "https://linkedin.com",
+                  facebook: "https://www.facebook.com/shalini.malhotra.50767984/",
+                  instagram: "https://www.instagram.com/alphainvestmentmanagement?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                }
               },
               {
                 name: "Advocate Rajat Diwan",
@@ -282,6 +299,11 @@ const About = () => {
                   "Legal & Regulatory Compliance Specialist",
                   "Oversees Strict Adherence to SEBI Frameworks",
                 ],
+                social: {
+                  linkedin: "https://linkedin.com",
+                  facebook: "https://www.facebook.com/shalini.malhotra.50767984/",
+                  instagram: "https://www.instagram.com/alphainvestmentmanagement?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                }
               },
             ].map((member, index) => (
               <motion.div
@@ -292,39 +314,62 @@ const About = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 className="glass-card rounded-2xl p-6 border border-border/30 flex flex-col justify-between hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
               >
-                <div>
-                  {/* Premium circular profile image placeholder */}
-                  <div className="relative w-24 h-24 mx-auto mb-6">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/60 to-amber-500/20 p-[2px] transition-transform duration-500 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(218,165,32,0.15)]">
-                      <div className="w-full h-full rounded-full bg-[#030712] flex items-center justify-center overflow-hidden relative">
-                        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-60" />
-                        <span className="text-xl font-bold font-display tracking-widest text-primary/95 group-hover:text-primary transition-colors duration-300">
-                          {member.initials}
-                        </span>
+                <div className="flex flex-col h-full justify-between">
+                  <div>
+                    {/* Premium circular profile image placeholder */}
+                    <div className="relative w-24 h-24 mx-auto mb-6">
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/60 to-amber-500/20 p-[2px] transition-transform duration-500 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(218,165,32,0.15)]">
+                        <div className="w-full h-full rounded-full bg-[#030712] flex items-center justify-center overflow-hidden relative">
+                          <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-60" />
+                          <span className="text-xl font-bold font-display tracking-widest text-primary/95 group-hover:text-primary transition-colors duration-300">
+                            {member.initials}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                    {/* Floating LinkedIn Icon Link */}
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute bottom-0 right-0 w-7 h-7 rounded-full bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center transition-colors group/link cursor-pointer shadow-md"
-                    >
-                      <Linkedin className="h-3 w-3 text-muted-foreground group-hover/link:text-primary transition-colors" />
-                    </a>
+
+                    <h3 className="text-lg font-bold text-center text-foreground group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                    <p className="text-xs font-semibold text-primary/80 uppercase tracking-widest text-center mt-1 mb-6 border-b border-border/20 pb-3">{member.role}</p>
+                    
+                    <ul className="space-y-2.5 text-left mb-4">
+                      {member.qualifications.map((qual, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-primary/70 shrink-0 text-xs mt-0.5">•</span>
+                          <span className="text-[11px] leading-relaxed text-muted-foreground/90 font-light">{qual}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <h3 className="text-lg font-bold text-center text-foreground group-hover:text-primary transition-colors duration-300">{member.name}</h3>
-                  <p className="text-xs font-semibold text-primary/80 uppercase tracking-widest text-center mt-1 mb-6 border-b border-border/20 pb-3">{member.role}</p>
-                  
-                  <ul className="space-y-2.5 text-left mb-4">
-                    {member.qualifications.map((qual, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-primary/70 shrink-0 text-xs mt-0.5">•</span>
-                        <span className="text-[11px] leading-relaxed text-muted-foreground/90 font-light">{qual}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex justify-center gap-3 mt-6 pt-4 border-t border-border/15">
+                    <a
+                      href={member.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-lg bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                    <a
+                      href={member.social.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-lg bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                      aria-label="Facebook"
+                    >
+                      <Facebook className="h-4 w-4" />
+                    </a>
+                    <a
+                      href={member.social.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-lg bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             ))}
