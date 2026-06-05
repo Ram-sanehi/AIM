@@ -34,37 +34,16 @@ export function Navbar() {
     <>
       {/* Floating Header */}
       <motion.header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-[#030B22]/90 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-md"
-            : "bg-[#030B22]/5 backdrop-blur-md border-b border-[#D4AF37]/10"
+            ? "top-4 bg-[#030B22]/85 backdrop-blur-lg border border-[#D4AF37]/25 shadow-2xl rounded-2xl"
+            : "top-6 bg-[#030B22]/40 backdrop-blur-md border border-[#D4AF37]/15 rounded-2xl"
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+        initial={{ y: -100, x: "-50%" }}
+        animate={{ y: 0, x: "-50%" }}
         transition={{ duration: 0.5 }}
       >
-        {/* Top bar (only visible when not scrolled) */}
-        {!scrolled && (
-          <div className="hidden md:block bg-[#030B22]/10 border-b border-white/5">
-            <div className="container mx-auto px-4 py-1.5 flex justify-between items-center text-[11px] tracking-wide">
-              <div className="flex items-center gap-6 text-muted-foreground/80">
-                <a href="tel:+919607509586" className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
-                  <Phone className="h-3 w-3 text-[#D4AF37]/85" />
-                  +91 9607509586
-                </a>
-                <a href="mailto:alphainvestmentmnt@gmail.com" className="flex items-center gap-2 hover:text-[#D4AF37] transition-colors">
-                  <Mail className="h-3 w-3 text-[#D4AF37]/85" />
-                  alphainvestmentmnt@gmail.com
-                </a>
-              </div>
-              <div className="text-muted-foreground/80">
-                Mon - Sat: 9:00 AM - 6:00 PM
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <div className={`flex items-center justify-between transition-all duration-300 ${
             scrolled ? "h-14" : "h-17"
           }`}>
@@ -127,7 +106,7 @@ export function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-[#030B22]/95 border-t border-[#D4AF37]/20 overflow-hidden backdrop-blur-xl"
+              className="lg:hidden bg-[#030B22]/95 border-t border-[#D4AF37]/20 overflow-hidden backdrop-blur-xl rounded-b-2xl"
             >
               <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
                 {navLinks.map((link, index) => (

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Shield, Clock, ShieldCheck, Users, Award, Building2 } from "lucide-react";
+import { ArrowRight, Shield, Clock, ShieldCheck, Users, Award, Building2, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -332,15 +332,15 @@ export function Hero() {
       </svg>
 
       {/* Main Grid Content */}
-      <div className="container mx-auto px-4 relative z-10 flex-grow flex items-center">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center w-full">
+      <div className="container mx-auto px-4 relative z-10 flex-grow flex items-center py-8">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
           
           {/* LEFT SIDE */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-6 space-y-7 text-left"
+            className="lg:col-span-7 space-y-8 text-left"
           >
             {/* SEBI Outlined Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/5 text-[9px] font-bold tracking-widest uppercase text-primary shadow-[0_0_15px_rgba(218,165,32,0.15)]">
@@ -355,35 +355,37 @@ export function Hero() {
             </h1>
 
             {/* Premium Subheading */}
-            <p className="text-base md:text-[18px] text-muted-foreground/80 leading-relaxed max-w-xl font-light">
+            <p className="text-base md:text-[18px] text-muted-foreground/80 leading-relaxed max-w-[600px] font-light">
               Bespoke investment strategies, expert advisory, and disciplined wealth management tailored to your life goals.
             </p>
 
-            {/* Trust Bar directly below Subheading */}
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-muted-foreground/70 pt-1 font-semibold tracking-wide border-t border-white/5 border-b py-2.5 max-w-xl">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
-                ₹300 Cr+ Managed
-              </span>
-              <span className="text-white/10 hidden sm:inline">|</span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
-                3000+ Clients
-              </span>
-              <span className="text-white/10 hidden sm:inline">|</span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
-                10+ Years Experience
-              </span>
-              <span className="text-white/10 hidden sm:inline">|</span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
-                15+ Partner Institutions
-              </span>
+            {/* Trust Indicators (Premium Glass Pills) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[600px] pt-2">
+              {[
+                { text: "₹300 Cr+ Managed", icon: TrendingUp },
+                { text: "3000+ Clients", icon: Users },
+                { text: "10+ Years Experience", icon: Award },
+                { text: "15+ Partner Institutions", icon: Building2 }
+              ].map((item, idx) => {
+                const IconComponent = item.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ scale: 1.02, borderColor: "rgba(212, 175, 55, 0.5)", backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl border border-[#D4AF37]/20 bg-[#030B22]/60 backdrop-blur-sm shadow-md"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0">
+                      <IconComponent className="h-3 w-3 text-[#D4AF37]" />
+                    </div>
+                    <span className="text-[11px] font-bold text-foreground/90 tracking-wider uppercase">{item.text}</span>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Two CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-1">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button asChild size="lg" className="gold-gradient text-primary-foreground hover:opacity-95 text-xs px-8 py-5.5 shadow-lg shadow-primary/5 hover:shadow-[#D4AF37]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-bold uppercase tracking-wider rounded-sm">
                 <Link to="/contact" className="inline-flex items-center gap-2">
                   Book Consultation
@@ -396,191 +398,73 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE (Floating Dashboard UI) */}
-          <div className="lg:col-span-6 relative mt-8 lg:mt-0">
+          {/* RIGHT SIDE (Premium Glass Wealth Card Mockup) */}
+          <div className="lg:col-span-5 flex justify-center items-center relative mt-8 lg:mt-0">
             
-            {/* Soft gold glowing blob behind the dashboard */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-[#D4AF37]/10 via-transparent to-transparent rounded-3xl blur-2xl opacity-75 pointer-events-none z-0" />
+            {/* Soft gold glowing blob behind the card */}
+            <div className="absolute -inset-10 bg-gradient-to-tr from-[#D4AF37]/10 via-transparent to-[#D4AF37]/5 rounded-full blur-3xl opacity-80 pointer-events-none z-0 animate-pulse" style={{ animationDuration: "8s" }} />
+
+            {/* Premium Gold Accent Ring Behind Card */}
+            <div className="absolute w-[95%] h-[95%] border border-[#D4AF37]/10 rounded-3xl -rotate-2 scale-98 pointer-events-none z-0" />
             
-            {/* Floating Card 1: Client Portfolio */}
+            {/* Main Luxury Private Wealth Card */}
             <motion.div
-              initial={{ opacity: 0, x: 30, y: -20 }}
-              animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-              transition={{
-                opacity: { duration: 1, delay: 0.4 },
-                x: { duration: 1, delay: 0.4 },
-                y: {
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.4,
-                },
-              }}
-              className="absolute -top-10 -right-2 md:-right-6 z-25 bg-[#030B22]/80 backdrop-blur-md border border-[#D4AF37]/35 rounded-xl p-3.5 shadow-xl hover:border-[#D4AF37]/60 transition-colors duration-300 w-44"
+              initial={{ opacity: 0, y: 40, rotate: 0 }}
+              animate={{ opacity: 1, y: 0, rotate: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              whileHover={{ rotate: 0, scale: 1.01 }}
+              className="w-full max-w-[400px] bg-gradient-to-b from-slate-950/60 to-slate-950/40 backdrop-blur-2xl border border-[#D4AF37]/25 rounded-3xl p-8 shadow-[0_30px_70px_rgba(3,11,34,0.8)] shadow-[#D4AF37]/5 relative z-10 overflow-hidden"
             >
-              <span className="text-[9px] text-muted-foreground/60 font-bold uppercase tracking-widest block">Client Portfolio</span>
-              <div className="flex items-baseline justify-between mt-1">
-                <span className="text-base font-bold text-white font-display">₹3.72 Cr</span>
-                <span className="text-[9px] text-[#D4AF37] font-bold">+24.6%</span>
+              {/* Elegant Diagonal Reflective Glare Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+              
+              {/* Top Card Header */}
+              <div className="flex justify-between items-start border-b border-[#D4AF37]/20 pb-6 mb-6">
+                <div>
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase block">Exclusive Service</span>
+                  <h3 className="text-xl font-display font-bold text-foreground mt-1 tracking-wide">Alpha Private Wealth</h3>
+                </div>
+                <div className="w-8 h-8 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/5 flex items-center justify-center">
+                  <Shield className="h-4.5 w-4.5 text-[#D4AF37]" />
+                </div>
+              </div>
+
+              {/* Core Statistics Content */}
+              <div className="space-y-6">
+                <div>
+                  <span className="text-[9px] font-bold text-muted-foreground/60 tracking-widest uppercase block">Assets Managed</span>
+                  <div className="flex items-baseline gap-2 mt-1.5">
+                    <span className="text-3xl font-bold font-display text-foreground tracking-tight">₹300 Cr+</span>
+                    <span className="text-[10px] text-emerald-400 font-bold tracking-wider">+24.6% YoY</span>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-[9px] font-bold text-muted-foreground/60 tracking-widest uppercase block">Clients Served</span>
+                  <div className="flex items-baseline gap-2 mt-1.5">
+                    <span className="text-2xl font-bold font-display text-foreground tracking-tight">3000+</span>
+                    <span className="text-[10px] text-muted-foreground/60 tracking-wide">High Net Worth Families</span>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="text-[9px] font-bold text-muted-foreground/60 tracking-widest uppercase block">Years of Excellence</span>
+                  <div className="flex items-baseline gap-2 mt-1.5">
+                    <span className="text-2xl font-bold font-display text-foreground tracking-tight">10+ Years</span>
+                    <span className="text-[10px] text-muted-foreground/60 tracking-wide">Fiduciary Integrity</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Footer / Institutional Signature */}
+              <div className="mt-8 pt-5 border-t border-[#D4AF37]/10 flex justify-between items-center text-[8px] text-muted-foreground/50 font-mono tracking-widest uppercase">
+                <span>Ref: APW-2026</span>
+                <span className="text-[#D4AF37]/80 font-semibold">Fiduciary Grade</span>
               </div>
             </motion.div>
 
-            {/* Floating Card 2: Risk Profile */}
-            <motion.div
-              initial={{ opacity: 0, x: -30, y: 20 }}
-              animate={{ opacity: 1, x: 0, y: [0, 6, 0] }}
-              transition={{
-                opacity: { duration: 1, delay: 0.5 },
-                x: { duration: 1, delay: 0.5 },
-                y: {
-                  duration: 5.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.5,
-                },
-              }}
-              className="absolute -bottom-8 -left-2 md:-left-8 z-25 bg-[#030B22]/85 backdrop-blur-md border border-[#D4AF37]/35 rounded-xl p-3.5 shadow-xl hover:border-[#D4AF37]/60 transition-colors duration-300 w-40 flex items-center gap-3"
-            >
-              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center shrink-0">
-                <ShieldCheck className="h-4 w-4 text-[#D4AF37]" />
-              </div>
-              <div>
-                <span className="text-[9px] text-muted-foreground/60 font-bold uppercase tracking-widest block">Risk Profile</span>
-                <span className="text-[11px] font-bold text-white mt-0.5 block font-display">Balanced Growth</span>
-              </div>
-            </motion.div>
-
-            {/* Main Portfolio Growth Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="glass-card bg-slate-950/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10 hover:border-[#D4AF37]/30 transition-colors duration-300"
-            >
-              <span className="text-[10px] text-muted-foreground/60 font-bold uppercase tracking-wider block">Portfolio Performance</span>
-              <h3 className="text-2xl font-bold font-display text-foreground mt-1.5">₹3,72,45,000</h3>
-              <span className="inline-block text-[10px] text-[#D4AF37] font-bold bg-[#D4AF37]/10 px-2.5 py-0.5 rounded mt-1 border border-[#D4AF37]/20">
-                +24.6% (12M Growth)
-              </span>
-
-              {/* SVG Golden Line Chart */}
-              <div className="h-44 w-full relative mt-6">
-                <svg className="w-full h-full overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="chartGoldGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.25" />
-                      <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Horizontal dotted grid lines */}
-                  <line x1="0" y1="10" x2="100" y2="10" stroke="rgba(212,175,55,0.06)" strokeWidth="0.5" strokeDasharray="3 3" />
-                  <line x1="0" y1="20" x2="100" y2="20" stroke="rgba(212,175,55,0.06)" strokeWidth="0.5" strokeDasharray="3 3" />
-                  <line x1="0" y1="30" x2="100" y2="30" stroke="rgba(212,175,55,0.06)" strokeWidth="0.5" strokeDasharray="3 3" />
-
-                  {/* Gradient Fill under Path */}
-                  <path
-                    d="M 0,33 C 20,31 40,24 60,19 C 80,11 90,7 100,5 L 100,40 L 0,40 Z"
-                    fill="url(#chartGoldGrad)"
-                  />
-
-                  {/* Glow shadow line behind */}
-                  <path
-                    d="M 0,33 C 20,31 40,24 60,19 C 80,11 90,7 100,5"
-                    fill="none"
-                    stroke="#D4AF37"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="opacity-40 blur-[1px]"
-                  />
-
-                  {/* Sharp thin trend line in front */}
-                  <path
-                    d="M 0,33 C 20,31 40,24 60,19 C 80,11 90,7 100,5"
-                    fill="none"
-                    stroke="#D4AF37"
-                    strokeWidth="0.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-
-                  {/* Glowing Node Points in golden yellow */}
-                  <circle cx="0" cy="33" r="0.6" fill="#D4AF37" />
-                  <circle cx="20" cy="31" r="0.6" fill="#D4AF37" />
-                  <circle cx="40" cy="24" r="0.6" fill="#D4AF37" />
-                  <circle cx="60" cy="19" r="0.6" fill="#D4AF37" />
-                  <circle cx="80" cy="11" r="0.6" fill="#D4AF37" />
-                  <circle cx="100" cy="5" r="1.2" fill="#D4AF37" />
-                  <circle cx="100" cy="5" r="2.5" fill="#D4AF37" className="animate-ping" style={{ transformOrigin: "100px 5px" }} />
-                </svg>
-              </div>
-
-              {/* X Axis Labels */}
-              <div className="flex justify-between items-center text-[9px] text-muted-foreground/50 font-mono mt-4 pt-4 border-t border-white/5">
-                <span>Jan</span>
-                <span>Mar</span>
-                <span>May</span>
-                <span>Jul</span>
-                <span>Sep</span>
-                <span>Nov</span>
-              </div>
-            </motion.div>
           </div>
 
-        </div>
-      </div>
-
-      {/* STATS ROW AT BOTTOM OF HERO (Centered and Separated by vertical dividers) */}
-      <div className="w-full relative z-10 mt-4 pt-4 border-t border-border/10">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-y-0 items-center justify-items-center">
-            
-            {/* Stat 1 */}
-            <div className="flex items-center gap-4 w-full justify-center md:border-r border-border/30 px-4">
-              <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
-                <Users className="h-4.5 w-4.5 text-primary" />
-              </div>
-              <div className="text-left">
-                <div className="text-xl md:text-2xl font-bold font-display text-foreground leading-none">3,000+</div>
-                <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mt-1">Happy Clients</div>
-              </div>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="flex items-center gap-4 w-full justify-center md:border-r border-border/30 px-4">
-              <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0 font-display text-primary text-sm font-semibold">
-                ₹
-              </div>
-              <div className="text-left">
-                <div className="text-xl md:text-2xl font-bold font-display text-foreground leading-none">300Cr+</div>
-                <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mt-1">Assets Managed</div>
-              </div>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="flex items-center gap-4 w-full justify-center md:border-r border-border/30 px-4">
-              <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
-                <Award className="h-4.5 w-4.5 text-primary" />
-              </div>
-              <div className="text-left">
-                <div className="text-xl md:text-2xl font-bold font-display text-foreground leading-none">10+</div>
-                <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mt-1">Years of Excellence</div>
-              </div>
-            </div>
-
-            {/* Stat 4 */}
-            <div className="flex items-center gap-4 w-full justify-center px-4">
-              <div className="w-10 h-10 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0">
-                <Building2 className="h-4.5 w-4.5 text-primary" />
-              </div>
-              <div className="text-left">
-                <div className="text-xl md:text-2xl font-bold font-display text-foreground leading-none">15+</div>
-                <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mt-1">Partner Institutions</div>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
 
