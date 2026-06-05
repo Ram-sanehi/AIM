@@ -431,20 +431,23 @@ export function Hero() {
               initial={{ opacity: 0, y: 40, rotate: 0 }}
               animate={{ opacity: 1, y: 0, rotate: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 25px 50px rgba(212, 175, 55, 0.07)" }}
-              className="w-full max-w-[420px] moving-border-glow-gold backdrop-blur-2xl rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
+              whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 25px 50px rgba(212, 175, 55, 0.05)" }}
+              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 border border-[#D4AF37]/25 backdrop-blur-2xl rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
             >
               {/* Elegant Diagonal Reflective Glare Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+              {/* Center Bubble Blob Glow Effect */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-[radial-gradient(circle,_rgba(212,175,55,0.09)_0%,_transparent_75%)] blur-[30px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: "6s" }} />
               
               {/* Top Card Header */}
-              <div className="border-b border-[#D4AF37]/25 pb-5 mb-8">
+              <div className="border-b border-[#D4AF37]/25 pb-5 mb-8 relative z-10">
                 <span className="text-[9px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block">Alpha Private Wealth</span>
                 <h3 className="text-lg font-display font-semibold text-foreground mt-1 tracking-wider uppercase">Investment Philosophy</h3>
               </div>
 
-              {/* Five Philosophy Principles (With 30% more whitespace and 40% shorter descriptions) */}
-              <div className="space-y-6">
+              {/* Five Philosophy Principles */}
+              <div className="space-y-6 relative z-10">
                 {[
                   {
                     num: "01",
@@ -488,7 +491,7 @@ export function Hero() {
               </div>
 
               {/* Card Footer / Institutional Signature */}
-              <div className="mt-8 pt-5 border-t border-[#D4AF37]/15 flex justify-between items-center text-[9px] font-mono tracking-widest uppercase">
+              <div className="mt-8 pt-5 border-t border-[#D4AF37]/15 flex justify-between items-center text-[9px] font-mono tracking-widest uppercase relative z-10">
                 <span className="text-muted-foreground/40">Memorandum // APW</span>
                 <span className="text-[#D4AF37] font-semibold">Fiduciary Advisory</span>
               </div>
