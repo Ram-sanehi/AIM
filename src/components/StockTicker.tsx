@@ -112,46 +112,24 @@ export function StockTicker() {
   const [lastUpdated, setLastUpdated] = useState<Record<string, "up" | "down" | null>>({});
 
   useEffect(() => {
-    // 1. Fetch real-time quotes from Yahoo Finance via our CORS proxy
-    const fetchRealQuotes = async () => {
-      let hasUpdates = false;
-
-      for (let i = 0; i < defaultStocks.length; i++) {
-        const stock = defaultStocks[i];
-        try {
-          const isDev = import.meta.env.DEV;
-          const url = isDev
-            ? `/api/yahoo/v8/finance/chart/${stock.yahooSymbol}?interval=1d&range=1d`
-            : `https://query1.finance.yahoo.com/v8/finance/chart/${stock.yahooSymbol}?interval=1d&range=1d`; // CORS fallback
-
-          const response = await fetch(url);
-          if (!response.ok) continue;
-          
-          const data = await response.json();
-          if (data && data.chart && data.chart.result && data.chart.result[0]) {
-            const meta = data.chart.result[0].meta;
-            const livePrice = meta.regularMarketPrice;
-            const prevClose = meta.chartPreviousClose;
-            const change = livePrice - prevClose;
-            const changePercent = (change / prevClose) * 100;
-
-            if (livePrice !== undefined && livePrice !== null) {
-              hasUpdates = true;
-              setStocks((prevStocks) => {
-                const nextStocks = [...prevStocks];
-                const oldPrice = nextStocks[i].price;
-
-                nextStocks[i] = {
-                  ...nextStocks[i],
-                  price: Math.round(livePrice * 100) / 100,
-                  change: Math.round(change * 100) / 100,
-                  changePercent: Math.round(changePercent * 100) / 100,
-                  openPrice: Math.round(prevClose * 100) / 100,
-                };
-
-                // Trigger flash highlights on price changes
-                if (Math.abs(livePrice - oldPrice) > 0.05) {
-                  const direction = livePrice >= oldPrice ? "up" : "down";
+    // Fetch quotes from our custom server background scraper
+    const fetchScrapedQuotes = async () => {
+      try {
+        const response = await fetch("/api/live-indian-stocks");
+        if (!response.ok) throw new Error("Scraper offline");
+        const scrapedData = await response.json();
+        
+        if (scrapedData && Array.isArray(scrapedData) && scrapedData.length > 0) {
+          setStocks((prevStocks) => {
+            return prevStocks.map((stock) => {
+              const match = scrapedData.find((s) => s.symbol === stock.symbol);
+              if (match && match.price > 0) {
+                const oldPrice = stock.price;
+                const newPrice = match.price;
+                
+                // Trigger flash highlights on price changes from the scraper
+                if (Math.abs(newPrice - oldPrice) > 0.05) {
+                  const direction = newPrice >= oldPrice ? "up" : "down";
                   setLastUpdated((prev) => ({
                     ...prev,
                     [stock.symbol]: direction
@@ -164,29 +142,34 @@ export function StockTicker() {
                   }, 750);
                 }
 
-                return nextStocks;
-              });
-            }
-          }
-        } catch (error) {
-          // Keep current stock state and let simulation drive wiggling if request fails (e.g. CORS on prod)
+                return {
+                  ...stock,
+                  price: newPrice,
+                  change: match.change,
+                  changePercent: match.changePercent,
+                  openPrice: match.openPrice
+                };
+              }
+              return stock;
+            });
+          });
+          setLoading(false);
         }
-      }
-
-      if (hasUpdates) {
+      } catch (error) {
+        // Fall back gracefully to local ticking simulator if proxy/scraper is unavailable (like on production static host)
         setLoading(false);
       }
     };
 
     // Initial fetch
-    fetchRealQuotes();
+    fetchScrapedQuotes();
 
-    // Fetch live quotes every 45 seconds to stay updated with exchange fluctuations
-    const liveFetchInterval = setInterval(fetchRealQuotes, 45000);
+    // Query the server scraper cache every 5 seconds to keep the data updated
+    const liveFetchInterval = setInterval(fetchScrapedQuotes, 5000);
 
-    // 2. Micro-ticking simulator (fluctuates prices by ±0.03% to ±0.05% every 2.5s to feel completely alive)
+    // Micro-ticking simulator (fluctuates prices by ±0.03% to ±0.05% every 2.5s for seamless trading floor aesthetics)
     const tickingInterval = setInterval(() => {
-      // Pick 2 random stocks to fluctuate in between real fetches
+      // Pick 2 random stocks to fluctuate in between real scraper queries
       const indicesToUpdate = new Set<number>();
       while (indicesToUpdate.size < 2) {
         indicesToUpdate.add(Math.floor(Math.random() * defaultStocks.length));
@@ -232,15 +215,9 @@ export function StockTicker() {
       });
     }, 2500);
 
-    // Stop loading indicator anyway after 4 seconds to show data
-    const loadingTimeout = setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-
     return () => {
       clearInterval(liveFetchInterval);
       clearInterval(tickingInterval);
-      clearTimeout(loadingTimeout);
     };
   }, []);
 
