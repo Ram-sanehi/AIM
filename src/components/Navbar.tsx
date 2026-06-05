@@ -69,7 +69,7 @@ export function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <div className="w-11 h-11 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border-2 border-primary/20">
-                <img src="/logo-circular1.png" alt="Alpha Investment Management" className="w-full h-full object-cover" />
+                <img src="/logo-circular1.png" alt="Alpha Investment Management" width="44" height="44" className="w-full h-full object-cover" />
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-[15px] font-display font-bold gold-text tracking-wide leading-tight">Alpha Investment Management</h1>

@@ -8,6 +8,16 @@ export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [wordIndex, setWordIndex] = useState(0);
   const rotatingWords = ["Futures", "Growth", "Portfolios", "Milestones", "Legacies"];
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileScreen(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const wordInterval = setInterval(() => {
@@ -18,6 +28,9 @@ export function Hero() {
 
   // Canvas particle system for tiny floating gold particles (gold dust)
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -163,7 +176,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-1)"
           strokeWidth="0.8"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,300 C 250,550 550,200 1350,220",
               "M -150,280 C 220,570 580,170 1350,200",
@@ -183,7 +196,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-2)"
           strokeWidth="0.6"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,320 C 230,520 570,220 1350,190",
               "M -150,340 C 260,500 540,240 1350,210",
@@ -204,7 +217,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-3)"
           strokeWidth="0.5"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,280 C 270,580 530,180 1350,250",
               "M -150,290 C 240,590 560,150 1350,230",
@@ -225,7 +238,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-1)"
           strokeWidth="0.5"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,350 C 200,480 600,250 1350,160",
               "M -150,330 C 210,490 590,230 1350,180",
@@ -246,7 +259,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-2)"
           strokeWidth="0.4"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,250 C 300,600 500,120 1350,280",
               "M -150,270 C 280,590 520,130 1350,260",
@@ -267,7 +280,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-3)"
           strokeWidth="0.4"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,220 C 280,440 520,130 1350,140",
               "M -150,240 C 260,420 540,150 1350,120",
@@ -288,7 +301,7 @@ export function Hero() {
           fill="none"
           stroke="url(#gold-thread-1)"
           strokeWidth="0.6"
-          animate={{
+          animate={isMobileScreen ? undefined : {
             d: [
               "M -150,380 C 180,500 580,280 1350,290",
               "M -150,360 C 200,520 560,260 1350,310",
