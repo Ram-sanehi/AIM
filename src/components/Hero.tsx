@@ -432,7 +432,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0, rotate: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 25px 50px rgba(212, 175, 55, 0.07)" }}
-              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 backdrop-blur-2xl border border-[#D4AF37]/25 rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
+              className="w-full max-w-[420px] moving-border-glow-gold backdrop-blur-2xl rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
             >
               {/* Elegant Diagonal Reflective Glare Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
