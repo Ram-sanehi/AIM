@@ -37,7 +37,12 @@ const fetchJson = (url: string, headers: Record<string, string>): Promise<any> =
 
 // Start background crawler worker (loops through symbols one-by-one every 1.5 seconds)
 let currentScrapeIndex = 0;
+let scraperStarted = false;
+
 const startScraperWorker = () => {
+  if (scraperStarted) return;
+  scraperStarted = true;
+
   const runNextScrape = async () => {
     const stock = scrapedStocksCache[currentScrapeIndex];
     if (stock) {
@@ -78,13 +83,13 @@ const startScraperWorker = () => {
   runNextScrape();
 };
 
-// Start background crawling
-startScraperWorker();
-
 // Custom Vite plugin to serve the cached stock quotes
 const customScraperPlugin = () => ({
   name: "custom-scraper-plugin",
   configureServer(server: any) {
+    // Only run background scraper worker in active development server (avoids hanging during compilation/deployment)
+    startScraperWorker();
+
     server.middlewares.use("/api/live-indian-stocks", (req: any, res: any) => {
       res.setHeader("Content-Type", "application/json");
       res.setHeader("Access-Control-Allow-Origin", "*");
