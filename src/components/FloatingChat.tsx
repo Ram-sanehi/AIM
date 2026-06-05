@@ -17,14 +17,14 @@ interface QuickAction {
   id: string;
   label: string;
   message: string;
-  triggerType?: "sip-calculator" | "lead-gen" | "callback-scheduler";
+  triggerType?: "sip-calculator" | "lead-gen" | "callback-scheduler" | "insurance-advisor";
 }
 
 const quickActions: QuickAction[] = [
   { id: "1", label: "📈 SIP Calculator", message: "Open SIP Wealth Calculator", triggerType: "sip-calculator" },
   { id: "2", label: "💼 Get Advisory Quote", message: "I want to request an advisory quote", triggerType: "lead-gen" },
-  { id: "3", label: "📞 Schedule Callback", message: "Schedule a phone call with advisor", triggerType: "callback-scheduler" },
-  { id: "4", label: "✨ Services Info", message: "What financial services do you offer?" },
+  { id: "3", label: "🛡️ Insurance Solutions", message: "I want to explore insurance solutions", triggerType: "insurance-advisor" },
+  { id: "4", label: "📞 Schedule Callback", message: "Schedule a phone call with advisor", triggerType: "callback-scheduler" },
 ];
 
 const botResponses: Record<string, string> = {
@@ -54,6 +54,7 @@ export function FloatingChat() {
   const [leadPhone, setLeadPhone] = useState("");
   const [leadTarget, setLeadTarget] = useState("");
   const [leadStep, setLeadStep] = useState(1); // 1: Name, 2: Email, 3: Phone, 4: Target, 5: Done
+  const [leadCategory, setLeadCategory] = useState<"advisory" | "insurance">("advisory");
 
   // Callback State
   const [callName, setCallName] = useState("");
@@ -91,7 +92,7 @@ export function FloatingChat() {
     setMessages((prev) => [...prev, botMsg]);
   };
 
-  const processUserMessage = (text: string, triggerType?: "sip-calculator" | "lead-gen" | "callback-scheduler") => {
+  const processUserMessage = (text: string, triggerType?: "sip-calculator" | "lead-gen" | "callback-scheduler" | "insurance-advisor") => {
     const userMsg: Message = {
       id: Date.now().toString(),
       text,
@@ -111,8 +112,13 @@ export function FloatingChat() {
       if (triggerType === "sip-calculator" || /sip|calc|calculate|compound|grow|returns/i.test(lower)) {
         addBotMessage("Estimate your portfolio growth dynamically using our interactive SIP Wealth Calculator:", "sip-calculator");
       } else if (triggerType === "lead-gen" || /consult|quote|advisory|apply|register|invest/i.test(lower)) {
+        setLeadCategory("advisory");
         setLeadStep(1);
         addBotMessage("Let's gather some details to connect you with Nageshwar Prasad or a senior wealth advisor:", "lead-gen");
+      } else if (triggerType === "insurance-advisor" || /insurance|protect|policy|health|life|pension/i.test(lower)) {
+        setLeadCategory("insurance");
+        setLeadStep(1);
+        addBotMessage("Let's gather some details to customize the best insurance policies and coverage strategies for you:", "lead-gen");
       } else if (triggerType === "callback-scheduler" || /call|schedule|phone|callback|talk|human/i.test(lower)) {
         setCallStep(1);
         addBotMessage("Please choose your preferred time slot for a callback consultation:", "callback-scheduler");
@@ -165,8 +171,49 @@ export function FloatingChat() {
     }).format(value);
   };
 
-  // Submit Lead Gen Form
-  const handleLeadSubmit = async (e: React.FormEvent) => {
+  // Helper to submit lead to database
+  const submitLeadToDatabase = async (targetValue: string) => {
+    setIsLoading(true);
+    try {
+      const isInsurance = leadCategory === "insurance";
+      const { error } = await supabase.from("contact_submissions").insert([
+        {
+          name: leadName.trim(),
+          email: leadEmail.trim(),
+          phone: leadPhone.trim(),
+          subject: isInsurance ? "Insurance Advisory (Chatbot)" : "Advisory Lead (Chatbot)",
+          message: isInsurance 
+            ? `Requested Insurance Segment: ${targetValue}\nSource: Floating AI Chatbot` 
+            : `Target Investment Capacity: ${targetValue}\nSource: Floating AI Chatbot`,
+          status: "new"
+        },
+      ]);
+
+      if (error) throw error;
+
+      setLeadStep(5);
+      toast.success(isInsurance ? "Insurance Inquiry Submitted!" : "Advisory Request Submitted!", {
+        description: `Thank you ${leadName}. Nageshwar Prasad will review your parameters.`,
+      });
+      // push a final thank you message
+      setTimeout(() => {
+        addBotMessage(
+          isInsurance
+            ? `Perfect! We have recorded your parameters:\n\n• Name: ${leadName}\n• Coverage Needed: ${targetValue}\n• Contact: ${leadPhone}\n\nOur advisory team will analyze the best insurance quotes and contact you in 1-2 hours. 🛡️`
+            : `Perfect! We have recorded your parameters:\n\n• Name: ${leadName}\n• Target Range: ${targetValue}\n• Contact: ${leadPhone}\n\nOur team is drafting a preliminary asset allocation strategy. We'll contact you in 1-2 hours. 🚀`,
+          "thank-you"
+        );
+      }, 500);
+    } catch (err) {
+      console.error("Error submitting lead:", err);
+      toast.error("Failed to submit inquiry. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Submit Lead Gen Form (steps 1-3)
+  const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (leadStep === 1 && leadName.trim()) {
       setLeadStep(2);
@@ -174,36 +221,6 @@ export function FloatingChat() {
       setLeadStep(3);
     } else if (leadStep === 3 && leadPhone.trim() && /^\d{10}$/.test(leadPhone)) {
       setLeadStep(4);
-    } else if (leadStep === 4 && leadTarget) {
-      setIsLoading(true);
-      try {
-        const { error } = await supabase.from("contact_submissions").insert([
-          {
-            name: leadName.trim(),
-            email: leadEmail.trim(),
-            phone: leadPhone.trim(),
-            subject: "Advisory Lead (Chatbot)",
-            message: `Target Investment Capacity: ${leadTarget}\nSource: Floating AI Chatbot`,
-            status: "new"
-          },
-        ]);
-
-        if (error) throw error;
-
-        setLeadStep(5);
-        toast.success("Advisory Request Submitted!", {
-          description: `Thank you ${leadName}. Nageshwar Prasad will review your portfolio targets.`,
-        });
-        // push a final thank you message
-        setTimeout(() => {
-          addBotMessage(`Perfect! We have recorded your parameters:\n\n• Name: ${leadName}\n• Target: ${leadTarget}\n• Reach: ${leadPhone}\n\nOur team is drafting a preliminary asset allocation strategy. We'll contact you in 1-2 hours. 🚀`, "thank-you");
-        }, 500);
-      } catch (err) {
-        console.error("Error submitting lead:", err);
-        toast.error("Failed to submit advisory request. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
     }
   };
 
@@ -469,21 +486,22 @@ export function FloatingChat() {
 
                         {leadStep === 4 && (
                           <div className="space-y-2.5">
-                            <label className="text-[10px] text-slate-400 font-semibold uppercase block">Select your Target Investment Capacity:</label>
+                            <label className="text-[10px] text-slate-400 font-semibold uppercase block">
+                              {leadCategory === "insurance" ? "Select the Insurance Type you need:" : "Select your Target Investment Capacity:"}
+                            </label>
                             <div className="grid grid-cols-2 gap-2">
-                              {["Under ₹10 Lakhs", "₹10L - ₹50 Lakhs", "₹50L - ₹1 Crore", "Above ₹1 Crore"].map((opt) => (
+                              {(leadCategory === "insurance" 
+                                ? ["🏥 Health Insurance", "🛡️ Term & Life Cover", "🚗 Motor & Fleet Cover", "🏢 Property & Industrial", "💰 Pension & Retirement", "✈️ Travel Insurance"]
+                                : ["Under ₹10 Lakhs", "₹10L - ₹50 Lakhs", "₹50L - ₹1 Crore", "Above ₹1 Crore"]
+                              ).map((opt) => (
                                 <button
                                   type="button"
                                   key={opt}
                                   onClick={() => {
                                     setLeadTarget(opt);
-                                    // Trigger form submit directly after selection
+                                    // Submit to database directly
                                     setTimeout(() => {
-                                      setLeadStep(5);
-                                      toast.success("Advisory Request Submitted!", {
-                                        description: `Thank you ${leadName}. Nageshwar Prasad will review your portfolio targets.`,
-                                      });
-                                      addBotMessage(`Perfect! We have recorded your parameters:\n\n• Name: ${leadName}\n• Target Range: ${opt}\n• Contact: ${leadPhone}\n\nOur team is drafting a preliminary asset allocation strategy. We'll contact you in 1-2 hours. 🚀`, "thank-you");
+                                      submitLeadToDatabase(opt);
                                     }, 200);
                                   }}
                                   className="py-2.5 px-3 bg-slate-950 hover:bg-amber-500/20 text-slate-200 border border-white/10 rounded-lg text-left text-xs transition-colors hover:border-[#d4af37]/40"
