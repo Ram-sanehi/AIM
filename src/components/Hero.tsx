@@ -344,30 +344,30 @@ export function Hero() {
           >
             {/* SEBI Outlined Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/5 text-[9px] font-bold tracking-widest uppercase text-primary shadow-[0_0_15px_rgba(218,165,32,0.15)]">
-              <Shield className="h-3 w-3 fill-primary/10 text-[#D4AF37]" />
+              <Shield className="h-3 w-3 fill-primary/10 text-primary" />
               SEBI REGISTERED INVESTMENT ADVISOR
             </div>
 
-            {/* Massive Luxury Serif Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-[72px] font-display font-bold leading-[1.05] text-foreground tracking-tight text-balance">
+            {/* Massive Luxury Serif Headline (25% larger typography) */}
+            <h1 className="text-4xl md:text-5xl lg:text-[76px] font-display font-bold leading-[1.05] text-foreground tracking-tight text-balance">
               Strategic Wealth. <br />
               Secured <span className="bg-gradient-to-r from-[#D4AF37] via-amber-400 to-[#D4AF37] bg-clip-text text-transparent">Legacies.</span>
             </h1>
 
-            {/* Decorative Gold Line below Headline */}
-            <div className="w-16 h-[2px] bg-[#D4AF37]" />
+            {/* Decorative Element */}
+            <div className="w-12 h-[1px] bg-[#D4AF37] opacity-60" />
 
             {/* Premium Subheading */}
             <p className="text-base md:text-[18px] text-muted-foreground/80 leading-relaxed max-w-[520px] font-light">
               Bespoke investment strategies, expert advisory, and disciplined wealth management tailored to your life goals.
             </p>
 
-            {/* Trust Cards (Horizontal Single Row) */}
-            <div className="flex flex-wrap lg:flex-nowrap gap-3 pt-2 w-full max-w-[550px]">
+            {/* Trust Cards (2x2 Premium Glass Cards) */}
+            <div className="grid grid-cols-2 gap-4 max-w-[520px] pt-2">
               {[
                 { val: "₹300 Cr+", label: "Managed", icon: TrendingUp },
                 { val: "3000+", label: "Clients", icon: Users },
-                { val: "10+", label: "Years Experience", icon: ShieldCheck },
+                { val: "10+", label: "Years Experience", icon: Award },
                 { val: "15+", label: "Partner Institutions", icon: Building2 }
               ].map((item, idx) => {
                 const IconComponent = item.icon;
@@ -376,17 +376,19 @@ export function Hero() {
                     key={idx}
                     whileHover={{ scale: 1.02, borderColor: "rgba(212, 175, 55, 0.4)", boxShadow: "0 10px 20px rgba(212, 175, 55, 0.05)" }}
                     transition={{ duration: 0.3 }}
-                    className="flex items-center gap-3 px-3 py-3 rounded-xl border border-[#D4AF37]/15 bg-[#030B22]/60 backdrop-blur-md flex-1 min-w-[120px] text-left group"
+                    className="flex flex-col justify-between p-5 rounded-2xl border border-[#D4AF37]/15 bg-[#030B22]/60 backdrop-blur-md min-h-[105px] text-left group"
                   >
-                    <IconComponent className="h-5 w-5 text-[#D4AF37]/90 shrink-0" />
-                    <div className="flex flex-col">
-                      <span className="text-[13px] md:text-[14px] font-bold font-display text-foreground leading-none tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300">
+                    <div className="flex justify-between items-center w-full">
+                      <div className="text-xl md:text-2xl font-bold font-display text-foreground tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300">
                         {item.val}
-                      </span>
-                      <span className="text-[8.5px] font-bold text-muted-foreground/50 tracking-wider uppercase mt-1 leading-none">
-                        {item.label}
-                      </span>
+                      </div>
+                      <div className="w-7 h-7 rounded-full bg-[#D4AF37]/5 border border-[#D4AF37]/15 flex items-center justify-center shrink-0">
+                        <IconComponent className="h-3.5 w-3.5 text-[#D4AF37]/80" />
+                      </div>
                     </div>
+                    <span className="text-[10px] font-bold text-muted-foreground/60 tracking-wider uppercase mt-3">
+                      {item.label}
+                    </span>
                   </motion.div>
                 );
               })}
@@ -394,24 +396,24 @@ export function Hero() {
 
             {/* Two CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button asChild size="lg" className="gold-gradient text-primary-foreground hover:opacity-95 text-xs px-8 py-5.5 shadow-lg shadow-primary/5 hover:shadow-[#D4AF37]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-bold uppercase tracking-wider rounded-lg">
+              <Button asChild size="lg" className="gold-gradient text-primary-foreground hover:opacity-95 text-xs px-8 py-5.5 shadow-lg shadow-primary/5 hover:shadow-[#D4AF37]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-bold uppercase tracking-wider rounded-sm">
                 <Link to="/contact" className="inline-flex items-center gap-2">
                   Book Consultation
-                  <ArrowRight className="h-4 w-4 text-primary-foreground" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-[#D4AF37]/35 bg-transparent hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/80 text-xs px-8 py-5.5 transition-all duration-300 active:scale-[0.98] font-bold uppercase tracking-wider rounded-lg text-foreground backdrop-blur-sm">
-                <Link to="/services" className="inline-flex items-center gap-2">
-                  Our Approach
-                  <ArrowRight className="h-4 w-4 text-[#D4AF37]" />
-                </Link>
+              <Button asChild size="lg" variant="outline" className="border-[#D4AF37]/30 bg-slate-950/40 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/80 text-xs px-8 py-5.5 transition-all duration-300 active:scale-[0.98] font-bold uppercase tracking-wider rounded-sm text-foreground backdrop-blur-sm">
+                <Link to="/services">Our Approach</Link>
               </Button>
             </div>
 
-            {/* Trust Statement (with vertical gold accent bar) */}
-            <div className="border-l-2 border-[#D4AF37] pl-4 text-left space-y-1 mt-6">
-              <p className="text-[11px] font-bold text-[#D4AF37] tracking-wider uppercase">Trusted by 3000+ investors</p>
-              <p className="text-[11px] text-muted-foreground/80 font-light">Fiduciary. Independent. Committed to your legacy.</p>
+            {/* Trust Statement */}
+            <div className="flex items-start gap-3 pt-6 border-t border-[#D4AF37]/10 max-w-[520px]">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1 shrink-0" />
+              <div className="text-[10px] text-muted-foreground/60 tracking-wider font-light uppercase leading-relaxed">
+                <span className="text-[#D4AF37] font-semibold">Trusted by 3000+ investors</span> <br className="sm:hidden" />
+                <span className="hidden sm:inline"> — </span> Fiduciary. Independent. Committed to your legacy.
+              </div>
             </div>
           </motion.div>
 
@@ -430,26 +432,19 @@ export function Hero() {
               animate={{ opacity: 1, y: 0, rotate: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 25px 50px rgba(212, 175, 55, 0.07)" }}
-              className="w-full max-w-[440px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 backdrop-blur-2xl border border-[#D4AF37]/25 rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
+              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 backdrop-blur-2xl border border-[#D4AF37]/25 rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
             >
               {/* Elegant Diagonal Reflective Glare Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
               
               {/* Top Card Header */}
-              <div className="text-center pb-5">
-                <span className="text-[9px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block mb-1">Alpha Private Wealth</span>
-                <h3 className="text-lg md:text-xl font-display font-semibold text-foreground tracking-wider uppercase">Investment Philosophy</h3>
-                
-                {/* Horizontal Diamond Divider */}
-                <div className="flex items-center justify-center gap-4 mt-4">
-                  <div className="h-[1px] w-16 bg-gradient-to-r from-transparent to-[#D4AF37]/50" />
-                  <span className="text-[#D4AF37] text-xs">✦</span>
-                  <div className="h-[1px] w-16 bg-gradient-to-l from-transparent to-[#D4AF37]/50" />
-                </div>
+              <div className="border-b border-[#D4AF37]/25 pb-5 mb-8">
+                <span className="text-[9px] font-bold tracking-[0.25em] text-[#D4AF37] uppercase block">Alpha Private Wealth</span>
+                <h3 className="text-lg font-display font-semibold text-foreground mt-1 tracking-wider uppercase">Investment Philosophy</h3>
               </div>
 
               {/* Five Philosophy Principles (With 30% more whitespace and 40% shorter descriptions) */}
-              <div className="space-y-6 mt-4">
+              <div className="space-y-6">
                 {[
                   {
                     num: "01",
@@ -478,24 +473,24 @@ export function Hero() {
                   }
                 ].map((item, idx) => (
                   <div key={idx} className="group">
-                    <div className="flex gap-5 items-start">
-                      <span className="text-2xl md:text-3xl font-display font-medium text-[#D4AF37]/90 leading-none tracking-wider shrink-0">{item.num}</span>
+                    <div className="flex gap-4">
+                      <span className="text-[10px] font-mono text-[#D4AF37]/70 mt-0.5 tracking-wider font-semibold">{item.num}</span>
                       <div className="space-y-1 text-left">
-                        <h4 className="text-sm font-semibold text-foreground/90 tracking-wide font-display group-hover:text-[#D4AF37] transition-colors duration-300">{item.title}</h4>
-                        <p className="text-[11px] text-muted-foreground/60 leading-normal font-light">{item.desc}</p>
+                        <h4 className="text-xs font-semibold text-foreground/90 tracking-wide font-display group-hover:text-[#D4AF37] transition-colors duration-300">{item.title}</h4>
+                        <p className="text-[10.5px] text-muted-foreground/60 leading-normal font-light">{item.desc}</p>
                       </div>
                     </div>
                     {idx < 4 && (
-                      <div className="border-t border-[#D4AF37]/10 mt-5" />
+                      <div className="border-t border-[#D4AF37]/10 my-4.5" />
                     )}
                   </div>
                 ))}
               </div>
 
               {/* Card Footer / Institutional Signature */}
-              <div className="flex items-center justify-center gap-2 mt-8 pt-5 border-t border-[#D4AF37]/15">
-                <ShieldCheck className="h-4.5 w-4.5 text-[#D4AF37]" />
-                <span className="text-[10px] font-bold tracking-[0.2em] text-[#D4AF37] uppercase">Fiduciary Advisory</span>
+              <div className="mt-8 pt-5 border-t border-[#D4AF37]/15 flex justify-between items-center text-[9px] font-mono tracking-widest uppercase">
+                <span className="text-muted-foreground/40">Memorandum // APW</span>
+                <span className="text-[#D4AF37] font-semibold">Fiduciary Advisory</span>
               </div>
             </motion.div>
 
