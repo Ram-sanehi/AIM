@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -161,6 +161,15 @@ export function Navbar() {
                     aria-label="Instagram"
                   >
                     <Instagram className="h-4.5 w-4.5" />
+                  </a>
+                  <a
+                    href="https://x.com/alphaaim_in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-lg bg-slate-900/40 border border-border/30 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
+                    aria-label="Twitter/X"
+                  >
+                    <Twitter className="h-4.5 w-4.5" />
                   </a>
                 </motion.div>
               </nav>
