@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [wordIndex, setWordIndex] = useState(0);
-  const rotatingWords = ["Futures", "Growth", "Portfolios", "Milestones", "Legacies"];
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
   useEffect(() => {
@@ -17,13 +15,6 @@ export function Hero() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  useEffect(() => {
-    const wordInterval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 3000);
-    return () => clearInterval(wordInterval);
   }, []);
 
   // Canvas particle system for tiny floating gold particles (gold dust)
@@ -122,7 +113,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[82vh] pt-6 pb-10 flex flex-col justify-between overflow-hidden bg-background">
+    <section className="relative min-h-[90vh] pt-28 pb-10 flex flex-col justify-between overflow-hidden bg-[#030B22]">
       
       {/* Background Canvas Particles */}
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-0 opacity-80" />
@@ -352,90 +343,153 @@ export function Hero() {
             className="lg:col-span-6 space-y-7 text-left"
           >
             {/* SEBI Outlined Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4af37]/45 bg-[#d4af37]/5 text-[9px] font-bold tracking-widest uppercase text-primary shadow-[0_0_15px_rgba(218,165,32,0.1)]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/35 bg-[#D4AF37]/5 text-[9px] font-bold tracking-widest uppercase text-primary shadow-[0_0_15px_rgba(218,165,32,0.15)]">
               <Shield className="h-3 w-3 fill-primary/10 text-primary" />
               SEBI Registered Investment Advisor
             </div>
 
-            {/* Massive Luxury Serif Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-[64px] font-display font-bold leading-[1.08] text-foreground tracking-tight text-balance">
+            {/* Massive Luxury Serif Headline (25% larger typography) */}
+            <h1 className="text-4xl md:text-5xl lg:text-[76px] font-display font-bold leading-[1.05] text-foreground tracking-tight text-balance">
               Strategic Wealth. <br />
-              Secured{" "}
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={wordIndex}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4 }}
-                  className="gold-text inline-block min-w-[200px]"
-                >
-                  {rotatingWords[wordIndex]}.
-                </motion.span>
-              </AnimatePresence>
+              Secured <span className="bg-gradient-to-r from-[#D4AF37] via-amber-400 to-[#D4AF37] bg-clip-text text-transparent">Legacies.</span>
             </h1>
 
             {/* Premium Subheading */}
-            <p className="text-base md:text-[17px] text-muted-foreground/80 leading-relaxed max-w-xl font-light">
+            <p className="text-base md:text-[18px] text-muted-foreground/80 leading-relaxed max-w-xl font-light">
               Bespoke investment strategies, expert advisory, and disciplined wealth management tailored to your life goals.
             </p>
 
+            {/* Trust Bar directly below Subheading */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] text-muted-foreground/70 pt-1 font-semibold tracking-wide border-t border-white/5 border-b py-2.5 max-w-xl">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+                ₹300 Cr+ Managed
+              </span>
+              <span className="text-white/10 hidden sm:inline">|</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+                3000+ Clients
+              </span>
+              <span className="text-white/10 hidden sm:inline">|</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+                10+ Years Experience
+              </span>
+              <span className="text-white/10 hidden sm:inline">|</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#D4AF37]" />
+                15+ Partners
+              </span>
+            </div>
+
             {/* Two CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button asChild size="lg" className="gold-gradient text-primary-foreground hover:opacity-95 text-xs px-8 py-5.5 shadow-lg shadow-primary/5 hover:shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-bold uppercase tracking-wider rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 pt-1">
+              <Button asChild size="lg" className="gold-gradient text-primary-foreground hover:opacity-95 text-xs px-8 py-5.5 shadow-lg shadow-primary/5 hover:shadow-[#D4AF37]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-bold uppercase tracking-wider rounded-sm">
                 <Link to="/contact" className="inline-flex items-center gap-2">
-                  Get Started Today
+                  Book Consultation
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary/45 bg-slate-950/20 hover:bg-primary/5 hover:border-primary/75 text-xs px-8 py-5.5 transition-all duration-300 active:scale-[0.98] font-bold uppercase tracking-wider rounded-xl text-foreground">
-                <Link to="/services">Explore Services</Link>
+              <Button asChild size="lg" variant="outline" className="border-[#D4AF37]/30 bg-slate-950/40 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/80 text-xs px-8 py-5.5 transition-all duration-300 active:scale-[0.98] font-bold uppercase tracking-wider rounded-sm text-foreground backdrop-blur-sm">
+                <Link to="/services">Our Approach</Link>
               </Button>
             </div>
           </motion.div>
 
           {/* RIGHT SIDE (Floating Dashboard UI) */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-6 relative mt-8 lg:mt-0">
+            
+            {/* Soft gold glowing blob behind the dashboard */}
+            <div className="absolute -inset-4 bg-gradient-to-tr from-[#D4AF37]/10 via-transparent to-transparent rounded-3xl blur-2xl opacity-75 pointer-events-none z-0" />
+            
+            {/* Floating Card 1: Client Portfolio */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
+              transition={{
+                opacity: { duration: 1, delay: 0.4 },
+                x: { duration: 1, delay: 0.4 },
+                y: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.4,
+                },
+              }}
+              className="absolute -top-10 -right-2 md:-right-6 z-25 bg-[#030B22]/80 backdrop-blur-md border border-[#D4AF37]/35 rounded-xl p-3.5 shadow-xl hover:border-[#D4AF37]/60 transition-colors duration-300 w-44"
+            >
+              <span className="text-[9px] text-muted-foreground/60 font-bold uppercase tracking-widest block">Client Portfolio</span>
+              <div className="flex items-baseline justify-between mt-1">
+                <span className="text-base font-bold text-white font-display">₹3.72 Cr</span>
+                <span className="text-[9px] text-[#D4AF37] font-bold">+24.6%</span>
+              </div>
+            </motion.div>
+
+            {/* Floating Card 2: Risk Profile */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: [0, 6, 0] }}
+              transition={{
+                opacity: { duration: 1, delay: 0.5 },
+                x: { duration: 1, delay: 0.5 },
+                y: {
+                  duration: 5.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5,
+                },
+              }}
+              className="absolute -bottom-8 -left-2 md:-left-8 z-25 bg-[#030B22]/85 backdrop-blur-md border border-[#D4AF37]/35 rounded-xl p-3.5 shadow-xl hover:border-[#D4AF37]/60 transition-colors duration-300 w-40 flex items-center gap-3"
+            >
+              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center shrink-0">
+                <ShieldCheck className="h-4 w-4 text-[#D4AF37]" />
+              </div>
+              <div>
+                <span className="text-[9px] text-muted-foreground/60 font-bold uppercase tracking-widest block">Risk Profile</span>
+                <span className="text-[11px] font-bold text-white mt-0.5 block font-display">Balanced Growth</span>
+              </div>
+            </motion.div>
+
             {/* Main Portfolio Growth Card */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="glass-card bg-[#030712]/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl relative z-10 hover:border-[#d4af37]/30 transition-colors duration-300"
+              className="glass-card bg-slate-950/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative z-10 hover:border-[#D4AF37]/30 transition-colors duration-300"
             >
-              <span className="text-[10px] text-muted-foreground/70 font-bold uppercase tracking-wider">Portfolio Growth</span>
+              <span className="text-[10px] text-muted-foreground/60 font-bold uppercase tracking-wider block">Portfolio Performance</span>
               <h3 className="text-2xl font-bold font-display text-foreground mt-1.5">₹3,72,45,000</h3>
-              <span className="inline-block text-[10px] text-emerald-500 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded mt-1 border border-emerald-500/20">
-                +24.6% ( 12M )
+              <span className="inline-block text-[10px] text-[#D4AF37] font-bold bg-[#D4AF37]/10 px-2.5 py-0.5 rounded mt-1 border border-[#D4AF37]/20">
+                +24.6% (12M Growth)
               </span>
 
               {/* SVG Golden Line Chart */}
-              <div className="h-48 w-full relative mt-6">
+              <div className="h-44 w-full relative mt-6">
                 <svg className="w-full h-full overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none">
                   <defs>
                     <linearGradient id="chartGoldGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#d4af37" stopOpacity="0.25" />
-                      <stop offset="100%" stopColor="#d4af37" stopOpacity="0" />
+                      <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.25" />
+                      <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
                     </linearGradient>
                   </defs>
 
                   {/* Horizontal dotted grid lines */}
-                  <line x1="0" y1="10" x2="100" y2="10" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" strokeDasharray="2" />
-                  <line x1="0" y1="20" x2="100" y2="20" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" strokeDasharray="2" />
-                  <line x1="0" y1="30" x2="100" y2="30" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" strokeDasharray="2" />
+                  <line x1="0" y1="10" x2="100" y2="10" stroke="rgba(212,175,55,0.06)" strokeWidth="0.5" strokeDasharray="3 3" />
+                  <line x1="0" y1="20" x2="100" y2="20" stroke="rgba(212,175,55,0.06)" strokeWidth="0.5" strokeDasharray="3 3" />
+                  <line x1="0" y1="30" x2="100" y2="30" stroke="rgba(212,175,55,0.06)" strokeWidth="0.5" strokeDasharray="3 3" />
 
                   {/* Gradient Fill under Path */}
                   <path
-                    d="M 0,33 L 20,30 L 40,24 L 60,20 L 80,10 L 100,6 L 100,40 L 0,40 Z"
+                    d="M 0,33 C 20,31 40,24 60,19 C 80,11 90,7 100,5 L 100,40 L 0,40 Z"
                     fill="url(#chartGoldGrad)"
                   />
 
                   {/* Glow shadow line behind */}
                   <path
-                    d="M 0,33 L 20,30 L 40,24 L 60,20 L 80,10 L 100,6"
+                    d="M 0,33 C 20,31 40,24 60,19 C 80,11 90,7 100,5"
                     fill="none"
-                    stroke="#d4af37"
-                    strokeWidth="0.85"
+                    stroke="#D4AF37"
+                    strokeWidth="1.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className="opacity-40 blur-[1px]"
@@ -443,27 +497,27 @@ export function Hero() {
 
                   {/* Sharp thin trend line in front */}
                   <path
-                    d="M 0,33 L 20,30 L 40,24 L 60,20 L 80,10 L 100,6"
+                    d="M 0,33 C 20,31 40,24 60,19 C 80,11 90,7 100,5"
                     fill="none"
-                    stroke="#d4af37"
-                    strokeWidth="0.45"
+                    stroke="#D4AF37"
+                    strokeWidth="0.75"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
 
                   {/* Glowing Node Points in golden yellow */}
-                  <circle cx="0" cy="33" r="0.45" fill="#d4af37" />
-                  <circle cx="20" cy="30" r="0.45" fill="#d4af37" />
-                  <circle cx="40" cy="24" r="0.45" fill="#d4af37" />
-                  <circle cx="60" cy="20" r="0.45" fill="#d4af37" />
-                  <circle cx="80" cy="10" r="0.45" fill="#d4af37" />
-                  <circle cx="100" cy="6" r="0.85" fill="#d4af37" />
-                  <circle cx="100" cy="6" r="2.2" fill="#d4af37" className="animate-ping" style={{ transformOrigin: "100px 6px" }} />
+                  <circle cx="0" cy="33" r="0.6" fill="#D4AF37" />
+                  <circle cx="20" cy="31" r="0.6" fill="#D4AF37" />
+                  <circle cx="40" cy="24" r="0.6" fill="#D4AF37" />
+                  <circle cx="60" cy="19" r="0.6" fill="#D4AF37" />
+                  <circle cx="80" cy="11" r="0.6" fill="#D4AF37" />
+                  <circle cx="100" cy="5" r="1.2" fill="#D4AF37" />
+                  <circle cx="100" cy="5" r="2.5" fill="#D4AF37" className="animate-ping" style={{ transformOrigin: "100px 5px" }} />
                 </svg>
               </div>
 
               {/* X Axis Labels */}
-              <div className="flex justify-between items-center text-[9px] text-muted-foreground/60 font-mono mt-4 pt-4 border-t border-border/10">
+              <div className="flex justify-between items-center text-[9px] text-muted-foreground/50 font-mono mt-4 pt-4 border-t border-white/5">
                 <span>Jan</span>
                 <span>Mar</span>
                 <span>May</span>
@@ -472,43 +526,6 @@ export function Hero() {
                 <span>Nov</span>
               </div>
             </motion.div>
-
-            {/* Two Smaller Floating Cards below Main Chart */}
-            <div className="grid grid-cols-2 gap-4 mt-4 relative z-20">
-              
-              {/* Card 1: Risk Managed */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="glass-card bg-[#030712]/40 backdrop-blur-md border border-white/10 rounded-xl p-4 flex gap-3 items-center hover:border-primary/20 transition-colors"
-              >
-                <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                  <Clock className="h-4.5 w-4.5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-[11px] font-bold text-foreground">Risk Managed</h4>
-                  <p className="text-[9px] text-muted-foreground/80 leading-normal mt-0.5 font-light">Through diversified asset allocation</p>
-                </div>
-              </motion.div>
-
-              {/* Card 2: Wealth Protected */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="glass-card bg-[#030712]/40 backdrop-blur-md border border-white/10 rounded-xl p-4 flex gap-3 items-center hover:border-primary/20 transition-colors"
-              >
-                <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                  <ShieldCheck className="h-4.5 w-4.5 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-[11px] font-bold text-foreground">Wealth Protected</h4>
-                  <p className="text-[9px] text-muted-foreground/80 leading-normal mt-0.5 font-light">With disciplined planning &amp; advice</p>
-                </div>
-              </motion.div>
-
-            </div>
           </div>
 
         </div>
