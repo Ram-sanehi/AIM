@@ -363,7 +363,7 @@ export function Hero() {
             </p>
 
             {/* Trust Cards (2x2 Premium Glass Cards) */}
-            <div className="grid grid-cols-2 gap-4 max-w-[440px] pt-2">
+            <div className="grid grid-cols-2 gap-4 max-w-[380px] pt-2">
               {[
                 { val: "₹300 Cr+", label: "Managed", icon: TrendingUp },
                 { val: "3000+", label: "Clients", icon: Users },
