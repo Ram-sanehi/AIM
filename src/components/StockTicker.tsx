@@ -9,318 +9,214 @@ interface Stock {
   change: number;
   changePercent: number;
   openPrice: number;
+  binanceSymbol?: string;
 }
 
-// Default Indian stock market data
-const defaultStocks: Stock[] = [
-  { 
-    symbol: "SENSEX", 
-    name: "BSE Sensex", 
-    price: 77234.56, 
-    change: 234.56, 
-    changePercent: 0.32,
-    openPrice: 77000.00
+// Initial placeholder data (will be immediately replaced by live real-time feeds)
+const initialStocks: Stock[] = [
+  {
+    symbol: "GOLD",
+    name: "Gold Spot (XAU/INR)",
+    price: 205420.50,
+    change: 1245.50,
+    changePercent: 0.61,
+    openPrice: 204175.00,
+    binanceSymbol: "PAXGUSDT" // PAX Gold tracks 1 troy ounce of gold in real-time
   },
-  { 
-    symbol: "NIFTY", 
-    name: "Nifty 50", 
-    price: 23456.45, 
-    change: 145.23, 
-    changePercent: 0.62,
-    openPrice: 23311.22
+  {
+    symbol: "BTC",
+    name: "Bitcoin (BTC/INR)",
+    price: 5854200.00,
+    change: 145600.00,
+    changePercent: 2.55,
+    openPrice: 5708600.00,
+    binanceSymbol: "BTCUSDT"
   },
-  { 
-    symbol: "RELIANCE", 
-    name: "Reliance Industries", 
-    price: 2890.50, 
-    change: 42.45, 
-    changePercent: 1.49,
-    openPrice: 2848.05
+  {
+    symbol: "ETH",
+    name: "Ethereum (ETH/INR)",
+    price: 310500.00,
+    change: -2450.00,
+    changePercent: -0.78,
+    openPrice: 312950.00,
+    binanceSymbol: "ETHUSDT"
   },
-  { 
-    symbol: "TCS", 
-    name: "Tata Consultancy", 
-    price: 4120.75, 
-    change: -45.10, 
-    changePercent: -1.08,
-    openPrice: 4165.85
+  {
+    symbol: "SOL",
+    name: "Solana (SOL/INR)",
+    price: 14250.00,
+    change: 540.00,
+    changePercent: 3.94,
+    openPrice: 13710.00,
+    binanceSymbol: "SOLUSDT"
   },
-  { 
-    symbol: "HDFCBANK", 
-    name: "HDFC Bank", 
-    price: 1945.80, 
-    change: 28.75, 
-    changePercent: 1.50,
-    openPrice: 1917.05
+  {
+    symbol: "USD/INR",
+    name: "US Dollar / Indian Rupee",
+    price: 83.45,
+    change: 0.05,
+    changePercent: 0.06,
+    openPrice: 83.40,
+    binanceSymbol: "USDINR"
   },
-  { 
-    symbol: "INFY", 
-    name: "Infosys Limited", 
-    price: 1678.35, 
-    change: 35.60, 
-    changePercent: 2.17,
-    openPrice: 1642.75
-  },
-  { 
-    symbol: "ICICIBANK", 
-    name: "ICICI Bank", 
-    price: 1234.20, 
-    change: 15.20, 
-    changePercent: 1.25,
-    openPrice: 1219.00
-  },
-  { 
-    symbol: "BHARTIARTL", 
-    name: "Bharti Airtel", 
-    price: 1456.90, 
-    change: 38.30, 
-    changePercent: 2.70,
-    openPrice: 1418.60
-  },
-  { 
-    symbol: "SBIN", 
-    name: "State Bank of India", 
-    price: 845.30, 
-    change: 24.85, 
-    changePercent: 3.03,
-    openPrice: 820.45
-  },
-  { 
-    symbol: "WIPRO", 
-    name: "Wipro Limited", 
-    price: 685.45, 
-    change: 18.15, 
-    changePercent: 2.71,
-    openPrice: 667.30
-  },
+  {
+    symbol: "EUR/INR",
+    name: "Euro / Indian Rupee",
+    price: 90.62,
+    change: -0.12,
+    changePercent: -0.13,
+    openPrice: 90.74,
+    binanceSymbol: "EURINR"
+  }
 ];
 
-// Check if Indian market is currently open (9:15 AM to 3:30 PM IST, Monday-Friday)
-function isIndianMarketOpen(): boolean {
-  const now = new Date();
-  // Convert to IST (UTC+5:30)
-  const istTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-  
-  const dayOfWeek = istTime.getDay();
-  const hours = istTime.getHours();
-  const minutes = istTime.getMinutes();
-  const totalMinutes = hours * 60 + minutes;
-  
-  // Market is closed on weekends (0 = Sunday, 6 = Saturday)
-  if (dayOfWeek === 0 || dayOfWeek === 6) {
-    return false;
-  }
-  
-  // Market hours: 9:15 AM (555 minutes) to 3:30 PM (930 minutes)
-  const marketOpenMinutes = 9 * 60 + 15; // 9:15 AM
-  const marketCloseMinutes = 15 * 60 + 30; // 3:30 PM
-  
-  return totalMinutes >= marketOpenMinutes && totalMinutes <= marketCloseMinutes;
-}
-
 export function StockTicker() {
-  const [stocks, setStocks] = useState<Stock[]>(defaultStocks);
-  const [loading, setLoading] = useState(false);
-  const [marketOpen, setMarketOpen] = useState(isIndianMarketOpen());
+  const [stocks, setStocks] = useState<Stock[]>(initialStocks);
+  const [loading, setLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Record<string, "up" | "down" | null>>({});
   const wsRef = useRef<WebSocket | null>(null);
-  const reconnectTimeoutRef = useRef<NodeJS.Timeout>();
-  const reconnectAttemptsRef = useRef(0);
-  const maxReconnectAttempts = 3;
+  const usdInrRateRef = useRef<number>(83.50); // Default fallback rate
 
   useEffect(() => {
-    // Check market status every minute
-    const marketStatusInterval = setInterval(() => {
-      setMarketOpen(isIndianMarketOpen());
-    }, 60000);
-
-    // Simulation/Ticking loop to guarantee continuous live updates at all times
-    const simulationInterval = setInterval(() => {
-      // Don't simulate if WebSocket is active and receiving live updates (to prevent overlapping ticks)
-      if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN && isIndianMarketOpen()) {
-        return;
-      }
-
-      // Randomly update 2 stocks at a time to create a realistic trading floor speed
-      const indicesToUpdate = new Set<number>();
-      while (indicesToUpdate.size < 2) {
-        indicesToUpdate.add(Math.floor(Math.random() * defaultStocks.length));
-      }
-
-      setStocks((prevStocks) => {
-        const nextStocks = [...prevStocks];
-        const newUpdates: Record<string, "up" | "down" | null> = {};
-
-        indicesToUpdate.forEach((idx) => {
-          const stock = nextStocks[idx];
-          // Tiny realistic fluctuation (-0.12% to +0.15%)
-          const changePct = (Math.random() * 0.27) - 0.12;
-          const priceDiff = stock.price * (changePct / 100);
-          const newPrice = Math.max(10, stock.price + priceDiff);
-          const totalChange = newPrice - stock.openPrice;
-          const totalChangePct = (totalChange / stock.openPrice) * 100;
-
-          nextStocks[idx] = {
-            ...stock,
-            price: Math.round(newPrice * 100) / 100,
-            change: Math.round(totalChange * 100) / 100,
-            changePercent: Math.round(totalChangePct * 100) / 100,
-          };
-
-          newUpdates[stock.symbol] = priceDiff >= 0 ? "up" : "down";
-        });
-
-        setLastUpdated((prev) => ({ ...prev, ...newUpdates }));
-
-        // Clear highlight flash after 800ms
-        setTimeout(() => {
-          setLastUpdated((prev) => {
-            const cleared = { ...prev };
-            Object.keys(newUpdates).forEach((sym) => {
-              cleared[sym] = null;
-            });
-            return cleared;
-          });
-        }, 800);
-
-        return nextStocks;
-      });
-    }, 2000);
-
-    const connectWebSocket = () => {
-      // Only connect if market is open
-      if (!isIndianMarketOpen()) {
-        console.log("Indian market is closed. Ticker running simulation mode.");
-        setLoading(false);
-        reconnectAttemptsRef.current = 0;
-        return;
-      }
-
-      const finnhubApiKey = import.meta.env.VITE_FINNHUB_API_KEY;
-      
-      if (!finnhubApiKey) {
-        console.log("Finnhub API key not configured. Ticker running simulation mode.");
-        setLoading(false);
-        return;
-      }
-
-      // Limit reconnection attempts
-      if (reconnectAttemptsRef.current >= maxReconnectAttempts) {
-        console.warn("Max reconnection attempts reached. Ticker running simulation mode.");
-        setLoading(false);
-        return;
-      }
-
+    // Fetch live currency conversion rate (USD/INR)
+    const fetchExchangeRates = async () => {
       try {
-        const ws = new WebSocket(`wss://ws.finnhub.io?token=${finnhubApiKey}`);
-        wsRef.current = ws;
+        const response = await fetch("https://open.er-api.com/v6/latest/USD");
+        if (!response.ok) throw new Error("Failed to fetch exchange rates");
+        const data = await response.json();
         
-        // Set timeout for connection
-        const connectionTimeout = setTimeout(() => {
-          if (ws.readyState === WebSocket.CONNECTING) {
-            console.warn("WebSocket connection timeout. Ticker running simulation mode.");
-            ws.close();
-            setLoading(false);
-          }
-        }, 5000);
+        if (data && data.rates && data.rates.INR) {
+          const inrRate = data.rates.INR;
+          const eurRate = data.rates.EUR ? inrRate / data.rates.EUR : 90.50;
+          usdInrRateRef.current = inrRate;
 
-        ws.onopen = () => {
-          clearTimeout(connectionTimeout);
-          console.log("WebSocket connected to Finnhub");
-          setLoading(false);
-          reconnectAttemptsRef.current = 0;
-          
-          // Subscribe to US equivalents of Indian majors
-          const symbols = ["RELIANCE", "TCS", "HDBK", "INFY", "ICICIBANK", "BHARTI", "SBIN", "WIT"];
-          symbols.forEach(symbol => {
-            try {
-              ws.send(JSON.stringify({ type: "subscribe", symbol: symbol }));
-            } catch (error) {
-              console.warn(`Failed to subscribe to ${symbol}:`, error);
-            }
-          });
-        };
-
-        ws.onmessage = (event) => {
-          try {
-            const data = JSON.parse(event.data);
-            
-            // Handle trade data only if market is open
-            if (data.type === "trade" && data.data && isIndianMarketOpen()) {
-              data.data.forEach((trade: any) => {
-                const symbol = trade.s;
-                const price = trade.p;
-                
-                if (symbol && price) {
-                  setStocks((prevStocks) => {
-                    return prevStocks.map((stock) => {
-                      if (stock.symbol === symbol) {
-                        const change = price - stock.openPrice;
-                        const changePercent = (change / stock.openPrice) * 100;
-                        const oldPrice = stock.price;
-                        
-                        setLastUpdated((prev) => ({
-                          ...prev,
-                          [symbol]: price >= oldPrice ? "up" : "down",
-                        }));
-
-                        setTimeout(() => {
-                          setLastUpdated((prev) => ({ ...prev, [symbol]: null }));
-                        }, 800);
-
-                        return {
-                          ...stock,
-                          price: Math.round(price * 100) / 100,
-                          change: Math.round(change * 100) / 100,
-                          changePercent: Math.round(changePercent * 100) / 100,
-                        };
-                      }
-                      return stock;
-                    });
-                  });
-                }
-              });
-            }
-          } catch (error) {
-            console.warn("Error parsing WebSocket message:", error);
-          }
-        };
-
-        ws.onerror = (error) => {
-          console.warn("WebSocket error - using simulation fallback:", error);
-          setLoading(false);
-        };
-
-        ws.onclose = () => {
-          console.log("WebSocket disconnected.");
-          // Only attempt to reconnect if market is open and under max attempts
-          if (isIndianMarketOpen() && reconnectAttemptsRef.current < maxReconnectAttempts) {
-            reconnectAttemptsRef.current++;
-            console.log(`Reconnection attempt ${reconnectAttemptsRef.current}/${maxReconnectAttempts}`);
-            reconnectTimeoutRef.current = setTimeout(() => {
-              connectWebSocket();
-            }, 3000);
-          } else {
-            setLoading(false);
-          }
-        };
+          // Update fiat currency rates in state
+          setStocks((prevStocks) =>
+            prevStocks.map((stock) => {
+              if (stock.symbol === "USD/INR") {
+                const currentPrice = inrRate;
+                const change = currentPrice - stock.openPrice;
+                const changePercent = (change / stock.openPrice) * 100;
+                return {
+                  ...stock,
+                  price: Math.round(currentPrice * 100) / 100,
+                  change: Math.round(change * 100) / 100,
+                  changePercent: Math.round(changePercent * 100) / 100,
+                };
+              }
+              if (stock.symbol === "EUR/INR") {
+                const currentPrice = eurRate;
+                const change = currentPrice - stock.openPrice;
+                const changePercent = (change / stock.openPrice) * 100;
+                return {
+                  ...stock,
+                  price: Math.round(currentPrice * 100) / 100,
+                  change: Math.round(change * 100) / 100,
+                  changePercent: Math.round(changePercent * 100) / 100,
+                };
+              }
+              return stock;
+            })
+          );
+        }
       } catch (error) {
-        console.warn("Failed to create WebSocket:", error);
+        console.warn("Could not retrieve latest exchange rates, using fallback USD/INR = 83.50", error);
+      } finally {
         setLoading(false);
       }
     };
 
-    // Start connection
-    connectWebSocket();
+    fetchExchangeRates();
+
+    // Connect to Binance Free Public WebSocket (no key needed, feeds real-time prices)
+    const connectBinanceWebSocket = () => {
+      try {
+        const ws = new WebSocket(
+          "wss://stream.binance.com:9443/stream?streams=btcusdt@ticker/ethusdt@ticker/paxgusdt@ticker/solusdt@ticker"
+        );
+        wsRef.current = ws;
+
+        ws.onopen = () => {
+          console.log("Connected to Binance Live Market Stream");
+        };
+
+        ws.onmessage = (event) => {
+          try {
+            const message = JSON.parse(event.data);
+            
+            // Binance stream payload wrapper checks
+            if (message && message.stream && message.data) {
+              const ticker = message.data;
+              const binanceSymbol = ticker.s; // e.g. "BTCUSDT"
+              const usdPrice = parseFloat(ticker.c); // Last price
+              const priceChangeUsd = parseFloat(ticker.p); // 24h change
+              const priceChangePct = parseFloat(ticker.P); // 24h change pct
+
+              if (binanceSymbol && !isNaN(usdPrice)) {
+                setStocks((prevStocks) => {
+                  return prevStocks.map((stock) => {
+                    if (stock.binanceSymbol === binanceSymbol) {
+                      const inrRate = usdInrRateRef.current;
+                      const inrPrice = usdPrice * inrRate;
+                      const inrChange = priceChangeUsd * inrRate;
+                      
+                      const oldPrice = stock.price;
+
+                      // Highlight flash triggers
+                      setLastUpdated((prev) => ({
+                        ...prev,
+                        [stock.symbol]: inrPrice >= oldPrice ? "up" : "down"
+                      }));
+
+                      // Clear highlight after 700ms
+                      setTimeout(() => {
+                        setLastUpdated((prev) => ({
+                          ...prev,
+                          [stock.symbol]: null
+                        }));
+                      }, 700);
+
+                      return {
+                        ...stock,
+                        price: Math.round(inrPrice * 100) / 100,
+                        change: Math.round(inrChange * 100) / 100,
+                        changePercent: Math.round(priceChangePct * 100) / 100,
+                      };
+                    }
+                    return stock;
+                  });
+                });
+              }
+            }
+          } catch (err) {
+            // Silently absorb parse errors
+          }
+        };
+
+        ws.onerror = (error) => {
+          console.warn("Binance stream error:", error);
+        };
+
+        ws.onclose = () => {
+          console.log("Binance stream closed. Reconnecting in 5s...");
+          setTimeout(() => {
+            connectBinanceWebSocket();
+          }, 5000);
+        };
+      } catch (error) {
+        console.warn("WebSocket creation failed:", error);
+      }
+    };
+
+    connectBinanceWebSocket();
+
+    // Periodically update currency exchange rate every 5 minutes
+    const exchangeRateInterval = setInterval(fetchExchangeRates, 300000);
 
     return () => {
-      clearInterval(marketStatusInterval);
-      clearInterval(simulationInterval);
+      clearInterval(exchangeRateInterval);
       if (wsRef.current) {
         wsRef.current.close();
-      }
-      if (reconnectTimeoutRef.current) {
-        clearTimeout(reconnectTimeoutRef.current);
       }
     };
   }, []);
@@ -332,7 +228,7 @@ export function StockTicker() {
       <div className="absolute right-0 top-0 bottom-0 w-28 bg-gradient-to-l from-[#020B22] to-transparent pointer-events-none z-10" />
 
       {loading && (
-        <div className="px-6 text-slate-500 text-xs tracking-wider uppercase font-light">Loading live financial feeds...</div>
+        <div className="px-6 text-slate-500 text-xs tracking-wider uppercase font-light">Connecting to live global markets...</div>
       )}
       {!loading && (
         <motion.div
