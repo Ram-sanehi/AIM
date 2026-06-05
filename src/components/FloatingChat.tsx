@@ -2,6 +2,7 @@ import { MessageCircle, X, Send, Phone, Calendar, Calculator, Check, ArrowRight,
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Message {
   id: string;
@@ -165,7 +166,7 @@ export function FloatingChat() {
   };
 
   // Submit Lead Gen Form
-  const handleLeadSubmit = (e: React.FormEvent) => {
+  const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (leadStep === 1 && leadName.trim()) {
       setLeadStep(2);
@@ -174,28 +175,70 @@ export function FloatingChat() {
     } else if (leadStep === 3 && leadPhone.trim() && /^\d{10}$/.test(leadPhone)) {
       setLeadStep(4);
     } else if (leadStep === 4 && leadTarget) {
-      setLeadStep(5);
-      toast.success("Advisory Request Submitted!", {
-        description: `Thank you ${leadName}. Nageshwar Prasad will review your portfolio targets.`,
-      });
-      // push a final thank you message
-      setTimeout(() => {
-        addBotMessage(`Perfect! We have recorded your parameters:\n\n• Name: ${leadName}\n• Target: ${leadTarget}\n• Reach: ${leadPhone}\n\nOur team is drafting a preliminary asset allocation strategy. We'll contact you in 1-2 hours. 🚀`, "thank-you");
-      }, 500);
+      setIsLoading(true);
+      try {
+        const { error } = await supabase.from("contact_submissions").insert([
+          {
+            name: leadName.trim(),
+            email: leadEmail.trim(),
+            phone: leadPhone.trim(),
+            subject: "Advisory Lead (Chatbot)",
+            message: `Target Investment Capacity: ${leadTarget}\nSource: Floating AI Chatbot`,
+            status: "new"
+          },
+        ]);
+
+        if (error) throw error;
+
+        setLeadStep(5);
+        toast.success("Advisory Request Submitted!", {
+          description: `Thank you ${leadName}. Nageshwar Prasad will review your portfolio targets.`,
+        });
+        // push a final thank you message
+        setTimeout(() => {
+          addBotMessage(`Perfect! We have recorded your parameters:\n\n• Name: ${leadName}\n• Target: ${leadTarget}\n• Reach: ${leadPhone}\n\nOur team is drafting a preliminary asset allocation strategy. We'll contact you in 1-2 hours. 🚀`, "thank-you");
+        }, 500);
+      } catch (err) {
+        console.error("Error submitting lead:", err);
+        toast.error("Failed to submit advisory request. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
   // Submit Callback Request
-  const handleCallbackSubmit = (e: React.FormEvent) => {
+  const handleCallbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (callName.trim() && /^\d{10}$/.test(callPhone) && callDate) {
-      setCallStep(2);
-      toast.success("Callback Scheduled!", {
-        description: `Confirmed for ${callDate} at ${callSlot}.`,
-      });
-      setTimeout(() => {
-        addBotMessage(`Your callback has been locked in! 🗓️\n\n• Date: ${callDate}\n• Time Slot: ${callSlot}\n• Client: ${callName}\n\nWe will call you at ${callPhone}. Talk to you soon!`, "thank-you");
-      }, 500);
+      setIsLoading(true);
+      try {
+        const { error } = await supabase.from("contact_submissions").insert([
+          {
+            name: callName.trim(),
+            email: "scheduled-via-chat@alphaaim.in",
+            phone: callPhone.trim(),
+            subject: "Callback Scheduled (Chatbot)",
+            message: `Scheduled Date: ${callDate}\nPreferred Time Slot: ${callSlot}\nSource: Floating AI Chatbot`,
+            status: "new"
+          },
+        ]);
+
+        if (error) throw error;
+
+        setCallStep(2);
+        toast.success("Callback Scheduled!", {
+          description: `Confirmed for ${callDate} at ${callSlot}.`,
+        });
+        setTimeout(() => {
+          addBotMessage(`Your callback has been locked in! 🗓️\n\n• Date: ${callDate}\n• Time Slot: ${callSlot}\n• Client: ${callName}\n\nWe will call you at ${callPhone}. Talk to you soon!`, "thank-you");
+        }, 500);
+      } catch (err) {
+        console.error("Error scheduling callback:", err);
+        toast.error("Failed to schedule callback. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       toast.error("Please fill in all details with a valid 10-digit phone number.");
     }
