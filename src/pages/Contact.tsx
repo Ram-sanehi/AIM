@@ -190,7 +190,7 @@ const Contact = () => {
                     { icon: Twitter, href: "https://x.com/alphaaim_in", name: "Twitter/X" },
                     { icon: Facebook, href: "https://www.facebook.com/shalini.malhotra.50767984/", name: "Facebook" },
                     { icon: Instagram, href: "https://www.instagram.com/alphainvestmentmanagement?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", name: "Instagram" },
-                    { icon: MediumIcon, href: "#", name: "Medium" },
+                    { icon: MediumIcon, href: "https://medium.com/@mcp", name: "Medium" },
                   ].map((social, index) => (
                     <a
                       key={index}

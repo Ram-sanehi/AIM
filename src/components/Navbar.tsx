@@ -13,6 +13,12 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+const MediumIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M13.54 12c0 3.77-3.03 6.82-6.77 6.82S0 15.77 0 12s3.03-6.82 6.77-6.82 6.77 3.05 6.77 6.82zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zm3.04 0c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75c.66 0 1.19 2.58 1.19 5.75z" />
+  </svg>
+);
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -170,6 +176,15 @@ export function Navbar() {
                     aria-label="Twitter/X"
                   >
                     <Twitter className="h-4.5 w-4.5" />
+                  </a>
+                  <a
+                    href="https://medium.com/@mcp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-lg bg-slate-900/40 border border-border/30 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm flex items-center justify-center"
+                    aria-label="Medium"
+                  >
+                    <MediumIcon className="h-4.5 w-4.5" />
                   </a>
                 </motion.div>
               </nav>
