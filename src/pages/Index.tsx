@@ -1,9 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { AuthorityStrip } from "@/components/AuthorityStrip";
 import { AboutPreview } from "@/components/AboutPreview";
 import { Services } from "@/components/Services";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { Testimonials } from "@/components/Testimonials";
+import { TrustedInvestors } from "@/components/TrustedInvestors";
+import { FAQSection } from "@/components/FAQSection";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { StockTicker } from "@/components/StockTicker";
@@ -14,10 +16,12 @@ const Index = () => {
     <div className="min-h-screen bg-background pb-20">
       <Navbar />
       <Hero />
+      <AuthorityStrip />
       <AboutPreview />
       <Services />
       <WhyChooseUs />
-      <Testimonials />
+      <TrustedInvestors />
+      <FAQSection />
       <CTA />
       <Footer />
       <StockTicker />

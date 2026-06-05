@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Shield, Clock, ShieldCheck, Users, Award, Building2, TrendingUp } from "lucide-react";
+import { ArrowRight, Shield, Clock, ShieldCheck, Users, Award, Building2, TrendingUp, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -362,6 +362,22 @@ export function Hero() {
               Bespoke investment strategies, expert advisory, and disciplined wealth management tailored to your life goals.
             </p>
 
+            {/* Elegant Trust Strip directly below subheading */}
+            <div className="flex items-center gap-3 py-1">
+              <div className="flex gap-0.5 text-primary">
+                <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+                <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+                <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+                <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+                <Star className="h-3.5 w-3.5 fill-primary text-primary" />
+              </div>
+              <div className="text-[11px] text-muted-foreground/85 font-light tracking-wide flex items-center gap-2">
+                <span className="font-semibold text-foreground">5.0/5 Google Rating</span>
+                <span className="w-1 h-1 rounded-full bg-border/40" />
+                <span className="font-semibold text-foreground">Verified Reviews</span>
+              </div>
+            </div>
+
             {/* Trust Cards (2x2 Premium Glass Cards) */}
             <div className="grid grid-cols-2 gap-4 max-w-[380px] pt-2">
               {[
@@ -376,8 +392,11 @@ export function Hero() {
                     key={idx}
                     whileHover={{ scale: 1.02, borderColor: "rgba(212, 175, 55, 0.4)", boxShadow: "0 10px 20px rgba(212, 175, 55, 0.05)" }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col justify-between p-5 rounded-2xl border border-[#D4AF37]/15 bg-[#030B22]/60 backdrop-blur-md min-h-[105px] text-left group"
+                    className="relative overflow-hidden flex flex-col justify-between p-5 rounded-2xl border border-[#D4AF37]/15 bg-[#030B22]/60 backdrop-blur-md min-h-[105px] text-left group"
                   >
+                    {/* Subtle animated border slide-across line on card bottom */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500" />
+
                     <div className="flex justify-between items-center w-full">
                       <div className="text-xl md:text-2xl font-bold font-display text-foreground tracking-tight group-hover:text-[#D4AF37] transition-colors duration-300">
                         {item.val}
@@ -406,15 +425,6 @@ export function Hero() {
                 <Link to="/services">Our Approach</Link>
               </Button>
             </div>
-
-            {/* Trust Statement */}
-            <div className="flex items-start gap-3 pt-6 border-t border-[#D4AF37]/10 max-w-[520px]">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1 shrink-0" />
-              <div className="text-[10px] text-muted-foreground/60 tracking-wider font-light uppercase leading-relaxed">
-                <span className="text-[#D4AF37] font-semibold">Trusted by 3000+ investors</span> <br className="sm:hidden" />
-                <span className="hidden sm:inline"> — </span> Fiduciary. Independent. Committed to your legacy.
-              </div>
-            </div>
           </motion.div>
 
           {/* RIGHT SIDE (Premium Glass Wealth Philosophy Card) */}
@@ -432,8 +442,11 @@ export function Hero() {
               animate={{ opacity: 1, y: 0, rotate: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 25px 50px rgba(212, 175, 55, 0.05)" }}
-              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 border border-[#D4AF37]/25 backdrop-blur-2xl rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden"
+              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 border border-[#D4AF37]/25 backdrop-blur-2xl rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden group"
             >
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-primary group-hover:w-full transition-all duration-500" />
+
               {/* Elegant Diagonal Reflective Glare Overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
 

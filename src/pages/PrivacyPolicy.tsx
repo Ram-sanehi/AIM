@@ -66,7 +66,9 @@ const PrivacyPolicy = () => {
             className="space-y-8"
           >
             {/* 1. Introduction */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">01.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Introduction</h2>
@@ -77,7 +79,9 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* 2. Information We Collect */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">02.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Information We Collect</h2>
@@ -103,7 +107,9 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* 3. Use of Your Information */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">03.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Use of Your Information</h2>
@@ -129,7 +135,9 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* 4. Disclosure of Your Information */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">04.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Disclosure of Your Information</h2>
@@ -154,7 +162,9 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* 5. Security of Your Information */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">05.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Security of Your Information</h2>
@@ -165,7 +175,9 @@ const PrivacyPolicy = () => {
             </div>
 
             {/* 6. Contact Us */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 space-y-6 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 space-y-6 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">06.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Contact Us</h2>

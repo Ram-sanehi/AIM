@@ -231,12 +231,14 @@ const ServicesPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05, duration: 0.5 }}
-                  className={`glass-card rounded-2xl overflow-hidden border transition-all duration-300 ${
+                  className={`glass-card rounded-2xl overflow-hidden border transition-all duration-300 relative group ${
                     isExpanded 
                       ? "border-primary/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 shadow-lg shadow-primary/[0.02]" 
                       : "border-border/30 hover:border-primary/20 hover:-translate-y-[2px] bg-slate-950/20 shadow-sm"
                   }`}
                 >
+                  {/* Subtle animated border slide-across line on card bottom */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                   {/* Service Header Trigger */}
                   <button
                     onClick={() => setExpandedService(isExpanded ? null : index)}

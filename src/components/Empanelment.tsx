@@ -147,8 +147,10 @@ export function Empanelment() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
-              className="glass-card rounded-2xl p-6 text-center border border-border/30 hover:border-primary/40 hover:-translate-y-[2px] transition-all duration-300 relative group shadow-sm flex flex-col justify-between h-full"
+              className="glass-card rounded-2xl p-6 text-center border border-border/30 hover:border-primary/40 hover:-translate-y-[2px] transition-all duration-300 relative group shadow-sm flex flex-col justify-between h-full overflow-hidden"
             >
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div>
                 {/* Double-ringed badge */}
                 <div className="w-16 h-16 rounded-full border border-primary/20 bg-primary/5 flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_12px_rgba(218,165,32,0.04)]">
@@ -186,12 +188,14 @@ export function Empanelment() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05, duration: 0.5 }}
-                  className={`glass-card rounded-2xl overflow-hidden border transition-all duration-300 ${
+                  className={`glass-card rounded-2xl overflow-hidden border transition-all duration-300 relative group ${
                     isExpanded 
                       ? "border-primary/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 shadow-lg shadow-primary/[0.02]" 
                       : "border-border/30 hover:border-primary/20 hover:-translate-y-[2px] bg-slate-950/20 shadow-sm"
                   }`}
                 >
+                  {/* Subtle animated border slide-across line on card bottom */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                   {/* Category Header */}
                   <button
                     onClick={() => setExpandedCategory(isExpanded ? null : index)}
@@ -263,8 +267,10 @@ export function Empanelment() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="glass-card rounded-2xl p-8 md:p-12 border border-border/30 hover:border-primary/20 transition-all duration-500 shadow-xl relative overflow-hidden"
+          className="glass-card rounded-2xl p-8 md:p-12 border border-border/30 hover:border-primary/20 transition-all duration-500 shadow-xl relative overflow-hidden group"
         >
+          {/* Subtle animated border slide-across line on card bottom */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
           <div className="absolute top-0 right-0 w-44 h-44 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex items-center gap-4 mb-12 border-b border-border/10 pb-5">
@@ -285,13 +291,10 @@ export function Empanelment() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.04, duration: 0.5 }}
-                className="relative group overflow-hidden bg-slate-900/10 border border-border/30 rounded-2xl p-6 hover:bg-slate-900/30 transition-all duration-300 hover:border-primary/30 flex flex-col justify-between shadow-sm"
+                className="relative overflow-hidden bg-slate-900/10 border border-border/40 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-primary/30 hover:bg-primary/[0.02] transition-all duration-300 group"
               >
-                {/* Bottom slide-across indicator */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500" />
-                
                 <div>
-                  <div className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center mb-5 bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                  <div className="w-10 h-10 rounded-full border border-primary/20 group-hover:border-primary/40 flex items-center justify-center mb-5 bg-primary/5 transition-colors">
                     <indicator.icon className="h-4.5 w-4.5 text-primary" />
                   </div>
                   <h4 className="text-xs md:text-sm font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">

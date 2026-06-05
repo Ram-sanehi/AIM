@@ -73,7 +73,9 @@ const TermsOfService = () => {
             className="space-y-8"
           >
             {/* 1. Agreement to Terms */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">01.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Agreement to Terms</h2>
@@ -84,7 +86,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 2. Use License */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">02.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Use License</h2>
@@ -109,7 +113,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 3. Disclaimer */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">03.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Disclaimer</h2>
@@ -120,7 +126,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 4. Limitations */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">04.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Limitations</h2>
@@ -131,7 +139,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 5. Accuracy of Materials */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">05.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Accuracy of Materials</h2>
@@ -142,7 +152,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 6. Links */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">06.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Links</h2>
@@ -153,7 +165,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 7. Modifications */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">07.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Modifications</h2>
@@ -164,7 +178,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 8. Governing Law */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-[#030712]/30 space-y-4 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">08.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Governing Law</h2>
@@ -175,7 +191,9 @@ const TermsOfService = () => {
             </div>
 
             {/* 9. Contact Information */}
-            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 space-y-6 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 space-y-6 hover:border-primary/20 transition-all duration-300 shadow-sm group relative overflow-hidden">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="flex items-center gap-3">
                 <span className="text-sm font-bold font-display text-primary uppercase tracking-wider">09.</span>
                 <h2 className="text-xl font-bold font-display text-foreground">Contact Information</h2>

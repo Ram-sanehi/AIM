@@ -96,8 +96,11 @@ export function Services() {
             <motion.div
               key={service.title}
               variants={itemVariants}
-              className="group glass-card rounded-2xl p-8 hover-glow transition-all duration-350 hover:-translate-y-2 hover:border-primary/45 border border-white/5 bg-card/25 hover:shadow-[0_10px_30px_rgba(218,165,32,0.12)] flex flex-col justify-between"
+              className="relative overflow-hidden group glass-card rounded-2xl p-8 hover-glow transition-all duration-350 hover:-translate-y-2 hover:border-primary/30 border border-white/5 bg-card/25 hover:shadow-[0_10px_30px_rgba(218,165,32,0.12)] flex flex-col justify-between"
             >
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500" />
+
               <div>
                 <div className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300">
                   <service.icon className="h-5.5 w-5.5 text-primary-foreground" />

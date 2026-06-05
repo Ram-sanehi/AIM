@@ -42,7 +42,10 @@ export function AboutPreview() {
             transition={{ duration: 0.8 }}
             className="md:col-span-5"
           >
-            <div className="glass-card rounded-2xl p-7 border border-border/40 hover:border-primary/45 transition-all duration-350 hover:shadow-[0_10px_30px_rgba(218,165,32,0.12)] relative overflow-hidden bg-[#030712]/30 shadow-2xl">
+            <div className="group glass-card rounded-2xl p-7 border border-border/40 hover:border-primary/45 transition-all duration-350 hover:shadow-[0_10px_30px_rgba(218,165,32,0.12)] relative overflow-hidden bg-[#030712]/30 shadow-2xl">
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
+
               <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full blur-xl pointer-events-none" />
               <div className="space-y-5">
                 <div className="flex items-center gap-3">

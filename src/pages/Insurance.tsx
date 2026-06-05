@@ -383,8 +383,10 @@ const InsurancePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="glass-card rounded-2xl p-6 border border-transparent flex flex-col justify-between hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
+                className="glass-card rounded-2xl p-6 border border-transparent flex flex-col justify-between hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md relative overflow-hidden"
               >
+                {/* Subtle animated border slide-across line on card bottom */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                 <div>
                   {/* Premium circular icon area with gradient border glow */}
                   <div className="relative w-20 h-20 mx-auto mb-6">
@@ -433,8 +435,10 @@ const InsurancePage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="glass-card rounded-2xl p-6 border border-transparent flex flex-col justify-between hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md relative"
+                  className="glass-card rounded-2xl p-6 border border-transparent flex flex-col justify-between hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md relative overflow-hidden"
                 >
+                  {/* Subtle animated border slide-across line on card bottom */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                   <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-gradient-to-tr from-primary/60 to-amber-500/20 p-[2px] transition-transform duration-500 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(218,165,32,0.15)]">
                       <div className="w-full h-full rounded-full bg-[#030712] flex items-center justify-center overflow-hidden relative">
                         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-60" />
@@ -486,8 +490,11 @@ const InsurancePage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.06, duration: 0.5 }}
-                    className="glass-card rounded-2xl border border-transparent overflow-hidden hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
+                    className="glass-card rounded-2xl border border-transparent overflow-hidden hover-glow hover:border-primary/30 transition-all duration-300 group shadow-md relative"
                   >
+                    {/* Subtle animated border slide-across line on card bottom */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
+
                     <button
                       onClick={() => setExpandedOffering(isExpanded ? null : index)}
                       className="w-full p-6 text-left hover:bg-card/50 transition-colors duration-200"
@@ -586,8 +593,10 @@ const InsurancePage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.06, duration: 0.4 }}
-                    className="flex items-start gap-3 p-4 rounded-sm border border-border/30 hover:border-primary/50 transition-colors"
+                    className="flex items-start gap-3 p-4 rounded-sm border border-border/30 hover:border-primary/50 transition-colors group relative overflow-hidden"
                   >
+                    {/* Subtle animated border slide-across line on card bottom */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                     <span className="text-xs md:text-sm text-muted-foreground/80 font-light">{benefit}</span>
                   </motion.div>
@@ -606,8 +615,10 @@ const InsurancePage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.08, duration: 0.4 }}
-                    className="glass-card rounded-2xl p-4 space-y-2 text-center border border-transparent relative hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
+                    className="glass-card rounded-2xl p-4 space-y-2 text-center border border-transparent relative overflow-hidden hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
                   >
+                    {/* Subtle animated border slide-across line on card bottom */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                     <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{item.step}</span>
                     <h4 className="text-xs font-semibold text-foreground">{item.title}</h4>
                     <p className="text-[11px] text-muted-foreground/70 leading-tight font-light">{item.description}</p>
@@ -630,8 +641,10 @@ const InsurancePage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.08, duration: 0.5 }}
-                    className="glass-card rounded-2xl p-6 space-y-4 border border-transparent hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
+                    className="glass-card rounded-2xl p-6 space-y-4 border border-transparent hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md relative overflow-hidden"
                   >
+                    {/* Subtle animated border slide-across line on card bottom */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                     <h4 className="text-sm font-semibold text-foreground">{offering.title}</h4>
                     <p className="text-xs md:text-sm text-muted-foreground/80 leading-relaxed font-light">
                       {offering.description}
@@ -684,8 +697,10 @@ const InsurancePage = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.04 }}
-                    className="glass-card rounded-2xl p-4 text-center border border-transparent hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
+                    className="glass-card rounded-2xl p-4 text-center border border-transparent hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md relative overflow-hidden"
                   >
+                    {/* Subtle animated border slide-across line on card bottom */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                     <p className="text-xs font-semibold text-foreground">{partner}</p>
                   </motion.div>
                 ))}

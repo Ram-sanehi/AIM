@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -18,11 +19,6 @@ const faqs = [
       "We operate on a transparent, fee-only model. Our advisory fees are charged directly to you — either as a fixed annual retainer or as a percentage of assets under advisory (AUA). We do not earn commissions, trail fees, or referral incentives from any product provider. This eliminates conflicts of interest entirely.",
   },
   {
-    question: "How is my portfolio monitored after the initial investment?",
-    answer:
-      "We conduct quarterly portfolio reviews covering performance attribution, risk metrics, goal alignment, and market developments. You receive a written portfolio report each quarter. Additionally, we proactively reach out during significant market events or whenever rebalancing is required. You always have direct access to your advisor.",
-  },
-  {
     question: "What is the minimum investment required to get started?",
     answer:
       "There is no fixed minimum investment for our advisory services. We work with clients at various wealth stages — from first-time investors to high-net-worth families. What matters more is your commitment to a long-term financial plan. We will structure a solution appropriate to your current financial position.",
@@ -31,6 +27,16 @@ const faqs = [
     question: "How do you manage risk in volatile markets?",
     answer:
       "Risk management is embedded at every layer of our advisory process. We begin with a detailed risk profiling assessment, then construct portfolios with appropriate asset allocation across equity, debt, and liquid instruments. We avoid concentrated positions, use systematic rebalancing, and avoid market-timing speculation. Our goal is consistent, risk-adjusted growth — not maximum short-term returns.",
+  },
+  {
+    question: "Do you assist with tax planning and tax optimization?",
+    answer:
+      "Yes. Tax efficiency is a core component of our portfolio construction and advisory. We optimize asset location, manage capital gains tax liability through systematic tax-loss harvesting, and plan distributions to minimize your overall tax burden. We also guide HNI clients on tax-efficient succession and estate planning.",
+  },
+  {
+    question: "How is my portfolio monitored after the initial investment?",
+    answer:
+      "We conduct quarterly portfolio reviews covering performance attribution, risk metrics, goal alignment, and market developments. You receive a written portfolio report each quarter. Additionally, we proactively reach out during significant market events or whenever rebalancing is required. You always have direct access to your advisor.",
   },
   {
     question: "Are you a fiduciary? What does that mean for me?",
@@ -51,8 +57,8 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="py-24 bg-card/20 border-t border-border/20" aria-labelledby="faq-heading">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-card/20 border-t border-border/15" aria-labelledby="faq-heading">
+      <div className="container mx-auto px-4 max-w-5xl">
         <div className="grid lg:grid-cols-12 gap-14 items-start">
 
           {/* Left header — sticky on desktop */}
@@ -60,20 +66,20 @@ export function FAQSection() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-4 lg:sticky lg:top-28 space-y-5"
+            className="lg:col-span-4 lg:sticky lg:top-28 space-y-5 text-left"
           >
             <div>
-              <span className="section-rule mb-3" />
-              <span className="section-label block mb-3">Common Questions</span>
-              <h2 id="faq-heading" className="font-display font-bold leading-tight">
-                Frequently{" "}
-                <span className="gold-text">Asked Questions</span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-[9px] font-bold tracking-widest uppercase text-primary mb-3">
+                <HelpCircle className="h-3 w-3 text-primary" /> Common Questions
+              </span>
+              <h2 id="faq-heading" className="text-3xl font-display font-bold leading-tight">
+                Frequently <span className="gold-text">Asked Questions</span>
               </h2>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed font-light">
               Answers to the questions we hear most often from prospective and existing clients.
               If you have a question not covered here, please{" "}
-              <a href="/contact" className="text-primary hover:text-primary/80 transition-colors underline underline-offset-2">
+              <a href="/contact" className="text-primary hover:text-primary/80 transition-colors underline underline-offset-2 font-medium">
                 reach out directly
               </a>.
             </p>
@@ -97,7 +103,7 @@ export function FAQSection() {
                   <AccordionTrigger className="text-left text-sm font-semibold text-foreground hover:text-primary transition-colors duration-200 hover:no-underline py-4 gap-4">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground/85 leading-relaxed font-light pb-5 pr-8">
+                  <AccordionContent className="text-sm text-muted-foreground/85 leading-relaxed font-light pb-5 pr-8 text-left">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

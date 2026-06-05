@@ -114,9 +114,11 @@ export function ContactForm() {
     <motion.form
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-card rounded-2xl p-6 md:p-8 space-y-6 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 shadow-lg shadow-primary/[0.01] hover:border-primary/20 transition-all duration-300"
+      className="glass-card rounded-2xl p-6 md:p-8 space-y-6 border border-border/30 bg-gradient-to-b from-slate-900/40 via-slate-950/20 to-slate-950/10 shadow-lg shadow-primary/[0.01] hover:border-primary/20 transition-all duration-300 relative overflow-hidden group"
       onSubmit={handleSubmit}
     >
+      {/* Subtle animated border slide-across line on card bottom */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="name" className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/80 pl-1">

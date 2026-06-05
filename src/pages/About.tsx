@@ -155,7 +155,7 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Founder Spotlight Card */}
+            {/* Elevated Founder Fiduciary Spotlight Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -163,9 +163,17 @@ const About = () => {
               transition={{ duration: 0.8 }}
               className="lg:col-span-5"
             >
-              <div className="glass-card rounded-2xl p-8 border border-border/40 relative overflow-hidden group shadow-2xl">
+              <div className="glass-card rounded-2xl p-8 border border-primary/20 relative overflow-hidden group shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] hover:shadow-primary/[0.02] bg-slate-950/45">
+                {/* Subtle animated border slide-across line on card bottom */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full blur-xl pointer-events-none" />
                 <div className="space-y-6">
+                  {/* Years Experience Badge */}
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-[9px] font-bold tracking-widest uppercase text-primary">
+                    <Shield className="h-3 w-3 text-primary" />
+                    10+ Years Fiduciary Advisory
+                  </div>
+
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-primary to-amber-500/30 p-[1.5px]">
                       <div className="w-full h-full rounded-full bg-slate-950 flex items-center justify-center font-display text-xl font-bold text-primary">
@@ -174,17 +182,30 @@ const About = () => {
                     </div>
                     <div>
                       <h4 className="text-lg font-bold text-foreground">Nageshwar Prasad</h4>
-                      <p className="text-xs text-primary font-semibold tracking-wider uppercase">Founder &amp; Business Head</p>
+                      <p className="text-xs text-primary/80 font-semibold tracking-wider uppercase">Founder &amp; Business Head</p>
                     </div>
                   </div>
                   
-                  <blockquote className="text-sm italic text-muted-foreground/90 leading-relaxed border-l-2 border-primary/40 pl-4 py-1">
-                    "True wealth advisory is not about chasing short-term speculation. It is about constructing resilient, custom portfolios that safeguard your family's future, built entirely on transparency and absolute alignment of interest."
+                  <blockquote className="text-xs italic text-muted-foreground/95 leading-relaxed border-l-2 border-primary/35 pl-4 py-1.5 font-light">
+                    "True wealth advisory is not about chasing short-term returns or speculative products. It is about constructing resilient, custom portfolios that protect your legacy, built on conflict-free fiduciary care."
                   </blockquote>
 
-                  <div className="pt-4 border-t border-border/20 flex justify-between items-center text-xs text-muted-foreground font-mono">
-                    <span>SEBI Registered Advisor</span>
-                    <span>Est. 2014</span>
+                  {/* Fiduciary Commitment Note */}
+                  <div className="p-3.5 rounded-xl border border-primary/10 bg-primary/[0.02] text-[11px] text-muted-foreground/95 font-light leading-relaxed">
+                    <span className="font-semibold text-primary block mb-0.5">Fiduciary Standard:</span>
+                    Our fee-only structure eliminates commissions, aligning our success entirely with yours. We are legally bound to put your interests first.
+                  </div>
+
+                  {/* Credentials list */}
+                  <div className="grid grid-cols-2 gap-2 pt-2 border-t border-border/10 text-[9.5px] text-muted-foreground font-mono">
+                    <div className="flex flex-col">
+                      <span className="text-[8px] uppercase tracking-wider text-muted-foreground/50">SEBI Reg No.</span>
+                      <span className="font-semibold text-foreground">INA000017348</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[8px] uppercase tracking-wider text-muted-foreground/50">Credentials</span>
+                      <span className="font-semibold text-foreground">CFA Candidate / MSc Finance</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -312,12 +333,15 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="glass-card rounded-2xl p-6 border border-border/30 flex flex-col justify-between hover-glow hover:border-primary/40 transition-all duration-300 group shadow-md"
+                className="relative group overflow-hidden glass-card rounded-2xl p-6 border border-border/30 flex flex-col justify-between hover-glow hover:border-primary/30 transition-all duration-300 shadow-md"
               >
+                {/* Subtle animated border slide-across line on card bottom */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500" />
+
                 <div className="flex flex-col h-full justify-between">
                   <div>
                     {/* Premium circular profile image placeholder */}
-                    <div className="relative w-24 h-24 mx-auto mb-6">
+                    <div className="relative w-24 h-24 mx-auto mb-8">
                       <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/60 to-amber-500/20 p-[2px] transition-transform duration-500 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(218,165,32,0.15)]">
                         <div className="w-full h-full rounded-full bg-[#030712] flex items-center justify-center overflow-hidden relative">
                           <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-60" />
@@ -326,9 +350,19 @@ const About = () => {
                           </span>
                         </div>
                       </div>
+                      {/* Intersecting LinkedIn button */}
+                      <a
+                        href={member.social.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-8 h-8 rounded-full bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300 shadow-md z-10"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin className="h-3.5 w-3.5" />
+                      </a>
                     </div>
 
-                    <h3 className="text-lg font-bold text-center text-foreground group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                    <h3 className="text-lg font-bold text-center text-foreground group-hover:text-primary transition-colors duration-300 mt-2">{member.name}</h3>
                     <p className="text-xs font-semibold text-primary/80 uppercase tracking-widest text-center mt-1 mb-6 border-b border-border/20 pb-3">{member.role}</p>
                     
                     <ul className="space-y-2.5 text-left mb-4">
@@ -339,36 +373,6 @@ const About = () => {
                         </li>
                       ))}
                     </ul>
-                  </div>
-
-                  <div className="flex justify-center gap-3 mt-6 pt-4 border-t border-border/15">
-                    <a
-                      href={member.social.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-lg bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                      aria-label="LinkedIn"
-                    >
-                      <Linkedin className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={member.social.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-lg bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                      aria-label="Facebook"
-                    >
-                      <Facebook className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={member.social.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-8 h-8 rounded-lg bg-[#030712] border border-border/60 hover:border-primary/60 flex items-center justify-center text-muted-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                      aria-label="Instagram"
-                    >
-                      <Instagram className="h-4 w-4" />
-                    </a>
                   </div>
                 </div>
               </motion.div>
@@ -386,8 +390,10 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-b from-slate-900/30 to-slate-950/40 border border-border/40 rounded-2xl p-8 md:p-10 hover-glow hover:border-primary/30 transition-all duration-300 flex flex-col justify-between"
+              className="group relative overflow-hidden bg-gradient-to-b from-slate-900/30 to-slate-950/40 border border-border/40 rounded-2xl p-8 md:p-10 hover-glow hover:border-primary/30 transition-all duration-300 flex flex-col justify-between"
             >
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div>
                 <div className="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center mb-6 bg-primary/5">
                   <Target className="h-5 w-5 text-primary" />
@@ -405,8 +411,10 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="glass-card rounded-2xl p-8 md:p-10 border border-primary/20 hover-glow hover:border-primary/40 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+              className="group glass-card rounded-2xl p-8 md:p-10 border border-primary/20 hover-glow hover:border-primary/40 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
             >
+              {/* Subtle animated border slide-across line on card bottom */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
               <div>
                 <div className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center mb-6 bg-primary/10 shadow-[0_0_15px_rgba(218,165,32,0.1)]">
@@ -455,7 +463,9 @@ const About = () => {
                 >
                   {/* Left or Right card placement */}
                   <div className={`flex-1 w-full pl-8 md:pl-0 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                    <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/30 inline-block text-left hover-glow hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 w-full max-w-md shadow-md">
+                    <div className="group relative overflow-hidden glass-card rounded-2xl p-6 md:p-8 border border-border/30 inline-block text-left hover-glow hover:-translate-y-1 hover:border-primary/40 transition-all duration-300 w-full max-w-md shadow-md">
+                      {/* Subtle animated border slide-across line on card bottom */}
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                       <span className="text-2xl font-bold font-display gold-text tracking-tight block mb-2">{milestone.year}</span>
                       <h3 className="text-lg font-bold text-foreground mb-2">{milestone.title}</h3>
                       <p className="text-xs md:text-sm text-muted-foreground/90 font-light leading-relaxed">{milestone.description}</p>

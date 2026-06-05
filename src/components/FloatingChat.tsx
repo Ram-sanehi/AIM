@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 interface Message {
   id: string;
@@ -647,6 +648,22 @@ export function FloatingChat() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Sticky Consultation Side-Pill on Desktop */}
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:block"
+      >
+        <Link
+          to="/contact"
+          className="flex items-center gap-2.5 pl-4 pr-5 py-3.5 bg-slate-950/90 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-slate-950 font-bold text-[10px] uppercase tracking-wider rounded-l-xl border-l border-y border-[#D4AF37]/35 shadow-2xl transition-all duration-300 transform translate-x-[70%] hover:translate-x-0 cursor-pointer"
+        >
+          <Calendar className="h-4.5 w-4.5 shrink-0" />
+          <span>Book Consultation</span>
+        </Link>
+      </motion.div>
 
       {/* Floating WhatsApp button */}
       <motion.a

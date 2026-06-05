@@ -45,9 +45,6 @@ export function Navbar() {
             ? "top-4 moving-border-glow-nav backdrop-blur-lg rounded-2xl"
             : "top-6 bg-[#030B22]/40 backdrop-blur-md border border-[#D4AF37]/15 shadow-[0_0_30px_rgba(212,175,55,0.03)] hover:shadow-[0_0_35px_rgba(212,175,55,0.08)] rounded-2xl"
         }`}
-        initial={{ y: -100, x: "-50%" }}
-        animate={{ y: 0, x: "-50%" }}
-        transition={{ duration: 0.5 }}
       >
         <div className="container mx-auto px-6">
           <div className={`flex items-center justify-between transition-all duration-300 ${
