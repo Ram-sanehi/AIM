@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
@@ -48,14 +48,18 @@ export function Navbar() {
             scrolled ? "h-14" : "h-17"
           }`}>
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border border-[#D4AF37]/20 bg-slate-950">
+            <Link to="/" className="flex items-center gap-3 group shrink-0">
+              <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border border-[#D4AF37]/35 bg-slate-950">
                 <img src="/logo-circular1.png" alt="Alpha Investment Management" width="44" height="44" className="w-full h-full object-cover" />
               </div>
-              <div className="hidden sm:block">
-                <h1 className="text-[12px] md:text-[13px] font-display font-bold gold-text tracking-widest leading-none uppercase">Alpha Investment Management</h1>
+              <div className="hidden sm:flex flex-col text-left">
+                <span className="text-[10px] md:text-[11px] font-display font-bold text-[#D4AF37] tracking-[0.15em] leading-tight uppercase">Alpha Investment</span>
+                <span className="text-[8px] md:text-[8.5px] font-sans font-medium text-foreground/80 tracking-[0.3em] leading-tight uppercase mt-0.5">Management</span>
               </div>
             </Link>
+
+            {/* Separator line */}
+            <div className="hidden lg:block h-6 w-[1px] bg-[#D4AF37]/25 mx-4 shrink-0" />
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
@@ -82,9 +86,12 @@ export function Navbar() {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden lg:flex items-center gap-4">
-              <Button asChild size="sm" className="gold-gradient text-primary-foreground hover:opacity-95 font-semibold text-[10px] uppercase tracking-widest px-5 h-8.5 rounded-sm shadow-md shadow-primary/5 hover:shadow-[#D4AF37]/15 transition-all duration-300 hover:scale-[1.02]">
-                <Link to="/contact">Schedule Consultation</Link>
+            <div className="hidden lg:flex items-center gap-4 shrink-0">
+              <Button asChild size="sm" className="gold-gradient text-primary-foreground hover:opacity-95 font-semibold text-[10px] uppercase tracking-widest px-5 h-9 rounded-lg shadow-md shadow-primary/5 hover:shadow-[#D4AF37]/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                <Link to="/contact" className="inline-flex items-center gap-2">
+                  Schedule Consultation
+                  <ArrowRight className="h-3.5 w-3.5 text-primary-foreground" />
+                </Link>
               </Button>
             </div>
 
