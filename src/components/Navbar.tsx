@@ -34,9 +34,9 @@ export function Navbar() {
     <>
       {/* Floating Header */}
       <motion.header
-        className={`fixed left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50 transition-all duration-300 ${
+        className={`fixed left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50 transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.03)] hover:shadow-[0_0_35px_rgba(212,175,55,0.08)] ${
           scrolled
-            ? "top-4 bg-[#030B22]/85 backdrop-blur-lg border border-[#D4AF37]/25 shadow-2xl rounded-2xl"
+            ? "top-4 bg-[#030B22]/85 backdrop-blur-lg border border-[#D4AF37]/25 rounded-2xl"
             : "top-6 bg-[#030B22]/40 backdrop-blur-md border border-[#D4AF37]/15 rounded-2xl"
         }`}
         initial={{ y: -100, x: "-50%" }}
