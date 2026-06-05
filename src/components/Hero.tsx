@@ -421,7 +421,7 @@ export function Hero() {
           <div className="lg:col-span-5 flex justify-center items-center relative mt-8 lg:mt-0">
             
             {/* Soft gold glowing blob behind the card */}
-            <div className="absolute -inset-16 bg-[radial-gradient(circle,_rgba(212,175,55,0.25)_0%,_rgba(212,175,55,0.06)_50%,_transparent_70%)] rounded-full blur-[80px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: "10s" }} />
+            <div className="absolute -inset-16 bg-[radial-gradient(circle,_rgba(212,175,55,0.35)_0%,_rgba(212,175,55,0.1)_50%,_transparent_70%)] rounded-full blur-[80px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: "10s" }} />
 
             {/* Premium Gold Accent Ring Behind Card */}
             <div className="absolute w-[95%] h-[95%] border border-[#D4AF37]/10 rounded-3xl -rotate-2 scale-98 pointer-events-none z-0" />
@@ -438,7 +438,7 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent -translate-y-full hover:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
 
               {/* Center Bubble Blob Glow Effect */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[radial-gradient(circle,_rgba(212,175,55,0.25)_0%,_rgba(212,175,55,0.05)_50%,_transparent_70%)] blur-[40px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: "8s" }} />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-[radial-gradient(circle,_rgba(212,175,55,0.35)_0%,_rgba(212,175,55,0.08)_50%,_transparent_70%)] blur-[40px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: "8s" }} />
               
               {/* Top Card Header */}
               <div className="border-b border-[#D4AF37]/25 pb-5 mb-8 relative z-10">
