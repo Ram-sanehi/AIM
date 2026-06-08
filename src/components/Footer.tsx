@@ -24,12 +24,12 @@ const quickLinks = [
 ];
 
 const services = [
-  "Investment Management",
-  "Financial Planning",
-  "Loan Services",
-  "Insurance Solutions",
-  "Tax Planning",
-  "Retirement Planning",
+  { label: "Investment Management", href: "/services", external: false },
+  { label: "Financial Planning", href: "/services", external: false },
+  { label: "Loan Services", href: "/services", external: false },
+  { label: "Insurance Mall ↗", href: "https://insurancemall.alphaaim.in", external: true },
+  { label: "Tax Planning", href: "/services", external: false },
+  { label: "Retirement Planning", href: "/services", external: false },
 ];
 
 const MediumIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -155,13 +155,22 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service}>
-                  <Link
-                    to="/services"
-                    className="text-muted-foreground/85 hover:text-primary transition-all duration-300 text-sm font-light inline-flex items-center gap-1 hover:translate-x-1"
-                  >
-                    {service}
-                  </Link>
+                <li key={service.label}>
+                  {service.external ? (
+                    <a
+                      href={service.href}
+                      className="text-muted-foreground/85 hover:text-primary transition-all duration-300 text-sm font-light inline-flex items-center gap-1 hover:translate-x-1"
+                    >
+                      {service.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={service.href}
+                      className="text-muted-foreground/85 hover:text-primary transition-all duration-300 text-sm font-light inline-flex items-center gap-1 hover:translate-x-1"
+                    >
+                      {service.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

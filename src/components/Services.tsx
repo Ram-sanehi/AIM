@@ -17,36 +17,48 @@ const services = [
     title: "Investment Management",
     description: "Strategic portfolio management with diversified investment solutions for optimal returns.",
     features: ["Equity & Debt Funds", "Portfolio Rebalancing", "Risk Assessment"],
+    link: "/services",
+    external: false,
   },
   {
     icon: PiggyBank,
     title: "Financial Planning",
     description: "Comprehensive financial planning to achieve your short-term and long-term goals.",
     features: ["Goal-based Planning", "Cash Flow Analysis", "Budget Management"],
+    link: "/services",
+    external: false,
   },
   {
     icon: Building2,
     title: "Loan Services",
     description: "Access to competitive loan products for personal, home, and business needs.",
     features: ["Home Loans", "Personal Loans", "Business Financing"],
+    link: "/services",
+    external: false,
   },
   {
     icon: Shield,
-    title: "Insurance & Risk Management",
-    description: "Protect your family and assets with comprehensive insurance solutions.",
-    features: ["Life Insurance", "Health Coverage", "General Insurance"],
+    title: "Insurance Mall",
+    description: "Comprehensive insurance solutions through our dedicated Insurance Mall portal.",
+    features: ["Life & Health Insurance", "Vehicle Insurance", "Business Coverage"],
+    link: "https://insurancemall.alphaaim.in",
+    external: true,
   },
   {
     icon: Calculator,
     title: "Tax Mitigation Strategy",
     description: "Optimize your tax liabilities with strategic planning and ELSS investments.",
     features: ["Tax Planning", "ELSS Investments", "80C Optimization"],
+    link: "/services",
+    external: false,
   },
   {
     icon: Briefcase,
     title: "Retirement Planning",
     description: "Secure your golden years with tailored retirement and estate planning.",
     features: ["NPS & PPF", "Pension Plans", "Estate Planning"],
+    link: "/services",
+    external: false,
   },
 ];
 
@@ -125,12 +137,21 @@ export function Services() {
               </div>
 
               <div className="pt-2">
-                <Link 
-                  to="/services" 
-                  className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold uppercase tracking-wider hover:gap-2.5 transition-all duration-300"
-                >
-                  {buttonLabels[index % buttonLabels.length]} <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                {service.external ? (
+                  <a 
+                    href={service.link}
+                    className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold uppercase tracking-wider hover:gap-2.5 transition-all duration-300"
+                  >
+                    Visit Insurance Mall <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                ) : (
+                  <Link 
+                    to={service.link} 
+                    className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold uppercase tracking-wider hover:gap-2.5 transition-all duration-300"
+                  >
+                    {buttonLabels[index % buttonLabels.length]} <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
+import { Menu, X, Phone, Mail, Facebook, Instagram, Twitter, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/insurance", label: "Insurance" },
-  { href: "/empanelment", label: "Empanelment" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Home", external: false },
+  { href: "/about", label: "About", external: false },
+  { href: "/services", label: "Services", external: false },
+  { href: "https://insurancemall.alphaaim.in", label: "Insurance Mall", external: true },
+  { href: "/empanelment", label: "Empanelment", external: false },
+  { href: "/contact", label: "Contact", external: false },
 ];
 
 const MediumIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -63,24 +63,35 @@ export function Navbar() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`relative text-[11px] font-semibold uppercase tracking-wider transition-colors py-1 hover:text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-300 ${
-                    location.pathname === link.href
-                      ? "text-primary"
-                      : "text-foreground/80"
-                  }`}
-                >
-                  {link.label}
-                  {location.pathname === link.href && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#D4AF37] rounded-full"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                </Link>
+                link.external ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="relative text-[11px] font-semibold uppercase tracking-wider transition-colors py-1 hover:text-primary text-foreground/80 inline-flex items-center gap-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-300"
+                  >
+                    {link.label}
+                    <ExternalLink className="h-2.5 w-2.5 opacity-50" />
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`relative text-[11px] font-semibold uppercase tracking-wider transition-colors py-1 hover:text-primary after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left after:duration-300 ${
+                      location.pathname === link.href
+                        ? "text-primary"
+                        : "text-foreground/80"
+                    }`}
+                  >
+                    {link.label}
+                    {location.pathname === link.href && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#D4AF37] rounded-full"
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                )
               ))}
             </nav>
 
@@ -119,16 +130,26 @@ export function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                   >
-                    <Link
-                      to={link.href}
-                      className={`block py-2.5 px-4 rounded text-xs font-semibold uppercase tracking-wider transition-colors ${
-                        location.pathname === link.href
-                          ? "bg-[#D4AF37]/10 text-primary"
-                          : "text-foreground hover:bg-[#030B22]/50 hover:text-primary"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        className="block py-2.5 px-4 rounded text-xs font-semibold uppercase tracking-wider transition-colors text-foreground hover:bg-[#030B22]/50 hover:text-primary inline-flex items-center gap-1.5"
+                      >
+                        {link.label}
+                        <ExternalLink className="h-2.5 w-2.5 opacity-50" />
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className={`block py-2.5 px-4 rounded text-xs font-semibold uppercase tracking-wider transition-colors ${
+                          location.pathname === link.href
+                            ? "bg-[#D4AF37]/10 text-primary"
+                            : "text-foreground hover:bg-[#030B22]/50 hover:text-primary"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
                 <motion.div

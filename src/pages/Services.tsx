@@ -12,8 +12,10 @@ import {
   Calculator, 
   Briefcase,
   ChevronDown,
-  Check
+  Check,
+  ExternalLink
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -102,33 +104,13 @@ const services = [
   },
   {
     icon: Shield,
-    title: "Insurance & Risk Management",
-    description: "A proactive shield for your wealth and loved ones, ensuring robust risk transfer through leading insurance structures.",
-    keyBenefits: [
-      "Comprehensive coverage analysis",
-      "Best-in-class insurance products",
-      "Claims assistance support",
-      "Regular policy reviews",
-      "Family protection planning",
-    ],
-    process: [
-      "Need Assessment - Evaluating your protection requirements",
-      "Gap Analysis - Identifying coverage gaps",
-      "Product Selection - Choosing appropriate insurance products",
-      "Policy Procurement - Securing optimal coverage",
-      "Claim Support - Assisting during claims",
-    ],
-    offerings: [
-      "Two & Four Wheeler Insurance",
-      "Commercial Vehicle Insurance",
-      "Health Insurance",
-      "Term Insurance",
-      "Life Insurance",
-      "Pension Schemes",
-      "Travel Insurance",
-      "Home & Shop Insurance",
-      "Industrial Insurance",
-    ],
+    title: "Insurance Mall",
+    description: "Comprehensive insurance solutions are now available through our dedicated Insurance Mall — a unit of Alpha Investment Management.",
+    keyBenefits: [],
+    process: [],
+    offerings: [],
+    isExternal: true,
+    externalLink: "https://insurancemall.alphaaim.in",
   },
   {
     icon: Calculator,
@@ -150,7 +132,7 @@ const services = [
     ],
     offerings: [
       "Section 80C Deductions (LIC, PPF, ELSS, FD)",
-      "Section 80D Health Insurance",
+      "Section 80D Medical Deductions",
       "Section 24 Home Loan Interest",
       "Section 80E Education Loan",
       "Capital Gains Planning",
@@ -240,6 +222,29 @@ const ServicesPage = () => {
                   {/* Subtle animated border slide-across line on card bottom */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
                   {/* Service Header Trigger */}
+                  {(service as any).isExternal ? (
+                    <a
+                      href={(service as any).externalLink}
+                      className="w-full p-6 md:p-8 flex items-center gap-5 md:gap-6 text-left transition-colors relative group"
+                    >
+                      <div className="w-14 h-14 rounded-2xl border border-primary/20 bg-primary/5 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(218,165,32,0.03)]">
+                        <service.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <div className="flex-1 space-y-1">
+                        <h3 className="text-lg md:text-xl font-bold font-display text-foreground group-hover:text-primary transition-colors duration-300 flex items-center gap-2">
+                          {service.title}
+                          <ExternalLink className="h-4 w-4 text-primary/50" />
+                        </h3>
+                        <p className="text-muted-foreground/85 text-xs md:text-sm font-light leading-relaxed max-w-2xl">
+                          {service.description}
+                        </p>
+                      </div>
+                      <Button className="gold-gradient text-primary-foreground hover:opacity-95 font-semibold text-[10px] uppercase tracking-wider px-5 h-9 rounded-sm shadow-md hidden md:inline-flex">
+                        Visit Insurance Mall
+                        <ExternalLink className="h-3 w-3 ml-1.5" />
+                      </Button>
+                    </a>
+                  ) : (
                   <button
                     onClick={() => setExpandedService(isExpanded ? null : index)}
                     className="w-full p-6 md:p-8 flex items-center gap-5 md:gap-6 text-left transition-colors relative group"
@@ -270,6 +275,7 @@ const ServicesPage = () => {
                       />
                     </div>
                   </button>
+                  )}
 
                   {/* Expanded Content Details */}
                   <AnimatePresence>

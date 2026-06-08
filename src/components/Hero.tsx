@@ -162,150 +162,39 @@ export function Hero() {
         {/* Animated wispy threads (plasma streams) */}
         
         {/* Thread 1 */}
-        <motion.path
-          d="M -150,300 C 250,550 550,200 1350,220"
-          fill="none"
-          stroke="url(#gold-thread-1)"
-          strokeWidth="0.8"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,300 C 250,550 550,200 1350,220",
-              "M -150,280 C 220,570 580,170 1350,200",
-              "M -150,300 C 250,550 550,200 1350,220"
-            ]
-          }}
-          transition={{
-            duration: 32,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-
-        {/* Thread 2 */}
-        <motion.path
-          d="M -150,320 C 230,520 570,220 1350,190"
-          fill="none"
-          stroke="url(#gold-thread-2)"
-          strokeWidth="0.6"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,320 C 230,520 570,220 1350,190",
-              "M -150,340 C 260,500 540,240 1350,210",
-              "M -150,320 C 230,520 570,220 1350,190"
-            ]
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-
-        {/* Thread 3 */}
-        <motion.path
-          d="M -150,280 C 270,580 530,180 1350,250"
-          fill="none"
-          stroke="url(#gold-thread-3)"
-          strokeWidth="0.5"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,280 C 270,580 530,180 1350,250",
-              "M -150,290 C 240,590 560,150 1350,230",
-              "M -150,280 C 270,580 530,180 1350,250"
-            ]
-          }}
-          transition={{
-            duration: 36,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-
-        {/* Thread 4 */}
-        <motion.path
-          d="M -150,350 C 200,480 600,250 1350,160"
-          fill="none"
-          stroke="url(#gold-thread-1)"
-          strokeWidth="0.5"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,350 C 200,480 600,250 1350,160",
-              "M -150,330 C 210,490 590,230 1350,180",
-              "M -150,350 C 200,480 600,250 1350,160"
-            ]
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1.5
-          }}
-        />
-
-        {/* Thread 5 */}
-        <motion.path
-          d="M -150,250 C 300,600 500,120 1350,280"
-          fill="none"
-          stroke="url(#gold-thread-2)"
-          strokeWidth="0.4"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,250 C 300,600 500,120 1350,280",
-              "M -150,270 C 280,590 520,130 1350,260",
-              "M -150,250 C 300,600 500,120 1350,280"
-            ]
-          }}
-          transition={{
-            duration: 40,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3
-          }}
-        />
-
-        {/* Thread 6 */}
-        <motion.path
-          d="M -150,220 C 280,440 520,130 1350,140"
-          fill="none"
-          stroke="url(#gold-thread-3)"
-          strokeWidth="0.4"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,220 C 280,440 520,130 1350,140",
-              "M -150,240 C 260,420 540,150 1350,120",
-              "M -150,220 C 280,440 520,130 1350,140"
-            ]
-          }}
-          transition={{
-            duration: 34,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-
-        {/* Thread 7 */}
-        <motion.path
-          d="M -150,380 C 180,500 580,280 1350,290"
-          fill="none"
-          stroke="url(#gold-thread-1)"
-          strokeWidth="0.6"
-          animate={isMobileScreen ? undefined : {
-            d: [
-              "M -150,380 C 180,500 580,280 1350,290",
-              "M -150,360 C 200,520 560,260 1350,310",
-              "M -150,380 C 180,500 580,280 1350,290"
-            ]
-          }}
-          transition={{
-            duration: 42,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 4
-          }}
-        />
+        {!isMobileScreen && (
+          <>
+            <motion.path d="M -150,300 C 250,550 550,200 1350,220" fill="none" stroke="url(#gold-thread-1)" strokeWidth="0.8"
+              animate={{ d: ["M -150,300 C 250,550 550,200 1350,220", "M -150,280 C 220,570 580,170 1350,200", "M -150,300 C 250,550 550,200 1350,220"] }}
+              transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }} />
+            <motion.path d="M -150,320 C 230,520 570,220 1350,190" fill="none" stroke="url(#gold-thread-2)" strokeWidth="0.6"
+              animate={{ d: ["M -150,320 C 230,520 570,220 1350,190", "M -150,340 C 260,500 540,240 1350,210", "M -150,320 C 230,520 570,220 1350,190"] }}
+              transition={{ duration: 28, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
+            <motion.path d="M -150,280 C 270,580 530,180 1350,250" fill="none" stroke="url(#gold-thread-3)" strokeWidth="0.5"
+              animate={{ d: ["M -150,280 C 270,580 530,180 1350,250", "M -150,290 C 240,590 560,150 1350,230", "M -150,280 C 270,580 530,180 1350,250"] }}
+              transition={{ duration: 36, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+            <motion.path d="M -150,350 C 200,480 600,250 1350,160" fill="none" stroke="url(#gold-thread-1)" strokeWidth="0.5"
+              animate={{ d: ["M -150,350 C 200,480 600,250 1350,160", "M -150,330 C 210,490 590,230 1350,180", "M -150,350 C 200,480 600,250 1350,160"] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 1.5 }} />
+            <motion.path d="M -150,250 C 300,600 500,120 1350,280" fill="none" stroke="url(#gold-thread-2)" strokeWidth="0.4"
+              animate={{ d: ["M -150,250 C 300,600 500,120 1350,280", "M -150,270 C 280,590 520,130 1350,260", "M -150,250 C 300,600 500,120 1350,280"] }}
+              transition={{ duration: 40, repeat: Infinity, ease: "easeInOut", delay: 3 }} />
+            <motion.path d="M -150,220 C 280,440 520,130 1350,140" fill="none" stroke="url(#gold-thread-3)" strokeWidth="0.4"
+              animate={{ d: ["M -150,220 C 280,440 520,130 1350,140", "M -150,240 C 260,420 540,150 1350,120", "M -150,220 C 280,440 520,130 1350,140"] }}
+              transition={{ duration: 34, repeat: Infinity, ease: "easeInOut", delay: 2 }} />
+            <motion.path d="M -150,380 C 180,500 580,280 1350,290" fill="none" stroke="url(#gold-thread-1)" strokeWidth="0.6"
+              animate={{ d: ["M -150,380 C 180,500 580,280 1350,290", "M -150,360 C 200,520 560,260 1350,310", "M -150,380 C 180,500 580,280 1350,290"] }}
+              transition={{ duration: 42, repeat: Infinity, ease: "easeInOut", delay: 4 }} />
+          </>
+        )}
+        {isMobileScreen && (
+          <>
+            <path d="M -150,300 C 250,550 550,200 1350,220" fill="none" stroke="url(#gold-thread-1)" strokeWidth="0.8" />
+            <path d="M -150,320 C 230,520 570,220 1350,190" fill="none" stroke="url(#gold-thread-2)" strokeWidth="0.6" />
+            <path d="M -150,280 C 270,580 530,180 1350,250" fill="none" stroke="url(#gold-thread-3)" strokeWidth="0.5" />
+            <path d="M -150,350 C 200,480 600,250 1350,160" fill="none" stroke="url(#gold-thread-1)" strokeWidth="0.5" />
+          </>
+        )}
 
         {/* Parallel fanned curved line patterns behind right side cards */}
         {Array.from({ length: 32 }).map((_, i) => {
