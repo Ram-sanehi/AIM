@@ -13,7 +13,8 @@ import {
   Linkedin, 
   Instagram,
   Check,
-  Star
+  Star,
+  MessageCircle
 } from "lucide-react";
 
 const contactInfo = [
@@ -64,6 +65,7 @@ const Contact = () => {
     <div className="min-h-screen bg-background pb-20">
       <Navbar />
       <StockTicker />
+      <main>
 
       {/* Hero Section */}
       <section className="py-28 md:py-36 hero-gradient relative overflow-hidden border-b border-border/10">
@@ -158,6 +160,32 @@ const Contact = () => {
                   </motion.div>
                 ))}
               </div>
+
+              {/* WhatsApp Card */}
+              <motion.a
+                href="https://wa.me/919607509586?text=Hi%2C%20I%20would%20like%20to%20schedule%20a%20wealth%20management%20consultation."
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.25, duration: 0.5 }}
+                className="relative overflow-hidden glass-card rounded-2xl p-6 border border-border/30 hover:border-emerald-500/45 hover:-translate-y-[2px] transition-all duration-300 shadow-sm flex items-start gap-5 group block"
+              >
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-emerald-500 group-hover:w-full transition-all duration-500 z-10" />
+                <div className="w-12 h-12 rounded-xl border border-emerald-500/30 bg-emerald-500/5 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <MessageCircle className="h-5 w-5 text-emerald-500" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-foreground mb-1 text-xs uppercase tracking-wider">WhatsApp Us</h3>
+                  <p className="text-muted-foreground/80 text-sm font-light leading-relaxed">
+                    Chat directly with an advisor for a quick consultation or query.
+                  </p>
+                  <span className="mt-2 inline-block text-[9px] font-bold text-emerald-500 uppercase tracking-[0.12em] bg-emerald-500/5 px-2.5 py-1 rounded border border-emerald-500/15">
+                    +91 9607509586
+                  </span>
+                </div>
+              </motion.a>
 
               {/* Trust Badge Grid Card */}
               <div className="glass-card rounded-2xl p-6 border border-border/30 bg-[#030712]/30 space-y-4 shadow-sm group relative overflow-hidden transition-all duration-300 hover:border-primary/30">
@@ -362,6 +390,7 @@ const Contact = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

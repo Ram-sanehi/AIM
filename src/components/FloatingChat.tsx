@@ -271,7 +271,7 @@ export function FloatingChat() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 30 }}
             transition={{ type: "spring", stiffness: 300, damping: 28 }}
-            className="fixed bottom-24 sm:bottom-28 right-4 sm:right-6 w-[calc(100%-2rem)] sm:w-[400px] h-[min(85vh,620px)] bg-[#030712]/95 backdrop-blur-xl rounded-2xl shadow-2xl flex flex-col z-50 border border-white/10 overflow-hidden"
+            className="fixed bottom-32 sm:bottom-28 right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] h-[min(80vh,620px)] sm:h-[min(85vh,620px)] bg-[#030712]/95 backdrop-blur-xl rounded-2xl shadow-2xl flex flex-col z-50 border border-white/10 overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-amber-500 to-yellow-600 p-4 flex justify-between items-center shadow-lg border-b border-white/10">
@@ -675,7 +675,7 @@ export function FloatingChat() {
         transition={{ delay: 0.5, type: "spring", stiffness: 280, damping: 20 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.92 }}
-        className="fixed bottom-[104px] right-6 w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 shadow-xl flex items-center justify-center z-50 text-white hover:shadow-2xl transition-all border border-white/10 shadow-emerald-500/20"
+        className="fixed bottom-[152px] sm:bottom-[104px] right-4 sm:right-6 w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 shadow-xl flex items-center justify-center z-50 text-white hover:shadow-2xl transition-all border border-white/10 shadow-emerald-500/20"
         aria-label="Contact on WhatsApp"
       >
         <svg className="h-6.5 w-6.5 fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -691,7 +691,7 @@ export function FloatingChat() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.92 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 shadow-xl flex items-center justify-center z-50 text-white hover:shadow-2xl transition-all border border-white/10 shadow-amber-500/20"
+        className="fixed bottom-[94px] sm:bottom-6 right-4 sm:right-6 w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 shadow-xl flex items-center justify-center z-50 text-white hover:shadow-2xl transition-all border border-white/10 shadow-amber-500/20"
         aria-label="Open AI Assistant"
       >
         <MessageCircle className="h-6.5 w-6.5 text-white" strokeWidth={2.2} />

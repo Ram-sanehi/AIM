@@ -11,6 +11,7 @@ const EmpanelmentPage = () => {
       <Navbar />
       <StockTicker />
 
+      <main>
       {/* Hero Section */}
       <section className="py-28 md:py-36 hero-gradient relative overflow-hidden border-b border-border/10">
         <div className="absolute inset-0 overflow-hidden">
@@ -28,7 +29,7 @@ const EmpanelmentPage = () => {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mt-4">
               Strategic Alliances Across <br className="hidden md:inline" />
-              <span className="gold-text">India’s Financial Ecosystem</span>
+              <span className="gold-text">India's Financial Ecosystem</span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground/90 max-w-2xl mx-auto font-light leading-relaxed">
               Alpha Investment Management partners with India's premier banking institutions, asset managers, and insurance providers. Supported by robust relationships and registered under national regulatory frameworks, we offer a comprehensive gateway to strategic capital growth.
@@ -39,6 +40,7 @@ const EmpanelmentPage = () => {
 
       <EmpanelmentSection />
       <CTA />
+      </main>
       <Footer />
     </div>
   );

@@ -222,7 +222,7 @@ export function Hero() {
 
       {/* Main Grid Content */}
       <div className="container mx-auto px-4 relative z-10 flex-grow flex items-center py-4">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 items-center w-full">
           
           {/* LEFT SIDE */}
           <motion.div
@@ -281,7 +281,7 @@ export function Hero() {
                     key={idx}
                     whileHover={{ scale: 1.02, borderColor: "rgba(212, 175, 55, 0.4)", boxShadow: "0 10px 20px rgba(212, 175, 55, 0.05)" }}
                     transition={{ duration: 0.3 }}
-                    className="relative overflow-hidden flex flex-col justify-between p-5 rounded-2xl border border-[#D4AF37]/15 bg-[#030B22]/60 backdrop-blur-md min-h-[105px] text-left group"
+                    className="relative overflow-hidden flex flex-col justify-between p-4 md:p-5 rounded-2xl border border-[#D4AF37]/15 bg-[#030B22]/60 backdrop-blur-md min-h-[90px] md:min-h-[105px] text-left group"
                   >
                     {/* Subtle animated border slide-across line on card bottom */}
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-500" />
@@ -331,7 +331,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0, rotate: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{ rotate: 0, scale: 1.01, boxShadow: "0 25px 50px rgba(212, 175, 55, 0.05)" }}
-              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 border border-[#D4AF37]/25 backdrop-blur-2xl rounded-3xl p-9 md:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden group"
+              className="w-full max-w-[420px] bg-gradient-to-b from-[#030B22]/85 to-[#030B22]/55 border border-[#D4AF37]/25 backdrop-blur-2xl rounded-3xl p-6 md:p-9 lg:p-10 shadow-[0_30px_70px_rgba(3,11,34,0.8)] relative z-10 overflow-hidden group"
             >
               {/* Subtle animated border slide-across line on card bottom */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-primary group-hover:w-full transition-all duration-500" />

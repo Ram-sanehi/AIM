@@ -12,7 +12,7 @@ export function AuthorityStrip() {
   return (
     <div className="w-full border-y border-[#D4AF37]/15 bg-slate-950/35 relative z-20">
       <div className="container mx-auto px-4 max-w-5xl">
-        <div className="grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-border/15 py-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 divide-y sm:divide-y-0 md:divide-y-0 md:divide-x divide-border/15 py-1">
           {items.map((item, idx) => {
             const Icon = item.icon;
             return (

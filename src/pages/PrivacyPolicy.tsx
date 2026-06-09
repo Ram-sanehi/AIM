@@ -7,6 +7,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <Navbar />
+      <main>
 
       {/* Hero Section */}
       <section className="py-28 md:py-36 hero-gradient relative overflow-hidden border-b border-border/10">
@@ -234,6 +235,7 @@ const PrivacyPolicy = () => {
         </div>
       </section>
 
+      </main>
       <Footer />
     </div>
   );

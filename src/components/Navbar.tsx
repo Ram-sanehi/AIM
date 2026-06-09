@@ -53,7 +53,7 @@ export function Navbar() {
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
               <div className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg border border-[#D4AF37]/20 bg-slate-950">
-                <img src="/logo-circular1.png" alt="Alpha Investment Management" width="44" height="44" className="w-full h-full object-cover" />
+                <img src="/logo-circular1.png" alt="Alpha Investment Management" width="44" height="44" className="w-full h-full object-cover" loading="eager" decoding="async" />
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-[12px] md:text-[13px] font-display font-bold gold-text tracking-widest leading-none uppercase">Alpha Investment Management</h1>
@@ -166,7 +166,7 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: (navLinks.length + 1) * 0.05 }}
-                  className="pt-4 mt-2 border-t border-border/10 flex justify-center gap-4"
+                  className="pt-4 mt-2 border-t border-border/10 flex flex-wrap justify-center gap-3"
                 >
                   <a
                     href="https://www.facebook.com/shalini.malhotra.50767984/"

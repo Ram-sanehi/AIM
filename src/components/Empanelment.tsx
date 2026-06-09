@@ -147,7 +147,7 @@ export function Empanelment() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
-              className="glass-card rounded-2xl p-6 text-center border border-border/30 hover:border-primary/40 hover:-translate-y-[2px] transition-all duration-300 relative group shadow-sm flex flex-col justify-between h-full overflow-hidden"
+              className="glass-card rounded-2xl p-4 md:p-6 text-center border border-border/30 hover:border-primary/40 hover:-translate-y-[2px] transition-all duration-300 relative group shadow-sm flex flex-col justify-between h-full overflow-hidden"
             >
               {/* Subtle animated border slide-across line on card bottom */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-primary group-hover:w-full transition-all duration-500 z-10" />
@@ -199,7 +199,7 @@ export function Empanelment() {
                   {/* Category Header */}
                   <button
                     onClick={() => setExpandedCategory(isExpanded ? null : index)}
-                    className="w-full p-6 md:p-8 flex items-center gap-5 md:gap-6 text-left transition-colors relative group"
+                    className="w-full p-4 md:p-8 flex items-center gap-4 md:gap-6 text-left transition-colors relative group"
                   >
                     {isExpanded && (
                       <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.03] to-transparent pointer-events-none" />
