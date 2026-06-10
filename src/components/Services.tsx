@@ -104,7 +104,7 @@ export function Services() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {services.map((service, index) => (
+          {services.slice(0, 3).map((service, index) => (
             <motion.div
               key={service.title}
               variants={itemVariants}

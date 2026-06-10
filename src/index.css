@@ -239,3 +239,23 @@
   animation: border-glow-move 8s linear infinite;
   box-shadow: 0 20px 50px rgba(3, 11, 34, 0.95), 0 0 35px rgba(212, 175, 55, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.03);
 }
+
+/* CSS-driven gold wave path animation — GPU composited, replaces framer-motion JS path animation */
+@keyframes goldWave1 {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes goldWave2 {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.85; }
+}
+
+/* Section rule utility */
+.section-rule {
+  display: inline-block;
+  height: 1px;
+  background: hsl(var(--primary) / 0.5);
+  margin-bottom: 0.25rem;
+}
+

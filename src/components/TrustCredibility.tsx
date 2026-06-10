@@ -4,7 +4,7 @@ import { ShieldCheck, CalendarDays, Users, TrendingUp, HeartHandshake } from "lu
 export function TrustCredibility() {
   const items = [
     { icon: ShieldCheck, text: "SEBI Registered" },
-    { icon: CalendarDays, text: "Trusted Since 2014" },
+    { icon: CalendarDays, text: "Trusted Since 2019" },
     { icon: Users, text: "500+ Happy Clients" },
     { icon: TrendingUp, text: "₹100Cr+ Assets Managed" },
     { icon: HeartHandshake, text: "Personalized Advisory" },

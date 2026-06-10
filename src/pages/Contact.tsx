@@ -195,7 +195,7 @@ const Contact = () => {
                 <div className="grid grid-cols-2 gap-3.5 pt-1">
                   {[
                     "SEBI Registered Advisor",
-                    "10+ Years Experience",
+                    "7+ Years Experience",
                     "3,000+ Clients Served",
                     "100% Transparent Fees"
                   ].map((badge) => (

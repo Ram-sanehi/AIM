@@ -69,7 +69,7 @@ export function AboutPreview() {
                     <Shield className="h-3.5 w-3.5 text-primary" />
                     <span>SEBI Registered</span>
                   </div>
-                  <span>Est. 2014</span>
+                  <span>Est. 2019</span>
                 </div>
               </div>
             </div>

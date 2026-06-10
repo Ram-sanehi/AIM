@@ -4,7 +4,7 @@ export function AuthorityStrip() {
   const items = [
     { icon: ShieldCheck, label: "SEBI Registered", desc: "Investment Advisor" },
     { icon: Award, label: "NISM Certified", desc: "Compliance Standards" },
-    { icon: Calendar, label: "Since 2014", desc: "10+ Years Fiduciary" },
+    { icon: Calendar, label: "Since 2019", desc: "7+ Years Fiduciary" },
     { icon: Users, label: "3000+ Investors", desc: "Served Nationwide" },
     { icon: Briefcase, label: "₹300 Cr+ Assets", desc: "Guided Capital" },
   ];

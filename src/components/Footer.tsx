@@ -93,7 +93,7 @@ export function Footer() {
             </Link>
             
             <p className="text-muted-foreground/80 text-sm leading-relaxed font-light max-w-sm">
-              Your fiduciary partner for bespoke wealth management and strategic capital preservation. Guiding families and individuals towards secure financial legacies since 2014.
+              Your fiduciary partner for bespoke wealth management and strategic capital preservation. Guiding families and individuals towards secure financial legacies since 2019.
             </p>
             
             <div className="flex gap-2.5 pt-2">

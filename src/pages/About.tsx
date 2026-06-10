@@ -61,9 +61,9 @@ const Counter = ({ value, duration = 2 }: { value: string; duration?: number }) 
 };
 
 const milestones = [
-  { year: "2014", title: "Founded", description: "Established with a commitment to bring institutional-grade financial guidance directly to families." },
-  { year: "2017", title: "SEBI Registered", description: "Earned our SEBI Registered Investment Advisor status, establishing our legal fiduciary commitment to clients." },
-  { year: "2020", title: "1,000 Families Served", description: "Honored to support 1,000+ client families in securing their financial independence." },
+  { year: "2019", title: "Founded", description: "Established with a commitment to bring institutional-grade financial guidance directly to families." },
+  { year: "2020", title: "SEBI Registered", description: "Earned our SEBI Registered Investment Advisor status, establishing our legal fiduciary commitment to clients." },
+  { year: "2021", title: "1,000 Families Served", description: "Honored to support 1,000+ client families in securing their financial independence." },
   { year: "2023", title: "₹100 Crores AUM", description: "Surpassed ₹100 Crores in assets under advisory, reflecting the growing confidence of our community." },
   { year: "2025", title: "Tech-Enabled Advisory", description: "Launched our refined digital wealth platform, blending personal advice with seamless execution." },
   { year: "2026", title: "Present Day", description: "Guiding 3,000+ client portfolios and managing over ₹300 Crores in assets with unwavering compliance." },
@@ -116,7 +116,7 @@ const About = () => {
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mt-4">
               Helping Families Build <br className="hidden md:inline" />
-              <span className="gold-text">Financial Confidence</span> Since 2014
+              <span className="gold-text">Financial Confidence</span> Since 2019
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground/90 max-w-2xl mx-auto font-light leading-relaxed">
               True wealth is not just about numbers; it is about the freedom, security, and peace of mind it brings. 
@@ -172,7 +172,7 @@ const About = () => {
                   {/* Years Experience Badge */}
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-[9px] font-bold tracking-widest uppercase text-primary">
                     <Shield className="h-3 w-3 text-primary" />
-                    10+ Years Fiduciary Advisory
+                    7+ Years Fiduciary Advisory
                   </div>
 
                   <div className="flex items-center gap-4">
@@ -198,14 +198,10 @@ const About = () => {
                   </div>
 
                   {/* Credentials list */}
-                  <div className="grid grid-cols-2 gap-2 pt-2 border-t border-border/10 text-[9.5px] text-muted-foreground font-mono">
-                    <div className="flex flex-col">
-                      <span className="text-[8px] uppercase tracking-wider text-muted-foreground/50">SEBI Reg No.</span>
-                      <span className="font-semibold text-foreground">INA000017348</span>
-                    </div>
+                  <div className="pt-2 border-t border-border/10 text-[9.5px] text-muted-foreground font-mono">
                     <div className="flex flex-col">
                       <span className="text-[8px] uppercase tracking-wider text-muted-foreground/50">Credentials</span>
-                      <span className="font-semibold text-foreground">CFA Candidate / MSc Finance</span>
+                      <span className="font-semibold text-foreground">CFA Level II · MSc Finance</span>
                     </div>
                   </div>
                 </div>
@@ -221,7 +217,7 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-border/20">
             <div className="pt-4 md:pt-0">
-              <Counter value="10+" />
+              <Counter value="7+" />
               <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Years Experience</div>
             </div>
             <div className="pt-4 md:pt-0 md:pl-4">
@@ -268,10 +264,10 @@ const About = () => {
                 initials: "NP",
                 qualifications: [
                   "SEBI Registered Investment Advisor & Portfolio Manager",
-                  "CFA Level II Candidate",
+                  "CFA Level II",
                   "Master's in Finance – Henley Business School, London, UK",
                   "AMFI & IRDA Approved Distributor",
-                  "10+ Years of Experience in Investment Management",
+                  "7+ Years of Experience in Investment Management",
                 ],
                 social: {
                   linkedin: "https://linkedin.com",
@@ -287,6 +283,7 @@ const About = () => {
                   "Chartered Accountant (CA)",
                   "Master of Commerce (M.Com)",
                   "NISM Certified Wealth Analyst",
+                  "AMFI & IRDA Approved Distributor",
                   "7+ Years of Experience in Insurance & Risk Advisory",
                 ],
                 social: {

@@ -74,7 +74,7 @@ const partnerCategories = [
 const trustIndicators = [
   {
     icon: Shield,
-    title: "10+ Years Experience",
+    title: "7+ Years Experience",
     description: "Deep expertise navigating diverse Indian market cycles with absolute compliance."
   },
   {
